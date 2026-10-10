@@ -1,0 +1,20 @@
+$root = '.'
+$dirs = @(
+  '.github/workflows','.github/ISSUE_TEMPLATE',
+  'spec/rules','spec/config','spec/schema',
+  'testdata/splits','testdata/phishing','testdata/legitimate','testdata/malformed','testdata/expected','testdata/raw',
+  'engine-dotnet','engine-ts/src','engine-ts/tests',
+  'desktop','web-addin/src','extension/src','backend','tools-python/tests','tools-python/notebooks',
+  'installer/package','installer/signing','scripts','ui-design/bubble-states','docs/img'
+)
+foreach ($d in $dirs) {
+  $p = Join-Path $root $d
+  New-Item -ItemType Directory -Force -Path $p | Out-Null
+  if ($d -ne 'testdata/raw') {
+    Set-Content -Path (Join-Path $p 'README.md') -Value ('Planned folder: ' + $d)
+  }
+}
+$files = @('CONTRIBUTING.md','CHANGELOG.md','global.json')
+foreach ($f in $files) { New-Item -ItemType File -Force -Path (Join-Path $root $f) | Out-Null }
+$docs = @('architecture','decisions','journal','backlog','success','threat-model','results','risk-register')
+foreach ($n in $docs) { New-Item -ItemType File -Force -Path (Join-Path $root ('docs/' + $n + '.md')) | Out-Null }
