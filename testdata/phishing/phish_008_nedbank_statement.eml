@@ -1,0 +1,87 @@
+Return-Path: bounces+31362318-584e-jose=monkey.org@sendgrid.net
+Delivered-To: jose@monkey.org
+X-FDA: 80442011622.14.61D8B37
+Received: from wfbtqkfb.outbound-mail.sendgrid.net
+ (wfbtqkfb.outbound-mail.sendgrid.net [159.183.65.251])
+	by imf09.b.hostedemail.com (Postfix) with ESMTP id 42D6B1919573C
+	for <jose@monkey.org>; Tue,  7 Feb 2023 22:58:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.net;
+	h=from:subject:mime-version:content-type:cc:content-type:from:subject:
+	to;
+	s=smtpapi; bh=aQDcngqi4b//1mufQXeAJwAXzwDNOJimSWoDxz4pFrQ=;
+	b=tch0hCtD995JcmtCMYIaXcqyT4AqZVYx/z6plyfTeyfXdv6bwAC/e0QioTXSB8AQYyS1
+	vAWEa6LuL+rQBQyn37yc0hRpcHQ5j20UBbyEXFu9zQ9IPNpoJi2SJAyx7g1B0Ky097/AkB
+	Qo4Agsv185ksPvvd09od4jGRef7d3AVuI=
+Received: by filterdrecv-6b9548745c-lsftv with SMTP id
+ filterdrecv-6b9548745c-lsftv-1-63E2CC23-1D
+        2023-02-07 22:09:39.555909507 +0000 UTC m=+7081294.366053433
+Received: from 41.113.80.111 (unknown)
+	by geopod-ismtpd-2-1 (SG) with ESMTP
+	id 4mggSCTRQPG9EUQFQHGhbQ
+	Tue, 07 Feb 2023 22:09:27.348 +0000 (UTC)
+Message-ID: <6FC0BBAE3ED0447AA92DCDE11BF364D4@MYi5>
+From: Nedbank Credit Card monthly eStatement
+	<consumerstatements@nedbankstatment.com>
+Subject: Nedbank Credit Card monthly Charges eStatement
+Date: Tue, 07 Feb 2023 22:09:42 +0000 (UTC)
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_00CF_01D93B51.17CE3500"
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Windows Mail 6.0.6001.18000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.0.6001.18049
+X-SG-EID: 
+ =?us-ascii?Q?eVGP63gTO25yQi9PntSxTNphct56qzNvERqcGmXvIQkmYu8QPScmD5ZCZFh=2Fj6?=
+ =?us-ascii?Q?r1adIpGk8F2uEekywDhBHWI23v34B1C6jXhzieN?=
+ =?us-ascii?Q?QW8R2gg002YDSf2LzoIa+pTfLLBpnQDO=2FIsyksr?=
+ =?us-ascii?Q?aZ7OVdnQmUYdLncMDE=2F5FqKnvRBxh3aT9rr8cTL?=
+ =?us-ascii?Q?gExahcFKcjJUya1rEE2G2OgOWYa79WKlLp8h11t?=
+ =?us-ascii?Q?DdBrmZlJCkik9tVMRnX55tBFJHy8ZzBa1KHU7EK?=
+ =?us-ascii?Q?wnju6Is5HxWWzmHnEtCJfoqcT9XIyiOBNOuw1QN?=
+ =?us-ascii?Q?gXh+lrvSTthKp+u5L4pQUmLb?=
+X-Entity-ID: YVzmC+IH9l2frlVhGOvKug==
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1675810710; a=rsa-sha256;
+	cv=none;
+	b=vyPg8nJCKCcqHkF/lQLbrUPAxFAbJAjx7g4fdIMB6vuuW+4a8ODk6pQwWFbzTfm8nALf8W
+	YTd/JisyXBa7k6SbeZtCMp8G99kgIMiA7G2ZaMeM7aZM+hFTHKjvw7p7aB0k+YRbHag1lV
+	pv1Zagblx66Zc8IqsmCH9iabaaHJyKE=
+ARC-Authentication-Results: i=1;
+	imf09.b.hostedemail.com;
+	dkim=pass header.d=sendgrid.net header.s=smtpapi header.b=tch0hCtD;
+	dmarc=none;
+	spf=pass (imf09.b.hostedemail.com: domain of
+ "bounces+31362318-584e-jose=monkey.org@sendgrid.net" designates
+ 159.183.65.251 as permitted sender)
+ smtp.mailfrom="bounces+31362318-584e-jose=monkey.org@sendgrid.net"
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1675810710;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=aQDcngqi4b//1mufQXeAJwAXzwDNOJimSWoDxz4pFrQ=;
+	b=NOWeTVKdtmhkStR15l1AYxbCIzREDJQCPrOl9duSuXQctuyuKwWGpVd4AaNDpcD4qC5VEZ
+	yL/YfHIzfrtw06iwrSKcsz7WoDPpGFUjaoB2rCaVPbBluOne7kt6L0BXS/MLeN6Ou2Qz1D
+	SzPgXvE/eyOiu/J8apD+7iBgGGvNRBg=
+X-Rspam-User: 
+Authentication-Results: imf09.b.hostedemail.com;
+	dkim=pass header.d=sendgrid.net header.s=smtpapi header.b=tch0hCtD;
+	dmarc=none;
+	spf=pass (imf09.b.hostedemail.com: domain of
+ "bounces+31362318-584e-jose=monkey.org@sendgrid.net" designates
+ 159.183.65.251 as permitted sender)
+ smtp.mailfrom="bounces+31362318-584e-jose=monkey.org@sendgrid.net"
+X-Spam-Status: Yes, score=11.20
+X-Stat-Signature: ekrpijtkg9bbj3atd8bha8yrtsqkyw79
+X-Rspamd-Queue-Id: 42D6B1919573C
+X-Rspamd-Server: rspam07
+X-HE-Tag: 1675810710-727731
+X-HE-Meta: 
+ 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
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 30

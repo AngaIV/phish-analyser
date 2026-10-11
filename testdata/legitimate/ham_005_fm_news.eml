@@ -1,0 +1,48 @@
+From freshmeat-news-admin@lists.freshmeat.net  Wed Jul 31 05:21:54 2002
+Return-Path: <freshmeat-news-admin@lists.freshmeat.net>
+Delivered-To: yyyy@localhost.netnoteinc.com
+Received: from localhost (localhost [127.0.0.1])
+	by phobos.labs.netnoteinc.com (Postfix) with ESMTP id 68288440A8
+	for <jm@localhost>; Wed, 31 Jul 2002 00:21:47 -0400 (EDT)
+Received: from phobos [127.0.0.1]
+	by localhost with IMAP (fetchmail-5.9.0)
+	for jm@localhost (single-drop); Wed, 31 Jul 2002 05:21:47 +0100 (IST)
+Received: from mail.freshmeat.net (news.freshmeat.net [64.28.67.97]) by
+    dogma.slashnull.org (8.11.6/8.11.6) with ESMTP id g6V4IG201636 for
+    <jm-freshmeat-newsletter@jmason.org>; Wed, 31 Jul 2002 05:18:16 +0100
+Received: from localhost.localdomain (localhost.freshmeat.net [127.0.0.1])
+    by localhost.freshmeat.net (Postfix) with ESMTP id 5B98D833D9;
+    Wed, 31 Jul 2002 00:14:25 -0400 (EDT)
+Received: from mail.freshmeat.net (localhost.freshmeat.net [127.0.0.1]) by
+    mail.freshmeat.net (Postfix) with ESMTP id 738988337D; Wed, 31 Jul 2002
+    00:10:30 -0400 (EDT)
+Delivered-To: freshmeat-news@freshmeat.net
+Received: from localhost.localdomain (localhost.freshmeat.net [127.0.0.1])
+    by localhost.freshmeat.net (Postfix) with ESMTP id DBB908334A for
+    <freshmeat-news@freshmeat.net>; Wed, 31 Jul 2002 00:09:18 -0400 (EDT)
+Received: from server.freshmeat.net (freshmeat.net [64.28.67.35]) by
+    mail.freshmeat.net (Postfix) with ESMTP id 933198334A for
+    <freshmeat-news@freshmeat.net>; Wed, 31 Jul 2002 00:09:15 -0400 (EDT)
+Received: by server.freshmeat.net (Postfix, from userid 1000) id
+    B370A3F82B; Wed, 31 Jul 2002 00:10:10 -0400 (EDT)
+To: freshmeat-news@freshmeat.net
+Content-Transfer-Encoding: 8bit
+Message-Id: <20020731041010.B370A3F82B@server.freshmeat.net>
+From: freshmeat-news-admin@lists.freshmeat.net
+Subject: [fm-news] Newsletter for Tuesday, July 30th 2002
+Sender: freshmeat-news-admin@lists.freshmeat.net
+Errors-To: freshmeat-news-admin@lists.freshmeat.net
+X-Beenthere: freshmeat-news@lists.freshmeat.net
+X-Mailman-Version: 2.0.11
+Precedence: bulk
+Reply-To: noreply@freshmeat.net
+X-Reply-To: freshmeat-news@lists.freshmeat.net
+List-Help: <mailto:freshmeat-news-request@lists.freshmeat.net?subject=help>
+List-Post: <mailto:freshmeat-news@lists.freshmeat.net>
+List-Subscribe: <http://lists.freshmeat.net/mailman/listinfo/freshmeat-news>,
+    <mailto:freshmeat-news-request@lists.freshmeat.net?subject=subscribe>
+List-Id: The freshmeat daily newsletter <freshmeat-news.lists.freshmeat.net>
+List-Unsubscribe: <http://lists.freshmeat.net/mailman/listinfo/freshmeat-news>,
+    <mailto:freshmeat-news-request@lists.freshmeat.net?subject=unsubscribe>
+List-Archive: <http://lists.freshmeat.net/mailman/private/freshmeat-news/>
+Date: Wed, 31 Jul 2002 00:10:10 -0400 (EDT)

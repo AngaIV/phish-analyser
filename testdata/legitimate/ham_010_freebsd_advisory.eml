@@ -1,0 +1,34 @@
+From bugtraq-return-5951-legit-lists-secfocus=jmason.org@securityfocus.com  Tue Aug  6 18:32:08 2002
+Return-Path: <bugtraq-return-5951-legit-lists-secfocus=spamassassin.taint.org@securityfocus.com>
+Delivered-To: yyyy@localhost.netnoteinc.com
+Received: from localhost (localhost [127.0.0.1])
+	by phobos.labs.netnoteinc.com (Postfix) with ESMTP id 2B17B440CD
+	for <jm@localhost>; Tue,  6 Aug 2002 13:32:02 -0400 (EDT)
+Received: from phobos [127.0.0.1]
+	by localhost with IMAP (fetchmail-5.9.0)
+	for jm@localhost (single-drop); Tue, 06 Aug 2002 18:32:02 +0100 (IST)
+Received: from outgoing.securityfocus.com (outgoing2.securityfocus.com
+    [66.38.151.26]) by dogma.slashnull.org (8.11.6/8.11.6) with ESMTP id
+    g76HWck12384 for <legit-lists-secfocus@jmason.org>; Tue, 6 Aug 2002
+    18:32:38 +0100
+Received: from lists.securityfocus.com (lists.securityfocus.com
+    [66.38.151.19]) by outgoing.securityfocus.com (Postfix) with QMQP id
+    CEDFB8F371; Tue,  6 Aug 2002 09:16:23 -0600 (MDT)
+Mailing-List: contact bugtraq-help@securityfocus.com; run by ezmlm
+Precedence: bulk
+List-Id: <bugtraq.list-id.securityfocus.com>
+List-Post: <mailto:bugtraq@securityfocus.com>
+List-Help: <mailto:bugtraq-help@securityfocus.com>
+List-Unsubscribe: <mailto:bugtraq-unsubscribe@securityfocus.com>
+List-Subscribe: <mailto:bugtraq-subscribe@securityfocus.com>
+Delivered-To: mailing list bugtraq@securityfocus.com
+Delivered-To: moderator for bugtraq@securityfocus.com
+Received: (qmail 10791 invoked from network); 6 Aug 2002 00:35:59 -0000
+Date: Mon, 5 Aug 2002 16:50:07 -0700 (PDT)
+Message-Id: <200208052350.g75No7Yw097463@freefall.freebsd.org>
+X-Authentication-Warning: freefall.freebsd.org: nectar set sender to
+    security-advisories@freebsd.org using -f
+From: FreeBSD Security Advisories <security-advisories@freebsd.org>
+To: Bugtraq <bugtraq@securityfocus.com>
+Subject: FreeBSD Security Advisory FreeBSD-SA-02:36.nfs
+Reply-To: security-advisories@freebsd.org

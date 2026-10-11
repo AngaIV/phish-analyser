@@ -1,0 +1,36 @@
+From vulnwatch-return-400-jm=jmason.org@vulnwatch.org  Mon Jul 22 19:26:06 2002
+Return-Path: <vulnwatch-return-400-yyyy=spamassassin.taint.org@vulnwatch.org>
+Delivered-To: yyyy@localhost.netnoteinc.com
+Received: from localhost (localhost [127.0.0.1])
+	by phobos.labs.netnoteinc.com (Postfix) with ESMTP id 5AEA3440C8
+	for <jm@localhost>; Mon, 22 Jul 2002 14:26:03 -0400 (EDT)
+Received: from dogma.slashnull.org [212.17.35.15]
+	by localhost with IMAP (fetchmail-5.9.0)
+	for jm@localhost (single-drop); Mon, 22 Jul 2002 19:26:03 +0100 (IST)
+Received: from webnote.net (mail.webnote.net [193.120.211.219]) by
+    dogma.slashnull.org (8.11.6/8.11.6) with ESMTP id g6MFHB902006 for
+    <jm@jmason.org>; Mon, 22 Jul 2002 16:17:11 +0100
+Received: from vikki.vulnwatch.org ([199.233.98.101]) by webnote.net
+    (8.9.3/8.9.3) with SMTP id OAA32249 for <jm@jmason.org>; Mon,
+    22 Jul 2002 14:55:11 +0100
+Received: (qmail 16454 invoked by alias); 22 Jul 2002 14:08:03 -0000
+Mailing-List: contact vulnwatch-help@vulnwatch.org; run by ezmlm
+Precedence: bulk
+List-Post: <mailto:vulnwatch@vulnwatch.org>
+List-Help: <mailto:vulnwatch-help@vulnwatch.org>
+List-Unsubscribe: <mailto:vulnwatch-unsubscribe@vulnwatch.org>
+List-Subscribe: <mailto:vulnwatch-subscribe@vulnwatch.org>
+Delivered-To: mailing list vulnwatch@vulnwatch.org
+Delivered-To: moderator for vulnwatch@vulnwatch.org
+Received: (qmail 25523 invoked from network); 22 Jul 2002 12:02:43 -0000
+Date: Mon, 22 Jul 2002 13:21:28 +0200
+From: e-matters Security <security@e-matters.de>
+To: bugtraq@securityfocus.com
+Cc: vulnwatch@vulnwatch.org
+Message-Id: <20020722112128.GB9191@php.net>
+Reply-To: security@e-matters.de
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.4i
+Subject: [VulnWatch] Advisory 02/2002: PHP remote vulnerability

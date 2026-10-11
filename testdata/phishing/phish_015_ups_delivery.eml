@@ -1,0 +1,78 @@
+Return-Path: return@mta3.inboxlinks.shop
+Delivered-To: jose@monkey.org
+X-FDA: 81362555652.24.975C2B8
+Received: from mta3.inboxlinks.shop (unknown [107.182.128.164])
+	by imf22.b.hostedemail.com (Postfix) with ESMTP id D673516000B
+	for <jose@monkey.org>; Thu, 19 Oct 2023 15:13:44 +0000 (UTC)
+Authentication-Results: imf22.b.hostedemail.com;
+	dkim=pass header.d=inboxlinks.shop header.s=default header.b=FDW6JaG3;
+	spf=pass (imf22.b.hostedemail.com: domain of return@mta3.inboxlinks.shop
+ designates 107.182.128.164 as permitted sender)
+ smtp.mailfrom=return@mta3.inboxlinks.shop;
+	dmarc=pass (policy=none) header.from=inboxlinks.shop
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1697728424;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:list-id:list-unsubscribe:dkim-signature;
+	bh=S3o9IwyNj8XqMG32lpOiNXYGwbp43nzWBiMfE6hzmXc=;
+	b=X772JS0qGWTZp1uL/pdFizUpg97lD7ZmeC6BXyr8D907S+nGzeHEUSFK0vbnsnfb4mTwOi
+	IPdR61WO08UBZ2cLIp26Ewc+cqO2TkjeTLtqJZnB6jPxggBPlPxnkAD5/ApYIZ5rFZUJAV
+	vDiXknSLRsMC0An3ktJgwzFfBLk1cCI=
+ARC-Authentication-Results: i=1;
+	imf22.b.hostedemail.com;
+	dkim=pass header.d=inboxlinks.shop header.s=default header.b=FDW6JaG3;
+	spf=pass (imf22.b.hostedemail.com: domain of return@mta3.inboxlinks.shop
+ designates 107.182.128.164 as permitted sender)
+ smtp.mailfrom=return@mta3.inboxlinks.shop;
+	dmarc=pass (policy=none) header.from=inboxlinks.shop
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1697728424; a=rsa-sha256;
+	cv=none;
+	b=hTIo9fU257YLOM4bsv6yH7lk4txyvc1IYhJ+siWIEOKL8eGeTi6VboIbL33Z5BoF3G41Hb
+	eRgIC1ajIohyt+AU6eLr4Bwf4cGpwLSU93vCZgCNBjxraxFsXMJe5y5CypfmMTkbQAqj5S
+	VMR2ElGi2uHYIOYYMZJHjUeO8szq+Fc=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default;
+ d=inboxlinks.shop;
+ h=From:To:Cc:Subject:Message-ID:Reply-To:List-Unsubscribe:List-Id:
+ MIME-Version:Content-Type:Date; i=return@mta3.inboxlinks.shop;
+ bh=S3o9IwyNj8XqMG32lpOiNXYGwbp43nzWBiMfE6hzmXc=;
+ b=FDW6JaG3/lw6vxM+89/45Y9vF6fNcZTlotLv6bffvQdeL96cJOwI/+jN/W1wTq5Q2dfJzkPNWRsI
+   MK9bBg0vNJlYhun6xM2p8w9R7JEbAYXDiMf9MCjfW0yHZvd8JlnO+wxZv3qwt7JQ1dQUSrx8YZy/
+   Hx6R+EH/AvqKXhSiKBc=
+From: UPS Alerts <return@mta3.inboxlinks.shop>
+To: jose@monkey.org <jose@monkey.org>
+Cc: jose@monkey.org <jose@monkey.org>
+Subject: URGENT: Delivery Suspension Alert for Your UPS Shipment
+Message-ID: <dbbe3a4e@mta3.inboxlinks.shop>
+Reply-To: return@mta3.inboxlinks.shop
+List-Unsubscribe: 
+ <https://trk.inboxlinks.shop/lists/go1503d81378c/unsubscribe/ew1493gb9e56c/te306709zp054?source=email-client-unsubscribe-button>,
+ <mailto:return@mta3.inboxlinks.shop?subject=Campaign-Uid%3Ate306709zp054%20%2F%20Subscriber-Uid%3Aew1493gb9e56c%20-%20Unsubscribe%20request&body=Please%20unsubscribe%20me%21>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Id: go1503d81378c <OC_GIMIX_INTL>
+X-Report-Abuse: 
+ https://trk.inboxlinks.shop/campaigns/te306709zp054/report-abuse/go1503d81378c/ew1493gb9e56c
+X-EBS: https://trk.inboxlinks.shop/lists/block-address
+Feedback-ID: te306709zp054:regular:go1503d81378c:gm468f1pdg9b0
+X-Suid: ew1493gb9e56c
+X-Cuid: te306709zp054
+x-sender: return@mta3.inboxlinks.shop
+x-receiver: jose@monkey.org
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="boundary_sxFw4nb2vm/rxiIcwP4y5w=="
+Date: Thu, 19 Oct 2023 11:13:44 -0400
+X-Rspamd-Server: rspam08
+X-Rspam-User: 
+X-Rspamd-Queue-Id: D673516000B
+X-Spam-Status: No, score=1.86
+X-Stat-Signature: ioffuzs6iwgxdgtzoax1yysfrnzpaggc
+X-HE-Tag: 1697728424-400715
+X-HE-Meta: 
+ U2FsdGVkX1+Cbjn6SmcFOFuwmTdcjD4V+urjnl6iYemGQqboeJtrGPsRPpdgZqtOJQxlakc6T+mqizC0E8uTvxtwhsGeI/q2o5h7CedDtcxYWE8PB5etTP6ZQyDqvi2BOzk9XZvg4aKs2JES1c++r92Kv4ZbYxJcCSLgc7XOkb9S3z/1cPq5Zzu0B/Lt/C1hLkvgD3M0dExf8fUlXTfkrM7zu/KHnMBb1RGSTbaNLd8=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 321

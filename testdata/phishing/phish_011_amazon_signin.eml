@@ -1,0 +1,66 @@
+Return-Path: sales@j-mains.asia
+Delivered-To: jose@monkey.org
+X-FDA: 81072833940.38.A9191EF
+Received: from j-mains.asia (j-mains.asia [176.126.164.217])
+	by imf30.b.hostedemail.com (Postfix) with ESMTP id D944B180010
+	for <jose@monkey.org>; Mon, 31 Jul 2023 19:04:47 +0000 (UTC)
+Authentication-Results: imf30.b.hostedemail.com;
+	dkim=pass header.d=j-mains.asia header.s=default header.b=Wi7lUUo1;
+	spf=pass (imf30.b.hostedemail.com: domain of sales@j-mains.asia designates
+ 176.126.164.217 as permitted sender) smtp.mailfrom=sales@j-mains.asia;
+	dmarc=pass (policy=quarantine) header.from=j-mains.asia
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1690830289;
+	h=from:from:sender:reply-to:subject:subject:date:date:message-id:to:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=dsHA53N1kAuHGkrQ2I0QFqM2ULXFOfoEIBf8nLisSzg=;
+	b=UqoIr7YOEUnXw9DEYE/3Jy8Ys7ACBEnPtUzgd7ySAahAHtfP9J20T91ZAafbxpAR7Ld05+
+	Yh3eEpaf1sG1Rfqx094xfnVQvWcJTLUGwNAjdm67mcJckeVy4Y3I6m+rK7U52TXbN8PFo+
+	akEh0oHre3WVP3YC1m9jW+udDBHq4w8=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1690830289; a=rsa-sha256;
+	cv=none;
+	b=oDdTds3SKUin28vjkZinGy+Un0eG/JdJn6XBXDQN9/3DzbeOTTgBeQuD9XcynrYm6xM4xB
+	cjRRkkXKV4i9Hp7e3wezsff2Df06UCMmnXHC8IJBepZcc5A+iBhASAyNJs4beGaIR0V+mI
+	ToyX6sYE5YkCypn/hNKuF6E/DIDerZY=
+ARC-Authentication-Results: i=1;
+	imf30.b.hostedemail.com;
+	dkim=pass header.d=j-mains.asia header.s=default header.b=Wi7lUUo1;
+	spf=pass (imf30.b.hostedemail.com: domain of sales@j-mains.asia designates
+ 176.126.164.217 as permitted sender) smtp.mailfrom=sales@j-mains.asia;
+	dmarc=pass (policy=quarantine) header.from=j-mains.asia
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=j-mains.asia;
+ h=From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=sales@j-mains.asia;
+ bh=mVx+o6e7OL5EIeJED5Xjgm7CisM=;
+ b=Wi7lUUo1seZXllvFoDZyJHb0OSC7Op5PYuk7vk6tISofRTCyrhOLSqJaL03eR0W4VQfAI0afu6TX
+   AiIRUJqkfvSudTw076DdeCRrHK14cRl3z4AC3CGZJtg1EaT6mxKm7wtM4/LbGLHqj5fIg99UACpN
+   jqxNwRjkrFJN1HZddVE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=default; d=j-mains.asia;
+ b=EjNtlwvRrzMFGLh9UZiYapQvpufzMDu7A3+nOmVQt3yXkVnQR8kJYlN+SjHQB9lM8fxSn9hAs+Rb
+   /hfIWtx0gk4iCoSJM0Ux+edJgUuMLMhL60Peh2uiFY41PQb3AWMwTHQvwzD9o30XZCPDD+CbXwKa
+   M+c9uDJonP93B/Xz3qM=;
+From: "Amazon"<sales@j-mains.asia>
+Subject: 'Amazon' Unusual Sign-In Attempt Detected..
+Date: Mon, 31 Jul 2023 12:04:41 -0700
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Rspamd-Server: rspam03
+X-Rspamd-Queue-Id: D944B180010
+X-Stat-Signature: u38c933akoiwapcwum6yd4wiqa461nfb
+X-Rspam-User: 
+X-Spam-Status: Yes, score=29.25
+X-HE-Tag: 1690830287-662647
+X-HE-Meta: 
+ U2FsdGVkX1+QezuRx1wtkRTuwhx2LuAwxOA0WFA6dHVwiIF9xfH7UXGpjBpw5tVNDyEQgYVUoJ2itzMw3YPK9UZWfmYQEV4+lBDGj8gvw7hhvlTH/AvR4MZkUYWhv9ZvfKkBOnMeOmYLdH51HsCOLWT1ehq5KakxafjHsKcni0SS2iN3HmqyL9nuEIoCaUDplZ5V0ob2QYAVMQ4JAuReYZg5zJN3xtFo6RTveRHMW8k=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 228
