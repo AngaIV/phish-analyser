@@ -13,7 +13,7 @@ phish_011_amazon_signin.eml,phishing,nazario-phishing-2023,high,Amazon unusual s
 phish_012_usps_package.eml,phishing,nazario-phishing-2023,high,USPS package delivery phish
 phish_013_wellsfargo_alert.eml,phishing,nazario-phishing-2023,high,Wells Fargo banking alert
 phish_014_icann_validation.eml,phishing,nazario-phishing-2023,high,ICANN domain validation phish
-phish_015_ups_delivery.phish.eml,phishing,nazario-phishing-2023,high,UPS delivery suspension alert
+phish_015_ups_delivery.eml,phishing,nazario-phishing-2023,high,UPS delivery suspension alert
 ham_001_fwd_camram_hashcash.eml,legitimate,spamassassin-easy_ham_2,high,CANARY: forwarded message (fwd)
 ham_002_oreilly_conference.eml,legitimate,spamassassin-easy_ham_2,high,CANARY: newsletter via third-party platform
 ham_003_rhn_errata_alert.eml,legitimate,spamassassin-easy_ham_2,high,CANARY: mailing-list distribution (Delivered-To)
