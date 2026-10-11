@@ -14,7 +14,9 @@
 
   <!-- 46px ring gauge, per ui-design/bubble-states/mockup.html -->
   <Grid x:Name="Root" Width="46" Height="46" Background="Transparent"
-        MouseLeftButtonUp="OnBubbleClick"
+        MouseLeftButtonDown="OnBubbleMouseDown"
+        MouseMove="OnBubbleMouseMove"
+        MouseLeftButtonUp="OnBubbleMouseUp"
         Cursor="Hand">
 
     <!-- Right-click menu: WindowStyle="None" removes every other way to close the app. -->

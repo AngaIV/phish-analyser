@@ -20,6 +20,12 @@ public partial class BubbleWindow : Window
 
     private bool _spinning;
 
+    // Drag state: set on mouse down, updated while the button is held.
+    // In screen coordinates, so the moving window cannot skew the delta.
+    private Point _cursorStart;
+    private Point _windowOrigin;
+    private bool _dragging;
+
     private static Brush Freeze(string hex)
     {
         var brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(hex));
@@ -138,8 +144,72 @@ public partial class BubbleWindow : Window
             Diameter / 2 + Radius * Math.Sin(radians));
     }
 
-    private void OnBubbleClick(object sender, MouseButtonEventArgs e) =>
-        BubbleClicked?.Invoke(this, EventArgs.Empty);
+    private void OnBubbleMouseDown(object sender, MouseButtonEventArgs e)
+    {
+        _cursorStart = CursorPositionInDip(e);
+        _windowOrigin = new Point(Left, Top);
+        _dragging = false;
+        Root.CaptureMouse();
+    }
+
+    private void OnBubbleMouseMove(object sender, MouseEventArgs e)
+    {
+        if (!Root.IsMouseCaptured || e.LeftButton != MouseButtonState.Pressed)
+            return;
+
+        var cursor = CursorPositionInDip(e);
+        var dx = cursor.X - _cursorStart.X;
+        var dy = cursor.Y - _cursorStart.Y;
+
+        // Only treat it as a drag past the system threshold, so a slightly shaky click
+        // still opens the panel instead of nudging the bubble by a pixel.
+        if (!_dragging &&
+            Math.Abs(dx) < SystemParameters.MinimumHorizontalDragDistance &&
+            Math.Abs(dy) < SystemParameters.MinimumVerticalDragDistance)
+        {
+            return;
+        }
+
+        _dragging = true;
+        Left = Clamp(_windowOrigin.X + dx, SystemParameters.VirtualScreenLeft,
+                     SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth - Width);
+        Top = Clamp(_windowOrigin.Y + dy, SystemParameters.VirtualScreenTop,
+                    SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight - Height);
+    }
+
+    /// <summary>
+    /// The cursor's absolute position on the virtual desktop, in device-independent units.
+    /// <para>
+    /// <c>Left</c>/<c>Top</c> are DIPs and <c>GetPosition(this)</c> is DIPs relative to the
+    /// window, so their sum is DIPs too — no physical-pixel conversion, and therefore no
+    /// DPI scaling error when the bubble is dragged between monitors at different scales.
+    /// Anchoring to an absolute position is also what stops the drift: a window-relative
+    /// origin is measured against a frame of reference that is itself moving, so each
+    /// mouse-move samples a stale origin and the bubble trails the cursor.
+    /// </para>
+    /// </summary>
+    private Point CursorPositionInDip(MouseEventArgs e)
+    {
+        var inWindow = e.GetPosition(this);
+        return new Point(Left + inWindow.X, Top + inWindow.Y);
+    }
+
+    /// <summary>
+    /// Keeps the bubble inside the virtual desktop, across all monitors. Without this it
+    /// can be dragged off-screen and, since it has no taskbar entry or tray icon yet, would
+    /// be unrecoverable without killing the process.
+    /// </summary>
+    private static double Clamp(double value, double min, double max) =>
+        max < min ? min : Math.Clamp(value, min, max);
+
+    private void OnBubbleMouseUp(object sender, MouseButtonEventArgs e)
+    {
+        Root.ReleaseMouseCapture();
+
+        // A press that never became a drag is a click: open the detail panel.
+        if (!_dragging)
+            BubbleClicked?.Invoke(this, EventArgs.Empty);
+    }
 
     private void OnExitClick(object sender, RoutedEventArgs e) =>
         Application.Current.Shutdown();
