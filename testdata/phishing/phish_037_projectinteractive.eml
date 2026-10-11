@@ -1,0 +1,57 @@
+Return-Path: dewkellerman@pro.projectinteractive.com
+Delivered-To: jose@monkey.org
+X-FDA: 80777727828.10.193B233
+Received: from pro.projectinteractive.com (unknown [192.254.193.205])
+	by imf23.b.hostedemail.com (Postfix) with ESMTP id 9080C160060
+	for <jose@monkey.org>; Thu, 11 May 2023 11:19:13 +0000 (UTC)
+Authentication-Results: imf23.b.hostedemail.com;
+	dkim=none;
+	dmarc=pass (policy=quarantine) header.from=pro.projectinteractive.com;
+	spf=pass (imf23.b.hostedemail.com: domain of
+ dewkellerman@pro.projectinteractive.com designates 192.254.193.205 as
+ permitted sender) smtp.mailfrom=dewkellerman@pro.projectinteractive.com
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1683803953; a=rsa-sha256;
+	cv=none;
+	b=t9HKbVk6yZcLxyWyiN2vR/sye3QlzwuBwLh/d+/2eMx50E5lkIGSL212lH+zcnV1xA8Gk6
+	NF29yVzu2RoP0EhUqoqXoCGmChkorADHXYgcuihTgIH06hjD4vNvKcKX+Nu+oYXGgJXdpG
+	mKCsWYso5CK7bNzYOBvaA4b3PJjBYhE=
+ARC-Authentication-Results: i=1;
+	imf23.b.hostedemail.com;
+	dkim=none;
+	dmarc=pass (policy=quarantine) header.from=pro.projectinteractive.com;
+	spf=pass (imf23.b.hostedemail.com: domain of
+ dewkellerman@pro.projectinteractive.com designates 192.254.193.205 as
+ permitted sender) smtp.mailfrom=dewkellerman@pro.projectinteractive.com
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1683803953;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references; bh=5gfdaicH0t5fzicgqID7SUQv2lF6ZknjkLVtZThIlCE=;
+	b=RqqzE/k9X71BXZFW5GLIT5lQ+W/VWgycWMGg8bp4IRVdit41CAHvarBSAF+IFaEp0dKQjK
+	nN99RjWwku1XSleNyM04mzQbWhJ5x/oxaPMVhAVticDNnieLC46VHM2CsBiVAd+rAWY0aq
+	WuaVyxN8I14HvTS2s04xpNiO0HVKUV0=
+Message-ID: <595148452.54251288.8284178628@pro.projectinteractive.com>
+Stiffly-Bracelet: F4DC4317534
+To: Jose <jose@monkey.org>
+Subject: Someone matched with you on Tinder!
+Date: Thu, 11 May 2023 06:19:13 +0000
+Leagues-Seminarian: 66cfeb93c915
+From: Tinder <dewkellerman@pro.projectinteractive.com>
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+X-Rspamd-Server: rspam09
+X-Rspamd-Queue-Id: 9080C160060
+X-Rspam-User: 
+X-Spam-Status: No, score=8.60
+X-Stat-Signature: b4h6k713rnsu1m7kusnzf8cxzz9dadhg
+X-HE-Tag: 1683803953-574660
+X-HE-Meta: 
+ U2FsdGVkX1/A96cG2Ta206vuwkja+xoTrXOhKSQf8CRdCz19wM7DMjg0bqxz2eaEwmy0DzdwaFeGQbJ4yAtozAGOdsiaQb4gA3kva1deyCdWstFY4bnmewI8nSQpgnA/GX7cNMy7np8phK4rC3wY9RY8E7oKQ0yTExNWKeAyf/RliW+jP9vSnnWCitOLqAQzTn9UOE1RoSnoQLQ8pp3lm4K0MgQF9r7p2sAd12P2yrUiHVOn5gbqBajC4dPMZsi/3Zr34ym9bHhK9HSfEmWpQ1Uj6bAckru0
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 111

@@ -1,0 +1,81 @@
+Return-Path: bounces@aaps.k12.mi.us
+Delivered-To: jose@monkey.org
+X-FDA: 80411607486.55.BA6B0DB
+Received: from mta-70-13-115.sparkpostmail.com
+ (mta-70-13-115.sparkpostmail.com [156.70.13.115])
+	by imf10.b.hostedemail.com (Postfix) with ESMTP id 56DB418D8C01B
+	for <jose@monkey.org>; Mon, 30 Jan 2023 13:53:22 +0000 (UTC)
+X-MSFBL: OKAFPbnfwbmMtZKPshO56ilj8mDid5pAXx5BN7ZoL7Y=|eyJyIjoiam9zZUBtb25
+	rZXkub3JnIiwidGVuYW50X2lkIjoic2Nob29sbSIsImN1c3RvbWVyX2lkIjoiMSI
+	sIm1lc3NhZ2VfaWQiOiI2M2QyZDFjYmQ3NjNkZDc5NzVmMCIsInN1YmFjY291bnR
+	faWQiOiIxIn0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aaps.k12.mi.us;
+	s=spe1; t=1675086801; i=@aaps.k12.mi.us;
+	bh=/9KKg6Yh3jeSi+82u0nl1pZ9jlXI1D86SwQIzICaKx4=;
+	h=Date:From:To:Message-ID:Subject:Content-Type:List-Unsubscribe:
+	 From:To:Cc:Subject;
+	b=t7abL0fSwEE3vMOhm+uZkpOaKj3fHVH6xWjyy652oHsDuqiDfXHXwBZ/BRVsMMp8U
+	 JYgH/IOEtYKuV28o2T8fQuc9dnmIrUWGIxjsAiztB50OywB9IV7uYnKS0ptcHYJfPR
+	 19bNkRxbEOucwEhv011Y/Fe5MTrHH0IqTGq59Zu4=
+Received: from [35.167.80.171] ([35.167.80.171:7235]
+ helo=shard3.produs1.schoolmessenger.com)
+	by gc.mta2vsmtp.cc.prd.sparkpost (envelope-from <bounces@aaps.k12.mi.us>)
+	(ecelerity 4.4.0.18001 r(msys-ecelerity:tags/4.4.0.47)) with ESMTPSA
+ (cipher=AES-256-GCM)
+	id 57/0F-35691-1DBC7D36; Mon, 30 Jan 2023 13:53:21 +0000
+Date: Mon, 30 Jan 2023 05:53:21 -0800 (PST)
+From: Jeanice Swift <swift@aaps.k12.mi.us>
+Reply-To: Jeanice Swift <swift@aaps.k12.mi.us>
+To: <jose@monkey.org>
+Message-ID: <1003409854.10803646.1675086801575@schoolm.smtp.e.sparkpost.com>
+Subject: AAPS Superintendent Update - January 30
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_Part_10803634_2124659351.1675086801572"
+replyto: 
+msg_delivery_data: CUSTOMER_JOB,3,2214,123539,270637,5,253
+List-Unsubscribe: 
+ <mailto:unsubscribe@spe.schoolmessenger.com?subject=unsubscribe:gjWxmw8Bvs3zZ2sWLVMKB1mq2bmLuIZPkEazlLuCP6k~|eyAicmNwdF90byI6ICJqb3NlQG1vbmtleS5vcmciLCAidGVuYW50X2lkIjogInNjaG9vbG0iLCAiY3VzdG9tZXJfaWQiOiAiMSIsICJtZXNzYWdlX2lkIjogIjYzZDJkMWNiZDc2M2RkNzk3NWYwIiwgInN1YmFjY291bnRfaWQiOiAiMSIgfQ~~>
+List-Id: <schoolm.1.1.sparkpostmail.com>
+ARC-Authentication-Results: i=1;
+	imf10.b.hostedemail.com;
+	dkim=pass header.d=aaps.k12.mi.us header.s=spe1 header.b=t7abL0fS;
+	spf=pass (imf10.b.hostedemail.com: domain of bounces@aaps.k12.mi.us
+ designates 156.70.13.115 as permitted sender)
+ smtp.mailfrom=bounces@aaps.k12.mi.us;
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1675086803;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:list-id:list-unsubscribe:dkim-signature;
+	bh=/9KKg6Yh3jeSi+82u0nl1pZ9jlXI1D86SwQIzICaKx4=;
+	b=ElPh1hs/WTVYS0v0IBxPH3N8ieJVSIYdgBrPKZ/oXQ4jgF7YiQWfYO24tBPx5idLM949v2
+	QMrxXq5ah88MaNEsyKj0KcY13REdJyCiZCMNMj+UMB8kO9L8/2+WXo6MzgXtcfJMqRWlDu
+	S43oneGRWghKxqJXCu7+Ly44+dXsCXo=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1675086803; a=rsa-sha256;
+	cv=none;
+	b=FJIU613g8CQMfdXG4aHhZRMo1YgWyzlyJV8HU0WPJTc35XHs/q4ya5kKrEF7AeijAFePy9
+	2pEzjCLRxRNP8RuwrzCMzXrcioaAfqMC7y620wccb+BMAnn9IO9bVPucbh6oAdSCR+SyYx
+	W81Ow6RNpVlv/1UMkdTHCxxe4kCfG9I=
+X-Spam-Status: No, score=0.39
+X-Stat-Signature: 4e36e94mo8hf8f81awuwntjuutcaw9d7
+X-Rspam-User: 
+X-Rspamd-Server: rspam02
+Authentication-Results: imf10.b.hostedemail.com;
+	dkim=pass header.d=aaps.k12.mi.us header.s=spe1 header.b=t7abL0fS;
+	spf=pass (imf10.b.hostedemail.com: domain of bounces@aaps.k12.mi.us
+ designates 156.70.13.115 as permitted sender)
+ smtp.mailfrom=bounces@aaps.k12.mi.us;
+	dmarc=none
+X-Rspamd-Queue-Id: 56DB418D8C01B
+X-HE-Tag: 1675086802-759578
+X-HE-Meta: 
+ U2FsdGVkX18PoVEfTUT5iXTbIAN4uwDi6RoodBzO5UUzhOXXp4uPdnF1U41eqLJNIosjeLpuqlx/129g3GiXIkVktaqugSmBUmQ1xrA+jw91zx60QjGl+lFq9+vJi1IzeOObnhUM1sHPXr05MZ2OLx+24jeNrDuxxda4S9MdNLri9g9MuZDhTDzMS1w0UA1Q+zyj8uuQoaGbgpRWTxybZiGurvFSZL0Ty8lrEj5+bEBqJ9gje2bHAUYLX8+vzJROqmTxQQK9Ncql4G3XW6wZte/8qk8hE8n1eNwZDOPiTNfop4PnA//RA0jzhKEzJqEpXve+0A+t7y8Ojym6G1VY2ISA47Vt7FLoiRHK/glUYqeRtqDAGZTdg2ERVbMMeKY4/AcP6i7Iaa2jkL0m00YEjiqw9VoeV3fU4of5p8cWIgLjIE52IXHlSDbB1jHvI7niSocsKoqVyWPBf5j/+hsACCWj9bFdtai6QVWvpFty+B3JbHLOqfddac87WDPNz9n4dBYk6C/ia1/VLEUK5bUgBsdwGK/oNAl6DZHI8nrvxLb//kNXwmFIuE9vy3DKWFDETekM6k49slVhlPBZhTwUy00Y5Jd1gZYj6d3lkA4a/DBbez4AycwR6nB0UBH70q9oxlsLmUhUXAGFojHAuKCZsDLaz1jLIr0CHKPGQu8oyk0SkdVK39HeGZ2K+Loh8UNJl8nu/+O/gpqtNi6/pWZ1SZsDcvJdGEk84Bh6RMf38ARQ+qj34boLrdD1CnpNEzKSEVG1ZMs93iMlHP9lNJtotRTcFUGp1r6hwkc5mSPZz3fLWJ/a/OI0U6ZE03QwcBLLburqdCGywsY/Nr8742SqF84zW5sp9YqvdUgyJEY+IayMIatVmKLZrB+AR8bqjPM7E2nLb56H8vQhFOhwyMSh7S0SLi++JazFPIFNzldMmqZSXLaTJcdMHVX9OSqW+Y1LrIk88IyCqKpuc5jBumsR/DVT1eN
+ cdNZMs4DLJUJjrnyzXnUX5lYpdf2i7LZXascCLP1ekHstmvIkUv5EtXXlW42BS0WkOKJC5rr2+Hq1UMUqA1F2EfcYqVSmn4LDGvFnXuAAzVH95VCIQRxFHcZD0KGJZ7PnDtHT3VSKKAIBOxCJK/A3iPK0NhJVwdZb95YpCNl32xZUC9jeZUZUiBkoxODB/HPE874OoN2RGIe2hDeT+9s5vxsamrzGI59ZvhTaScqt4gcXcoYQRuPKY1s6Z9rsajHpK4iCXWQBJfj9of0Gc2FpX8i7tA+cTd5N2/A+BTUz1WWACuVWA9uZr/m7OuJQp/GWVGtEs3Km2L0wk/iGyZZtoWaTPJdodj5dwdNDmXKGVUZ+QFn9P9d/BE1wRpYisIpK44FjabdbjNNBBqZYJHXleaWHZ7nsm+1RahZqpM24L+CPybi/E7rV30H9Bvxgf/Q3Cl1A/njPunVx8kTVVB1ObwQjLGJwbAoM2rs8W1GfCFrmbnsR9NYqOpEpTktQZ8CaJvWwjEXj55aaq22Mg3WDgVoTfiCT1aIIVdtOQsg0rDc5H3m4RtCF2fb6vntTV2aFTEpOH9FWvYEIcNR8uZdX67K3/GvSYxeopqiKIQvWorK3Dh4MTFEotHLPAiFFepA2WFzzcvRvNFxtXafngY0JEO/UxTchr7gLiA8VBArdD1EwPZwMnN8g7WjW9Ms7WbCxYb3ikDyy97fujqwTR7ovKG8HaQtC3aScKiT7SfUFNn6BSFf3V1My3prtrtRu88frJIk6nYMEVbrWxoe+vWu6vIclHlfURA9wJ2ylNTDZ71qdkVosfkU1cyG4lYWVB9OIu0/9q34wQ/OtNxyhGlbxX94FeELDI8ZZl5kX8ROW36X5Uf23rkhrOmopVIih/qIXSMN/mWHcNv/FEIvR2gOkmlO2yIKPrcdplKd7Mb6eiUus8omBfhYI0lOEyuRp5xIArmpD4pziRJEzFPGNJqZEuMkByiqWrb4OcWWI
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 19

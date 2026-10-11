@@ -1,0 +1,97 @@
+Return-Path: gskzvxhdesb@gmail.com
+Delivered-To: jose@monkey.org
+X-FDA: 81274614708.19.3F39496
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+	by imf24.b.hostedemail.com (Postfix) with ESMTP id 4C05180005
+	for <jose@monkey.org>; Mon, 25 Sep 2023 09:36:32 +0000 (UTC)
+Authentication-Results: imf24.b.hostedemail.com;
+	dkim=pass header.d=gmail.com header.s=20230601 header.b=YiSNZV6q;
+	spf=pass (imf24.b.hostedemail.com: domain of gskzvxhdesb@gmail.com designates
+ 209.85.128.65 as permitted sender) smtp.mailfrom=gskzvxhdesb@gmail.com;
+	dmarc=pass (policy=none) header.from=gmail.com
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1695634592;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=XuXQ32lq1CDxXniCh07huNvCqqsBObrQ1mCPjLzjRik=;
+	b=vBAVxU0PNcUsxNkPw6IfZaqL01xXqmgoRCx/tq0/xFoCzg03yzMdFlfYNntzK+IklWZ/BO
+	VGXgwWvAHPYgBBivSnhxfkar7C9UvMd+f85WqGU+ZH7eTuK8KbpfvALJB96oaHA86pcYtQ
+	IzIImNN0ksrUt9QdDNwp6zVjXtIGyvE=
+ARC-Authentication-Results: i=1;
+	imf24.b.hostedemail.com;
+	dkim=pass header.d=gmail.com header.s=20230601 header.b=YiSNZV6q;
+	spf=pass (imf24.b.hostedemail.com: domain of gskzvxhdesb@gmail.com designates
+ 209.85.128.65 as permitted sender) smtp.mailfrom=gskzvxhdesb@gmail.com;
+	dmarc=pass (policy=none) header.from=gmail.com
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1695634592; a=rsa-sha256;
+	cv=none;
+	b=E0rong3m0n+eqWUCP+8fjn9DOh93OXSgv2Tta9D/JNfWKI07RGdO/UqHKlQ8a/qInEqnRH
+	JLplZotagvbl4I2U4hWzWkk/S4Cljflu483KsXqb21rlD6ufcA11HXlq134/f2zUUWYnzC
+	nZG1l4O8u6TLYFaUEl2lGCoQp6CNMxQ=
+Received: by mail-wm1-f65.google.com with SMTP id
+ 5b1f17b1804b1-40594697600so8197345e9.1
+        for <jose@monkey.org>; Mon, 25 Sep 2023 02:36:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1695634590; x=1696239390; darn=monkey.org;
+        h=content-transfer-encoding:mime-version:date:subject:to:from
+         :reply-to:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=XuXQ32lq1CDxXniCh07huNvCqqsBObrQ1mCPjLzjRik=;
+        b=YiSNZV6qUIDzOD2MULoG118OGs7Cd70C+gp9HrkaueJpwzE2owjNDijRH45tJVknoc
+         6qbWrbQdOVD+rx4Hu6AwqiW6bClQdUWgR3WJF5dsAKsM5BalEpOCnRPA/h8KnNm1CLKK
+         HbDpPwaD7WNxp4FblpF9Wvbti4ExK2niEvvBX0HgGkmgRo2H2QQs+jz9BOww10IcDwcC
+         FM203dI7SLrT26d80mMQw7jrtsV6Xdfm9Ae+FfZV4qEkvtA7ELELyY4uHje2OhkYy2XC
+         77GVn3/3fRblY/YtbSg5tNHN3oh9kmTIfvQ+8ewRrf6vyGJ6vK59Dm3fmEpNw5iVLuK8
+         +ZAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1695634590; x=1696239390;
+        h=content-transfer-encoding:mime-version:date:subject:to:from
+         :reply-to:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XuXQ32lq1CDxXniCh07huNvCqqsBObrQ1mCPjLzjRik=;
+        b=PI8BvWfsXH0Uu/DI6A2xs1N3RvEpFSdL3IdZS5PEubzy5nvZkr9WfRwiEUT3HQhl1L
+         O03jdl9sAAfO9KtNb4dTnc6qmovVrsv5xoWcFxt6+6XL8Bzxyn3MW/z2z0qiYBQFA4tx
+         tOAZ37NqOSunYP+o84gF+Bq8wz8t0MmGs71OLiauAyBMfbWHhwhFMeuUc8JZ+HeeaD9N
+         3Pq/aKJBgU+WUfUZdX5aBABNWS+zxUXRxOlKnWyie93+kd+ipM+tKBj33DWftGpZCQYU
+         kK7XUO8zWCGHp+2BGuETfAeVN8mV1moCaCZJdWq/A6CAJDyRyG3Tj+NQEoh6UfuhovTE
+         8+Sg==
+X-Gm-Message-State: AOJu0Yw3h4lUw8UEYr1PTFQIwe9Jk9pLmLppDgW/Qx5ybmIbFklUdapW
+	CIYw+gCzaRYfQcyAkKcgEnRz0oJPivS3QxNRjo4=
+X-Google-Smtp-Source: 
+ AGHT+IE26w/mwuxWcWMPCSI1pa8v0GCfSKpTLqTKavHcp/7xF2ndCpqME7yR7aNZetu2QJoPDQ+ZRA==
+X-Received: by 2002:a05:600c:b52:b0:405:48ba:9c with SMTP id
+ k18-20020a05600c0b5200b0040548ba009cmr5043220wmr.16.1695634590005;
+        Mon, 25 Sep 2023 02:36:30 -0700 (PDT)
+Received: from DESKTOP-0NLDAAC ([45.130.105.140])
+        by smtp.gmail.com with ESMTPSA id
+ v4-20020a05600c214400b003fef19bb55csm11677131wml.34.2023.09.25.02.36.28
+        for <jose@monkey.org>
+        (version=TLS1 cipher=DES-CBC3-SHA bits=112/168);
+        Mon, 25 Sep 2023 02:36:29 -0700 (PDT)
+Message-ID: <02c36163-45194-03634003053935@desktop-0nldaac>
+Reply-To: "Your Order #6548721" <gskzvxhdesb@gmail.com>
+From: "Your Order #6548721" <gskzvxhdesb@gmail.com>
+To: "Dear Customer" <jose@monkey.org>
+Subject: Order Confirmation
+Date: Mon, 25 Sep 2023 09:35:28 +0000
+MIME-Version: 1.0
+Content-Type: text/html
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-Mailer: My email client v3.3
+X-MimeOLE: Produced by my email client v3.3
+X-Rspamd-Server: rspam08
+X-Rspam-User: 
+X-Rspamd-Queue-Id: 4C05180005
+X-Spam-Status: Yes, score=10.80
+X-Stat-Signature: 7w1i4o3x5esm1fo7ugungq9zdrhubctu
+X-HE-Tag: 1695634592-498909
+X-HE-Meta: 
+ U2FsdGVkX1+4ChcfSCA3CYE7dXZ0lS0fOOzx+ICrzsExKlvjB8PUVPkmmhByRVNWyYYPvwU4kNs8gnAlmVwVGmEf+YSYUacu2pzh24UMydg7VVN4kl6L2t9IlnWXAyXBv7XFi4gP8fprgDxYHzyBJ30C7ggX9bYHbjIf+2rUHXjLCH23rfB108TKxlNXn6+VYJbk4gZixjCGD4EkM41aJbGk2qHIZoHbegl2MMHcBtvp4Bz/5j4W694QsuMvcTM2mAsO/v55wmWMtAWoxfaZSzMJCs+YBAAxDyPl5Ir1/E9DJP7hnd+CzgtFyT63Er18rfVSYVlCF+hWYQG+GIcEo7tEmPHfZqHpbkUwiHd9GIuGUHFffEa6iph7eOsiWTVorQ/zlw3bjHef3U3nmgXLl7YOGbxWNNDGs6JOJ7QH2rzAd6t0MVwj1377dRIBnsD2
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 287

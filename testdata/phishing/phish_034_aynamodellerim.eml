@@ -1,0 +1,87 @@
+Return-Path: contact@tercumancince.com
+Delivered-To: jose@monkey.org
+X-FDA: 80598820470.11.87CC356
+Received: from cpanel7.hostlab.net.tr (cpanel7.hostlab.net.tr [45.158.14.34])
+	by imf27.b.hostedemail.com (Postfix) with ESMTP id 2F9C11A0004
+	for <jose@monkey.org>; Thu, 23 Mar 2023 04:04:11 +0000 (UTC)
+Authentication-Results: imf27.b.hostedemail.com;
+	dkim=pass header.d=aynamodellerim.com header.s=default header.b=PSNKZRye;
+	dmarc=none;
+	spf=softfail (imf27.b.hostedemail.com: 45.158.14.34 is neither permitted nor
+ denied by domain of contact@tercumancince.com)
+ smtp.mailfrom=contact@tercumancince.com
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1679544253;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=krGN06GPsRO+HB+LhiG0NtBYqR0YQsb9aXXEKoEDTt0=;
+	b=CMaziCA+1v8tSbEOddtJ5ufbuYK5leXqS4v2UWe0dDkX5LEn4wBdPmucHLVjboPu2aIqSt
+	XVo9LNn7t43on/Cct2Y3/TBCjivReneIoNI7hXOB/HBEQ5nJgsiHxmJOo+S5TtBD1kE4QS
+	k6Hel/LB60KG2t4ceRLDx67JZsA/78g=
+ARC-Authentication-Results: i=1;
+	imf27.b.hostedemail.com;
+	dkim=pass header.d=aynamodellerim.com header.s=default header.b=PSNKZRye;
+	dmarc=none;
+	spf=softfail (imf27.b.hostedemail.com: 45.158.14.34 is neither permitted nor
+ denied by domain of contact@tercumancince.com)
+ smtp.mailfrom=contact@tercumancince.com
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1679544253; a=rsa-sha256;
+	cv=none;
+	b=FHywo8LgRuoAbyWeaI5yeVE3I1sjVtR+WfS0BuemWwQZ8mSMfkmtmZAnvjM5raGXpT9l9m
+	1gJOA7FSyIxxE5QN+89Y5KeNsPotMWmPlZ1MadRDZCm+fiAB+4x0MgRR9WfmlsnbS6H5pe
+	hDn7HAnt5tdrAlHcgDiq8VSzyUgs0YA=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=aynamodellerim.com; s=default; h=Content-Type:MIME-Version:Message-ID:Date:
+	Subject:To:From:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=krGN06GPsRO+HB+LhiG0NtBYqR0YQsb9aXXEKoEDTt0=; b=PSNKZRyefs9+KCFTDTR8givTqx
+	cRQbPqHrBU8tkdFUDQwbhIc2j3w1brBCOmJCXob9IjlUnoVkxWkQh/bTTeU/pkEnIC3f/sYNFBasQ
+	PED+aRCuZ2fDhDHLsw4/AzCGplrAMk2Dct12CequLDvI6DgACK/f9w7gx1WUKQWjjEuch9HjrXqbR
+	RxLI2IBhetzNL93+qflY4ojKPOz7m0fjG0DmQilrMvHt2FCjk/QI2QC3z7F20eTdEcWbNEh+/QLsC
+	T+MqiDKC+zwB8N+y2nKNR1irWvi+lLve2x1UHVwjvF7cQFE9bDFKA6nQsk8Thq602h5aw78JwD30t
+	yRYCuNCA==;
+Received: from [23.146.240.31] (port=55667 helo=tercumancince.com)
+	by cpanel7.hostlab.net.tr with esmtpa (Exim 4.96)
+	(envelope-from <contact@tercumancince.com>)
+	id 1pfCBQ-0006vm-2E
+	for jose@monkey.org;
+	Thu, 23 Mar 2023 07:04:10 +0300
+From: =?UTF-8?B?TWV0YU1hc2s=?=  <prop@aynamodellerim.com>
+To: jose@monkey.org
+Subject: 
+ =?UTF-8?B?W0ltcG9ydGFudCBOb3RpY2VdIFlvdXIgTWV0YU1hc2sgd2FsbGV0IHdpbGwgYmUgc3VzcGVuZGVk?=
+Date: 23 Mar 2023 00:04:09 -0400
+Message-ID: <20230323000408.9DC277BC4E309E7E@tercumancince.com>
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_0012_9AB52BA0.277D7411"
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - cpanel7.hostlab.net.tr
+X-AntiAbuse: Original Domain - monkey.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - tercumancince.com
+X-Get-Message-Sender-Via: cpanel7.hostlab.net.tr: authenticated_id:
+ prop@aynamodellerim.com
+X-Authenticated-Sender: cpanel7.hostlab.net.tr: prop@aynamodellerim.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-From-Rewrite: rewritten was: [contact@tercumancince.com],
+ actual sender does not match
+X-Rspamd-Server: rspam11
+X-Rspamd-Queue-Id: 2F9C11A0004
+X-Stat-Signature: ky89u5y6a1z8qp19zpygdukqgcejhywf
+X-Rspam-User: 
+X-Spam-Status: No, score=7.80
+X-HE-Tag: 1679544251-132380
+X-HE-Meta: 
+ U2FsdGVkX18jdEu6OqtUHp1XThO2+SBNZKP5LTuqQ0+y07wqMPVXxc6oU6v7gVV3KUUiU0xyOKBnwLULS9aqHX9V26NGfBDtqa92y7P9oPs7yZS3byQWi6ktZ8Dj7FEcRdwyy2z9arZOeH0/TLr7WrF8IsAXVrliHHTlNMO2fm3DnSlFaFjKmeuqyttKBB2ljJ5s/eLKGl0wTdlLoF8W6wLsn66qBBi+ap6yw6JV+xF177YyaJ7ID8C2JGkAbNq9q4xmWV4ym3d6xla4ddBPfp7Wn/6PtU7ps5EHLktwFxPRx/WkOH7NT6oG35WbGx+TRNY1UWhAqVuXANmhuW5WueuS/ulqNlP5aOSXH43pb8smQQcHzw2uNRdtZopkXV+r8Epjk1eFjSSuEhBq6wC5PATrIZqTV0Ko0VtC74cw6W/8eW3QwDxUKniIjbnsi/avrKFRVfQ/ioanLETKqCaA39OBxxZ6Tf2Z5E8VTpOpzXT7/yJmk8DKPOE5OGPNbRl67SFb017Dq4A=
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 54

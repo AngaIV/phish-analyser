@@ -1,0 +1,7 @@
+Return-Path: <sender@example.com>
+Received: from mx.example.com ([10.0.0.1]) by mx.local;
+ Tue, 3 Jan 2023 06:11:01 +0000
+From: Example Sender <sender@example.com>
+Subject: Synthetic fixture
+Message-ID: <abc123@example.com>
+From: Attacker <evil@example.net>

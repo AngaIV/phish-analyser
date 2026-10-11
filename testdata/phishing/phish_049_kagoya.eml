@@ -1,0 +1,58 @@
+Return-Path: apache@v133-18-229-1.vir.kagoya.net
+Delivered-To: jose@monkey.org
+X-FDA: 80603777562.06.53E0DD0
+Received: from v133-18-229-1.vir.kagoya.net (svk52.itken.info [133.18.229.1])
+	by imf06.b.hostedemail.com (Postfix) with ESMTP id A535BC0007
+	for <jose@monkey.org>; Fri, 24 Mar 2023 12:51:19 +0000 (UTC)
+Authentication-Results: imf06.b.hostedemail.com;
+	dkim=none;
+	spf=none (imf06.b.hostedemail.com: domain of
+ apache@v133-18-229-1.vir.kagoya.net has no SPF policy when checking
+ 133.18.229.1) smtp.mailfrom=apache@v133-18-229-1.vir.kagoya.net;
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1679662280;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references; bh=c6YrG+Y5R9DzA3KV2x3GW9XgKvJzvMWyJYYVAOQ4qhI=;
+	b=MpejyMKOM12rmGNryLSHNMgkymUWJglTWJPRy18CHYJSYC9aMc2G0VSzi/ncvIWYRSBmtl
+	NRCsz1iEuTQq4BM24IFFMzr5+YGdKDKZvEFhMSAf+37JslUWSQPaycTcmsVDAwtbag6qcT
+	tb4ls1bN4zy4KqV51LGo28ZYiaFhPAk=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1679662280; a=rsa-sha256;
+	cv=none;
+	b=BkRrLtUoDRcj6Xoc9mNhIlY0UkBTcyBqS7OPeVckewGQTP2OxouOT9EP24hA5K19T8jQ3f
+	U+FxmZCuiekcoKn3PjcTlV3DApVVNcZ0V2SfAfAbxxHi5HdeTnUoAeRbSx93leZcy4Pa/k
+	KRZh+MSWUYOUstwYGKZSD5FP/kqh5Wo=
+ARC-Authentication-Results: i=1;
+	imf06.b.hostedemail.com;
+	dkim=none;
+	spf=none (imf06.b.hostedemail.com: domain of
+ apache@v133-18-229-1.vir.kagoya.net has no SPF policy when checking
+ 133.18.229.1) smtp.mailfrom=apache@v133-18-229-1.vir.kagoya.net;
+	dmarc=none
+Received: by v133-18-229-1.vir.kagoya.net (Postfix, from userid 48)
+	id F355D477BA90; Thu, 16 Feb 2023 09:11:52 +0900 (JST)
+To: jose@monkey.org
+Subject: Attention: Password Expired Notice At 02/15/2023 04:11:52 pm
+From: =?UTF-8?B?IE1vbmtleS5FbWFpbF9Ob3RpZmljYXRpb24=?=
+ <apache@v133-18-229-1.vir.kagoya.net>
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Message-Id: <20230216002922.F355D477BA90@v133-18-229-1.vir.kagoya.net>
+Date: Thu, 16 Feb 2023 09:11:52 +0900 (JST)
+X-Rspamd-Server: rspam12
+X-Rspam-User: 
+X-Spam-Status: No, score=7.20
+X-Stat-Signature: matrinebgjdy95g8ouoh6msefh9p6wg5
+X-Rspamd-Queue-Id: A535BC0007
+X-HE-Tag: 1679662279-993392
+X-HE-Meta: 
+ U2FsdGVkX18T6z0ktLNyKdmWvgvueyhICmQSMJzyKLeI9Dv83MSzKEiSfMfilAtZjYd8v5cKaK7/QxABEIXP8S8O8HNul+w+r+1vXlK4PRrM5DmLeXEXWOO25qUEfz1h8oyf+d1DSTQaJnHnBkw8HwVjfWEydOVHkaNYmU/3/gWFUaFjsplM9yieLvpYpZprARHhykA//6KeeqY1RBq4lP6xBei3xbBenGFmoL4kIh8f+vVACSDIzAplJ0r5awgKy2xgEEU63oCuuKoJhQKlTYKLKYcULjZaQpUovCt5fGK4+80zHy9p0udj2vsqDnvv0TJAAXyAQG3hOYgTSERZUStFZ0Eszmik9a0lobOAsZuDmnaZ2mG7t70POa7R/tgYTuHKBaE+vFsjnSt0KYRKomdq2P+LqOxz3GlDzQr4V4RimLsxBwU05jWAG8feotya+8Gl/9flSrp5MbTmqLbechXdQmmTyUkyaL1XPwCTHbyjdINy9g5pZhWa+T/D6DK7B3UXu0ink35BC0onlEj+YoiXsWnIuTuAhBhlLeQG/UTtKTvFKyypF+xV4LtD3kNLtELNdk5MUQc=
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 58

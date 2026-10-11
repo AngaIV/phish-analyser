@@ -1,0 +1,74 @@
+Return-Path: info@mabblecroppinginfo.bond
+Delivered-To: jose@monkey.org
+X-FDA: 80827344444.15.7C9D8B2
+Received: from mail.mabblecroppinginfo.bond (mail.mabblecroppinginfo.bond
+ [31.222.235.109])
+	by imf19.b.hostedemail.com (Postfix) with ESMTP id B063240007
+	for <jose@monkey.org>; Thu, 25 May 2023 03:28:20 +0000 (UTC)
+Authentication-Results: imf19.b.hostedemail.com;
+	dkim=pass header.d=mabblecroppinginfo.bond header.s=s20230522893
+ header.b="zH3/y1+P";
+	spf=pass (imf19.b.hostedemail.com: domain of info@mabblecroppinginfo.bond
+ designates 31.222.235.109 as permitted sender)
+ smtp.mailfrom=info@mabblecroppinginfo.bond;
+	dmarc=pass (policy=none) header.from=mabblecroppinginfo.bond
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1684985301;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=VGcn+wAmOJktBjIniW4rxN+fOoosEZp+gIOL22XO/DU=;
+	b=4MYAlf3EcZroBnyuPLp1vLou+uIDCswv3gFIRIObjRK6yTVBqje4TtJBe8Nu+YykElsZC+
+	nGrBj4U08y3eEVxm7juTJy0doyDsAyXjb/7CFB46UBHTTeHDTCEmaXSSf7M71bjsh1dRj4
+	rQWQWEZh8YtGPQ031l63NiTuwAfSz/s=
+ARC-Authentication-Results: i=1;
+	imf19.b.hostedemail.com;
+	dkim=pass header.d=mabblecroppinginfo.bond header.s=s20230522893
+ header.b="zH3/y1+P";
+	spf=pass (imf19.b.hostedemail.com: domain of info@mabblecroppinginfo.bond
+ designates 31.222.235.109 as permitted sender)
+ smtp.mailfrom=info@mabblecroppinginfo.bond;
+	dmarc=pass (policy=none) header.from=mabblecroppinginfo.bond
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1684985301; a=rsa-sha256;
+	cv=none;
+	b=o1WOHsfdjI5eKNim27fZ3/4fH3xCDDYdiR2Tnh8jdyd4eNjnRhJEwA6oxmaNMsdFXuM7vE
+	aoM5bzas0cusYJUGasZlwnbJtAopuEGZzrFZ2Kv48Gg1hJZSz2J/kuBnJk0OmCL0wtYE/+
+	nPCEI1xp5sXZi4JZEYBfZLtG8vKhbyE=
+From: IT Support <info@mabblecroppinginfo.bond>
+To: jose@monkey.org
+Subject: Important Notice For jose
+Date: 25 May 2023 06:28:14 +0300
+Message-ID: <20230525062813.E77853450F157A91@mabblecroppinginfo.bond>
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received: from localhost (Unknown [127.0.0.1])
+	by mail.mabblecroppinginfo.bond (Haraka/3.0.1) with ESMTPSA id
+ 3C984E9A-F0C2-48B6-91CA-3444BD833BA6.1
+	envelope-from <info@mabblecroppinginfo.bond>
+	tls TLS_AES_256_GCM_SHA384 (authenticated bits=0);
+	Thu, 25 May 2023 03:28:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=mabblecroppinginfo.bond; s=s20230522893;
+	h=from:subject:date:message-id:to:mime-version;
+	bh=ClKGUiOOnwA9D1C5Qdhb2GO4DPdHma0tE6nDQVcS4zQ=;
+	b=zH3/y1+PQfvdBP0zxn3KM3dJjFJjQgInIKe3R841G+6mvYnyo/QiIFvXZdUwyXoOG2OqMmhFJ/
+	B/JrZPaTXDBgcOcgG0/ppg//sdNBKB5TMZKO2EI5D9VOVy+VFAOfPJISAv7WVjtedSpejbKwVbzV
+	Bruattr6RVQAi2jW1NkR8r9Hge4NIZGBNUQq3kc/Dsu9VIY7JD9/oBQavStimIF1GCJFfjmQGrhy
+	ZBP+5EWkWZ+RiVvpKXWDXgMxJPJyO8NUpVWxnV+2efiw04gws/FpdnW7E7zwdySEz86kG70nZH3x
+	7dc7mVxiMJMxg2Foy/lNtDc3wNMuE7qEGphct42Q==
+X-Rspamd-Queue-Id: B063240007
+X-Stat-Signature: grnia4btp486winsh7kankgcu9g5z3yh
+X-Rspam-User: 
+X-Spam-Status: No, score=0.30
+X-Rspamd-Server: rspam05
+X-HE-Tag: 1684985300-593004
+X-HE-Meta: 
+ U2FsdGVkX1/xH2Ku0APkvgFQ8wsUTlpCJ2bVtNTgiuA437N+Njw2kpPnIuy5WQO10W1AmNQR3xtFrwRsA9yf9/0c2JxCpqwMxJjEVuM0d7ovw1/dgH1rojoyBM3yDCiKA7L4cuP6KXvvnxWBCzD2rZ2XpGEPO+VPZChp0E79pVJ68vyY3bA0OvWyFyDJYfSEinsPt9L3FfwkzALBYGnfzg+8pvrN72OyVMNKUS6hHfM=
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 128

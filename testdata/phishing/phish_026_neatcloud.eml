@@ -1,0 +1,84 @@
+Return-Path: bounces+105913-37ca-jose=monkey.org@email.neatcloud.com
+Delivered-To: jose@monkey.org
+X-FDA: 81160076256.21.2644C13
+Received: from o1678997x171.outbound-mail.sendgrid.net
+ (o1678997x171.outbound-mail.sendgrid.net [167.89.97.171])
+	by imf03.b.hostedemail.com (Postfix) with ESMTP id A7A4B12000F
+	for <jose@monkey.org>; Thu, 24 Aug 2023 20:04:46 +0000 (UTC)
+Authentication-Results: imf03.b.hostedemail.com;
+	dkim=pass header.d=neatcloud.com header.s=smtpapi header.b=aIsyAeoC;
+	spf=pass (imf03.b.hostedemail.com: domain of
+ "bounces+105913-37ca-jose=monkey.org@email.neatcloud.com" designates
+ 167.89.97.171 as permitted sender)
+ smtp.mailfrom="bounces+105913-37ca-jose=monkey.org@email.neatcloud.com";
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1692907486;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=P48SG3go7gwoa72aa0de4MbtWThYFJz92wXFDLl02oM=;
+	b=M1Ocl3Q4egPpGPjGJEaIUTBzofc7PezWbpQjdYaVdHwJCLoJ7J6nFHLSR+wmQPSiks1qc8
+	4u89upTWI2GKrTI7FRXLHIrNjcQe3rhcLM+QdtZu5XWIXltr+tKVx7/mwDRlsA5kuEt4xk
+	izE5bqiHILHys6M3us4b+XxQCl6wZlM=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1692907486; a=rsa-sha256;
+	cv=none;
+	b=Z8F/fABB78sFxWOnwRRSvtJz6V1ij6zut8Cj5pV8IuaxSev0k7srH++fyKyKSlMyi2QYyJ
+	WJ/Zxg7iqvL1ZANT9AaiuTcZMvi4A5iZE8XYrRR1oKWpuw4R6CO3kUI4FXtvMmf5KQebaG
+	oN3O5+V9uFC9NGj0UjPcMpT6WqzFu6k=
+ARC-Authentication-Results: i=1;
+	imf03.b.hostedemail.com;
+	dkim=pass header.d=neatcloud.com header.s=smtpapi header.b=aIsyAeoC;
+	spf=pass (imf03.b.hostedemail.com: domain of
+ "bounces+105913-37ca-jose=monkey.org@email.neatcloud.com" designates
+ 167.89.97.171 as permitted sender)
+ smtp.mailfrom="bounces+105913-37ca-jose=monkey.org@email.neatcloud.com";
+	dmarc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=neatcloud.com;
+	h=content-type:from:mime-version:subject:to:cc:content-type:from:
+	subject:to;
+	s=smtpapi; bh=P48SG3go7gwoa72aa0de4MbtWThYFJz92wXFDLl02oM=;
+	b=aIsyAeoCKwI3rOefMjpG/NaaBgHr3iPoTu8XWBFdDCiLH0T+K13JXTqHfoKc63hPXfyj
+	dhz17oofyH8tFBqFNv8zVFltxFK7G0wDA4zsFAYufXzbqyXiZb1CPGDhV+aBm8bu2iVs3B
+	ypTINmckWCzT3x+k/vEMEctw1D0yVhnDo=
+Received: by filterdrecv-648f9945cb-nzcdv with SMTP id
+ filterdrecv-648f9945cb-nzcdv-1-64E7B7DD-9E
+        2023-08-24 20:04:45.981912519 +0000 UTC m=+9145570.637802970
+Received: from MTA1OTEz (unknown)
+	by geopod-ismtpd-12 (SG) with HTTP
+	id PsDB9ydPSlOyc7lEgFPl8A
+	Thu, 24 Aug 2023 20:04:45.887 +0000 (UTC)
+Content-Type: multipart/alternative;
+ boundary=088474f58a56e0c8d0b60f122f881e30331a2c9b25cdcfe74bbc4f2d401f
+Date: Thu, 24 Aug 2023 20:04:46 +0000 (UTC)
+From: no-reply@neatcloud.com
+Mime-Version: 1.0
+Message-ID: <PsDB9ydPSlOyc7lEgFPl8A@geopod-ismtpd-12>
+Subject: ~Your~invoice#HNX-89542 Payment~Received
+X-SG-EID: 
+ =?us-ascii?Q?nNFctdm0BWd6iTjLSzehWbyxX0Sgix1IUyGUczXZ1jZUYcYWf9TAeoOEK6ZcIY?=
+ =?us-ascii?Q?gCxn5HOMaSrfPy3IVK7sXSrjQ=2FmbYECfcx2lkFv?=
+ =?us-ascii?Q?VjEwMVruMPuadTB2RpWyFTr1L0x6bVMcftqD=2F82?=
+ =?us-ascii?Q?eFGkbBFJF0xoZlHXwlffKdzRUcM4me9pFUbaDdf?=
+ =?us-ascii?Q?u5v0RKv7Ixf1hXe=2F7+d0TufSS5i7diMSASw=3D=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb8raWjw0ZPf1VmjsCkspi=2FKHgAsE=2FCUk5eZaRe5Ltr?=
+ =?us-ascii?Q?cbG8oJ6juOA7q8bzxshgvqur9UDlENKa4N9w99M?=
+ =?us-ascii?Q?92BYPQjTUYbVl0t0qUQN+Ol0EKpAlqcXFmak9p0?=
+ =?us-ascii?Q?WwXBWRM=2FUlw3UoHH7SjgqH4tnzLE9TESp1KMqWj?=
+ =?us-ascii?Q?V3tIrZQUoL++I?=
+To: jose@monkey.org
+X-Entity-ID: DBOo0Mbo/YoRPy+vI6aSyw==
+X-Rspamd-Server: rspam10
+X-Rspamd-Queue-Id: A7A4B12000F
+X-Stat-Signature: ons9z6mj7zn4h4abfkw5atk4agbx48o1
+X-Spam-Status: No, score=6.60
+X-Rspam-User: 
+X-HE-Tag: 1692907486-99662
+X-HE-Meta: 
+ U2FsdGVkX18PdAVOWLyTH7qoEfKqsZt7Nz78vSO3MHNoxrWfemUx9EmFfqGAS2Nl4E66OmO0dTN2jMxjiEwWFWDDqTBPDqpoI5wDE1S2xhaTDQEtt36JyQB2oHbOK4TAj1H70EKolsY68NRq8omqxn/pmKx5mbpeWs+fqLOwqLwNH+U4zvzo/phPLWF/mYcKysEZWwT7u1IFds2tMyK1DPccfRwH6M61xVGKJ+Okz7Q6Ij/Zyc2RAU3NFeWAiPJbJYq1pULrFBcidp3SgEXdbAfpUSj8YLsky7tEUAE4PhB2EkLbfgxW93L5QUiSdw/MOeVExb03MiXd/suZ553HqrBjK4sZu3XNP0UY7h1OCp2JE3ociEyOIiia5SP2YdXGABH1ittygymQqPiXJZxrQMqQ4tTbmka+xog2EPubatYmecdEAEl0xuCs8hay9LM9zS2f04NucoY=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 262

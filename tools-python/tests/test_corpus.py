@@ -9,9 +9,10 @@ def _rows():
     with open(TESTDATA / "labels.csv", newline="", encoding="utf-8") as fh:
         return list(csv.DictReader(fh))
 
-def test_labels_csv_has_thirty_labelled_samples():
+def test_labels_csv_meets_the_corpus_floor():
+    """Phase 1 fallback floor is 100 samples; both classes must be present."""
     rows = _rows()
-    assert len(rows) == 30
+    assert len(rows) >= 100, f"corpus below the 100-sample floor: {len(rows)}"
     assert {r["label"] for r in rows} == {"phishing", "legitimate"}
 
 def test_every_labelled_file_exists():
@@ -38,3 +39,18 @@ def test_raw_originals_are_never_committed():
         cwd=ROOT, capture_output=True, text=True, check=True,
     ).stdout.strip()
     assert out == "", f"unsanitised originals are tracked in git:\n{out}"
+
+def _split(name):
+    return {l.strip() for l in (TESTDATA / "splits" / f"{name}.txt").read_text(encoding="utf-8").splitlines() if l.strip()}
+
+def test_splits_are_disjoint_and_complete():
+    dev, holdout = _split("dev"), _split("holdout")
+    labelled = {r["file"] for r in _rows()}
+    assert dev.isdisjoint(holdout), "a file appears in both splits"
+    assert dev | holdout == labelled, "splits do not cover every labelled file"
+
+def test_holdout_is_a_meaningful_size():
+    """30 percent of the corpus, within one file, and never empty."""
+    total = len(_rows())
+    holdout = len(_split("holdout"))
+    assert holdout >= total * 0.25, f"holdout too small: {holdout} of {total}"

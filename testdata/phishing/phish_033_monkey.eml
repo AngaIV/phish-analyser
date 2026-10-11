@@ -1,0 +1,85 @@
+Return-Path: jusupov@gf.kg
+Delivered-To: jose@monkey.org
+X-FDA: 81405158688.36.8653B15
+Received: from v234069.serveradd.com (v234069.serveradd.com [103.15.234.69])
+	by imf25.b.hostedemail.com (Postfix) with ESMTP id D98F0120005
+	for <jose@monkey.org>; Tue, 31 Oct 2023 08:59:41 +0000 (UTC)
+Authentication-Results: imf25.b.hostedemail.com;
+	dkim=pass header.d=pyramidchemicals.com.sg header.s=default
+ header.b=8dvAUgj2;
+	spf=softfail (imf25.b.hostedemail.com: 103.15.234.69 is neither permitted nor
+ denied by domain of jusupov@gf.kg) smtp.mailfrom=jusupov@gf.kg;
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1698742782;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=EPHGZTfwOL64kdBNIAgPOslR8rB45uBL6akTeLUm/C0=;
+	b=kmGlz+gg7gEHCkBevTMEvdEvZKA8KPHoL2t3Enff3q5qGxN60vdKFTq4IU3GcsjAaW39AC
+	0NkyVzVAt6x0oDe9oC0M8Z7+gI8RseVcJyPHQR0v9hoCqm/KC7wvdTMMMWaoT/MwbB1Qe4
+	hqaZSPmhN8el0C0zY4XgEarUOY+HdG0=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1698742782; a=rsa-sha256;
+	cv=none;
+	b=VUDmKl1d/5z1CVLAK6HRaXWGCyjm3FtpM36X0GBWpP9mgdC5O/XQwVIuzcoqUqgXtiwG6S
+	eEsbXFuOWE4+evisMlTbrbuZ9T8cEJHVowcPY+O6PGJoxE3YbjSrN6gGdmcf95AU5dLSdK
+	5e6DxNbcXf88ZlO+l+dwyOV6KqjUxWo=
+ARC-Authentication-Results: i=1;
+	imf25.b.hostedemail.com;
+	dkim=pass header.d=pyramidchemicals.com.sg header.s=default
+ header.b=8dvAUgj2;
+	spf=softfail (imf25.b.hostedemail.com: 103.15.234.69 is neither permitted nor
+ denied by domain of jusupov@gf.kg) smtp.mailfrom=jusupov@gf.kg;
+	dmarc=none
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=pyramidchemicals.com.sg; s=default; h=Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=EPHGZTfwOL64kdBNIAgPOslR8rB45uBL6akTeLUm/C0=; b=8dvAUgj2vzSpth9kerRjsPfaYE
+	389yGa6EHIQg6osxf3p9FiU4N1VfU9oeh6mnx5NJ7InTNt78Q1AL5Nm2z81VfHXkwez5JXCve2czM
+	7/6uKGMH5aPHaHufbzh1IwlGNhbumA5I40mQXM2c01v/Jv837D5PIvYc15I4J+IqXAne+Zbv99jzj
+	pqhoawSjc0brPkM40SrolixamsRsmtEC2KCbDiktJIcB57lcIJ2f2NnKwyqMGT3pd9HHTAh9lRb7W
+	6znx5usGt6vh7Yqa4LkA9Omf36iCzvgKzQmJjvxH8Y5K7a9IKyufPJOIdb7Ktoj7jBYtPaFg0KiQ8
+	VxzctflQ==;
+Received: from [45.80.158.20] (port=50941)
+	by v234069.serveradd.com with esmtpsa  (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96.2)
+	(envelope-from <jusupov@gf.kg>)
+	id 1qxkb3-0007xg-2C
+	for jose@monkey.org;
+	Tue, 31 Oct 2023 16:59:38 +0800
+From: monkey.org <jose@monkey.org>
+To: jose@monkey.org
+Subject: jose@monkey.org Password expires today
+Date: 31 Oct 2023 09:59:35 +0100
+Message-ID: <20231031095935.445D5CD7D5B389F9@monkey.org>
+MIME-Version: 1.0
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - v234069.serveradd.com
+X-AntiAbuse: Original Domain - monkey.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - gf.kg
+X-Get-Message-Sender-Via: v234069.serveradd.com: authenticated_id:
+ stevenhpscan@pyramidchemicals.com.sg
+X-Authenticated-Sender: v234069.serveradd.com:
+ stevenhpscan@pyramidchemicals.com.sg
+X-Rspamd-Server: rspam06
+X-Rspamd-Queue-Id: D98F0120005
+X-Stat-Signature: f5m39i8tn88tecrj3f6tsfr4uo8g1a4t
+X-Rspam-User: 
+X-Spam-Status: No, score=4.80
+X-HE-Tag: 1698742781-885182
+X-HE-Meta: 
+ U2FsdGVkX19Fghb/ralTGx1Z5kAsGHXTO5huDxO7QynSFfiuc51vB0baD7OdF2fIQonQFxh+arHmJC7FFGiRQzAk6n5SAB7NolXA0GXA7kio7GnEnvGJ2uNX8JYKqVDDPC6124z06CNS3ycBn7deY5mPGZfE+A3YnjgUD0yIUUuQ0CeErHl2I3I5lWWU9pWqatGvmjgOqtWkaIfR6Wnao0jKqFrdQ51xd0rVz3HnZVY0NcAT37TfyJb1BtWoOnML8QWdsfzgppCYYLQS0tkzRVBjP7Q9D0DfG6E9e19Xd4/9nBArFNehoyHHOvg8C4xNSTw1R3OYR5MSbstlzmLQG8U7+BQZsnsyaLOFFgix6JlbNaNY1QPX0JM9q7ROF7A5aKRLFpAZKBH1gLqihaeHIggHUBkCCxZFJ5vQb5l8rYRoNBSYDNc+SPkfV6hhhLFH9LW8arkAkk/CiOW0CbT4MCYyyQw8EkZZCbt/W4MfaNlqYTysJngO6Fqclo0YhO1jJkrOI205srlun1hYV+vvFQ==
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 345

@@ -1,0 +1,62 @@
+Return-Path: mfm-updates@mfm.net.pk
+Delivered-To: jose@monkey.org
+X-FDA: 81130268814.01.B8A0060
+Received: from rcsmtp.cyber.net.pk (rcsmtp.cyber.net.pk [175.107.240.76])
+	by imf22.b.hostedemail.com (Postfix) with ESMTP id C7229160008
+	for <jose@monkey.org>; Wed, 16 Aug 2023 14:56:25 +0000 (UTC)
+Authentication-Results: imf22.b.hostedemail.com;
+	dkim=none;
+	spf=pass (imf22.b.hostedemail.com: domain of mfm-updates@mfm.net.pk
+ designates 175.107.240.76 as permitted sender)
+ smtp.mailfrom=mfm-updates@mfm.net.pk;
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1692197786;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references; bh=TMD+INc6UFo+00lJff8P+DoeUAnYrzXZoTlIStWNBqc=;
+	b=ZWLunlbKh7NAVibu1GAdOnJs/8AMWVIC1lJQRCIHD/fu292EKx1PbWhVe1tuw/DnPTYoeP
+	NSUehssB3FkSuvlod9D+yB4FmtbR1IWxQtXoWz/lg4XAe1NAjHjI1UOvX+wogby3ZoV0WA
+	9WR6KErfO6mVCbDZL7evddAnIRtQ3Vo=
+ARC-Authentication-Results: i=1;
+	imf22.b.hostedemail.com;
+	dkim=none;
+	spf=pass (imf22.b.hostedemail.com: domain of mfm-updates@mfm.net.pk
+ designates 175.107.240.76 as permitted sender)
+ smtp.mailfrom=mfm-updates@mfm.net.pk;
+	dmarc=none
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1692197786; a=rsa-sha256;
+	cv=none;
+	b=ONyI7ZHrNC1STfFkuWXYqBhRwh6J6f9GiXeElTK9oDaGuh/DPEPoHQSJsinzBPvs3qzjRA
+	Ycm0lLbhQZgVJ10UQkR/UzYeVCxjR1IEGrUnk3kP6ksH9Uzlt+fLZ7hRgvenOBsw6sW5Rm
+	ZNeiQJSvHbJsmScd1FFolV5Hz9nXTNE=
+Received: from WIN-1Q675V2L7CO.home (mail.mfm.net.pk [175.107.206.87])
+	by rcsmtp.cyber.net.pk (Postfix) with ESMTP id BD41D2C6DFB
+	for <jose@monkey.org>; Wed, 16 Aug 2023 19:56:24 +0500 (PKT)
+Received: from [127.0.0.1] ([194.59.218.188]) by home with
+ MailEnable ESMTPSA (version=TLS1_2
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384);
+ Wed, 16 Aug 2023 19:55:40 +0500
+Content-Type: text/html
+From: "Supportmonkey.org" <mfm-updates@mfm.net.pk>
+To: jose@monkey.org
+Subject: monkey.org 2023-08-16 07:55
+Message-ID: <1d7c757d-e99d-18e8-45f9-8ae307c263c5@mfm.net.pk>
+Content-Transfer-Encoding: quoted-printable
+Date: Wed, 16 Aug 2023 14:55:57 +0000
+MIME-Version: 1.0
+X-Rspamd-Queue-Id: C7229160008
+X-Stat-Signature: mbeetskogt7rd645o3eqkuqxhfs6gnou
+X-Rspam-User: 
+X-Spam-Status: No, score=4.80
+X-Rspamd-Server: rspam05
+X-HE-Tag: 1692197785-791095
+X-HE-Meta: 
+ U2FsdGVkX1/481SXOpvQ3ZtRZ8Vm0yD6DIdyNiblv4ufADPnopFTkJlwOhMv0OER2XZjxrSqXcDfJCp9jLuhFUFKCmU6DKhLor/ng7+y8fFa+9R2FY/bgeglylfDUWwVNLEavqyLHiWsRP+/SJ99748Rj5XN8IVZYnzrbJBRZfwqOih7dfuDvyk94aTBYozXzCRRkOZgCUfPUq8GN/va4m7YURtfBI1Tr3+HkbU04eg9J8JehF9G5YryjZClCUCslQ55tMRSBgYVhejC/CYqBKB2VkdVFG9uQomc7cRDCG4OryZkgSpIjI0BF0vs1Iu6GRPMZPLAYX7QQrTqQN53R1sqmBmGuoLBJpohq1U/aodFL2iXGLisCb1rIp77+9LPOM8T25wRuLWAoyPmq3IqX8KXuFRevhtghuZgngNmMrvDpHLNCVsSKFpT6txjagA9/vgw23Y1s+M92a6GwRyRIjuFYYEKGYDjnD1VWT0VHkIT/tJTbnc0sGuDUueiGjfm/pKd+sMKCklkz9chbKW9/nwebZ2MY2F1URuFcdoBXsUyPcfe/0DMg0sGkWC/Gg9f850PlR+rkOwwCDd/PYyZDg==
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 249

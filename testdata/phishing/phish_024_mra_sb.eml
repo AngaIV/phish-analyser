@@ -1,0 +1,50 @@
+Return-Path: MAILER-DAEMON
+Delivered-To: jose@monkey.org
+X-FDA: 81503518614.18.DE060C0
+Received: from server.mra-sb.com (server.mra-sb.com [137.59.110.49])
+	by imf03.b.hostedemail.com (Postfix) with ESMTP id CE93812000D
+	for <jose@monkey.org>; Mon, 27 Nov 2023 11:31:25 +0000 (UTC)
+Authentication-Results: imf03.b.hostedemail.com;
+	dkim=none;
+	spf=none (imf03.b.hostedemail.com: domain of server.mra-sb.com has no SPF
+ policy when checking 137.59.110.49) smtp.helo=server.mra-sb.com;
+	dmarc=none
+Received: from mailnull by server.mra-sb.com with local (Exim 4.96.2)
+	id 1r7Zpi-00056u-23
+	for jose@monkey.org;
+	Mon, 27 Nov 2023 19:31:22 +0800
+X-Failed-Recipients: jose@monkey.org
+Auto-Submitted: auto-replied
+From: Mail Delivery System <Mailer-Daemon@server.mra-sb.com>
+To: jose@monkey.org
+References: <20231127123118.83F5474E1D14E2B0@monkey.org>
+Content-Type: multipart/report; report-type=delivery-status;
+ boundary=1701084682-eximdsn-1798548802
+MIME-Version: 1.0
+Subject: Mail delivery failed: returning message to sender
+Message-Id: <E1r7Zpi-00056u-23@server.mra-sb.com>
+Date: Mon, 27 Nov 2023 19:31:22 +0800
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - server.mra-sb.com
+X-AntiAbuse: Original Domain - monkey.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - 
+X-Get-Message-Sender-Via: server.mra-sb.com: sender_ident via
+ received_protocol == local: mailnull/primary_hostname/system user
+X-Authenticated-Sender: server.mra-sb.com: mailnull
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Rspamd-Server: rspam09
+X-Rspamd-Queue-Id: CE93812000D
+X-Stat-Signature: ykjd1gsf6k9acqxskuioewqiszn8m614
+X-Rspam-User: 
+X-Spam-Status: No, score=1.20
+X-HE-Tag: 1701084685-605043
+X-HE-Meta: 
+ U2FsdGVkX1/7MVH1Kz3t7bk+oHBUtZI5bHsrs8WO2JH1jLCKxvLL5bjgXkdZmupsFUcRp6lK6rRxNGbt6oRn2GwtaEQjgM6ddTQDgoc9Sw0Eeym+WCtY60ehujgXyf1IN7IXZ9kt67DahwSGL5IIJzeOwSGECWbwg73bcFqhzLqOxRiCPwhd8DZTjG9h70xYIPRG/OMt1Dj03tvxT27lGqi6CLizTqdIGYB7Otj7dkw=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 382

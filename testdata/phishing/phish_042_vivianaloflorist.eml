@@ -1,0 +1,72 @@
+Return-Path: michaelkrupka@vivianaloflorist.com
+Delivered-To: jose@monkey.org
+X-FDA: 80843226492.13.A4D1F68
+Received: from smtp74.iad3a.emailsrvr.com (smtp74.iad3a.emailsrvr.com
+ [173.203.187.74])
+	by imf12.b.hostedemail.com (Postfix) with ESMTP id 69848A0026
+	for <jose@monkey.org>; Mon, 29 May 2023 12:30:44 +0000 (UTC)
+Authentication-Results: imf12.b.hostedemail.com;
+	dkim=none;
+	spf=none (imf12.b.hostedemail.com: domain of
+ michaelkrupka@vivianaloflorist.com has no SPF policy when checking
+ 173.203.187.74) smtp.mailfrom=michaelkrupka@vivianaloflorist.com;
+	dmarc=none
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1685363444; a=rsa-sha256;
+	cv=none;
+	b=RRQIldqoxxUt1dsJwve/aYvqiWJDHSZwI2Ua/4s3OXKn8Rpa14j9QHNJZQJC/iYvubC+qH
+	jly5w7Pb6Ys7XTfR2yVeVWA2MumebWqp5KOahM1qAxVGgXBi+3Rh8j/945BDoC4pctGxIF
+	vTbRYim/G1Zbp+CRID1bz8LLubxlIQk=
+ARC-Authentication-Results: i=1;
+	imf12.b.hostedemail.com;
+	dkim=none;
+	spf=none (imf12.b.hostedemail.com: domain of
+ michaelkrupka@vivianaloflorist.com has no SPF policy when checking
+ 173.203.187.74) smtp.mailfrom=michaelkrupka@vivianaloflorist.com;
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1685363444;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references; bh=wdyEG7OfVjIpd5CJdNnm304EMCtISvAlS+bzuo+/LcQ=;
+	b=YoXlDtPB3xb779oq0dfz+vsv36zHz+qvPCr1d1IuY2dSsPxezaVe8I7RWPr6OYw0lRM8Ja
+	16Xeq7xUHiXYVq8Kzjb8NslDBBM3zho8mGTWs4kfX8TSTnxBRU4RnTtCAJmWX4vDBBtaxK
+	5hRncS7JpACxMuoIxzJ8fQUsw6RwQZs=
+Received: from app9.wa-webapps.iad3a (relay-webapps.rsapps.net
+ [172.27.255.140])
+	by smtp10.relay.iad3a.emailsrvr.com (SMTP Server) with ESMTP id D33603343;
+	Mon, 29 May 2023 08:30:42 -0400 (EDT)
+Received: from vivianaloflorist.com (localhost.localdomain [127.0.0.1])
+	by app9.wa-webapps.iad3a (Postfix) with ESMTP id 79E90A1167;
+	Mon, 29 May 2023 08:30:42 -0400 (EDT)
+Received: by webmail.emailsrvr.com
+    (Authenticated sender: michaelkrupka@vivianaloflorist.com,
+ from: security-check.info@vivianaloflorist.com)
+    with HTTP; Mon, 29 May 2023 08:30:42 -0400 (EDT)
+X-Auth-ID: michaelkrupka@vivianaloflorist.com
+Date: Mon, 29 May 2023 08:30:42 -0400 (EDT)
+Subject: Some recent sign-ins to your e-mail may have triggered this automated
+From: "Security Update" <security-check.info@vivianaloflorist.com>
+MIME-Version: 1.0
+Content-Type: 
+ multipart/alternative;boundary="----=_20230529083042000000_40196"
+Importance: Normal
+X-Priority: 3 (Normal)
+X-Type: html
+X-Client-IP: 181.215.182.152
+Message-ID: <1685363442.492716653@webmail.emailsrvr.com>
+X-Mailer: webmail/19.0.23-RC
+X-Classification-ID: 78c28d10-92f7-4c52-9f6d-191eda644071-1-1
+X-Rspamd-Server: rspam01
+X-Rspam-User: 
+X-Spam-Status: No, score=3.20
+X-Stat-Signature: yf9gooicbdi9ukdwqxddfzhje47b6or7
+X-Rspamd-Queue-Id: 69848A0026
+X-HE-Tag: 1685363444-273267
+X-HE-Meta: 
+ U2FsdGVkX1/kdZKcx8zGOSol6lIF/eonPrluINlKqfiyjAIG9B05dbOJdmZGFlBhdV4Bo4CyO1b4cXCRgH6J9L5Ai3EnHyQCguC/gqPjpzzVuGCowbAUb2pfrl4bCdugnOVV5UvP5/JNPj985PhY4dbONT+X9QZS7A+hdtCh8ppnCRY9uzmGnFpSFr9vIysOMFj/MRbQHIqFzSl0GEwNBmggBkvwaQkcdkLXcK6YXeOyDp7p6g3f/RgHjcPIJ43cbW35QxlrsO+yJF9sk9iQCjkWssgMhRf07/g9KFdD/N0/c6QSguNGE+kzWVIVdJZJK5E7lmSYKAk7NST2Ar4+k79KXtbGIxGzhTueylnT8W6oNU/zlhDSS3K/FJgfPEwceAB64U+pKpFptdp5QqMQzuY9g/Y2V19ktzdBMk0N17U2xmNqmnF67dDQ7tAsO5vIJ5AN7hu2fLj2g5FnB9XOHAWdYgbFLU0KxHq+FnbV3BaALAPYS3snpJffKYHhJ2+/LN2NLbdKBIDunSSMjL5EN9SVH+YBM5hFs6QHJ5AwlARQIX2Bw7xR/McwtBLe6oHNJ7IWwe14P3wdhBSYgutR73CnDf/W2oL73fBtAYKXkzbnSJe276iMaWegmUkjmKf2Sk/+sJyVS2Twzv8GDm0crVlmGI0ycwzP
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 136

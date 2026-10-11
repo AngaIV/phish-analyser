@@ -1,0 +1,69 @@
+Return-Path: anne@caresly.com
+Delivered-To: jose@monkey.org
+X-FDA: 81289299126.33.2858C89
+Received: from dregs.caresly.com (dregs.caresly.com [82.115.209.93])
+	by imf18.b.hostedemail.com (Postfix) with ESMTP id A798A12000B
+	for <jose@monkey.org>; Fri, 29 Sep 2023 10:43:41 +0000 (UTC)
+Authentication-Results: imf18.b.hostedemail.com;
+	dkim=pass header.d=caresly.com header.s=dkim header.b=sAw49N78;
+	spf=pass (imf18.b.hostedemail.com: domain of anne@caresly.com designates
+ 82.115.209.93 as permitted sender) smtp.mailfrom=anne@caresly.com;
+	dmarc=pass (policy=none) header.from=caresly.com
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1695984222;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=QGmpimTli6ryTxOKL4kkSl2I9MdebjDasaTRK2ziuaE=;
+	b=1/G9HjHxxtaPlEYU5c4/K9zu8dmF2Igibef1/1O3Rb5+OxO6+n/B39byQWEvAdkA88xbdV
+	0uIJR8CXsNZh4mBYPogXp86mCHZmmUsw2kSe0IlKX0tQqZXTIA2GnZE9Uij9tEObPVjXRh
+	YWT79iUXhpJlwnC5Pu5av5y/xnpJTq4=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1695984222; a=rsa-sha256;
+	cv=none;
+	b=typQjDS6qvF3ZviND49vDs+ZjI26AsYmrtVElfoqDK5SBWrzZ3yG8i/ddiBFgAoTjTymzM
+	97jjcdBIaGytTuSnEnDrtSMuRREM+pzzFHdq9EEB6RRv6hyQ3rCGEZhAa5ZTte1QrKohRq
+	G1hH27bfIloy5HlGpnXMfVU7vc6u0hQ=
+ARC-Authentication-Results: i=1;
+	imf18.b.hostedemail.com;
+	dkim=pass header.d=caresly.com header.s=dkim header.b=sAw49N78;
+	spf=pass (imf18.b.hostedemail.com: domain of anne@caresly.com designates
+ 82.115.209.93 as permitted sender) smtp.mailfrom=anne@caresly.com;
+	dmarc=pass (policy=none) header.from=caresly.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=caresly.com;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=anne@caresly.com;
+ bh=vZB8Sw3vcpX79/bl6HZP0km3ir4=;
+ b=sAw49N78zyBaqKqMDLGmqp08vqeCDF75WBBJeYj/k5K7w/f2TmsGfaMckB/QT0bOzILWok/WkMqa
+   sASkTl/7IhnuTtAe/e2BjodpfAWvx+phKCeSGZA9U5rp3aAnxkPkju68ENclAqCie/Hfi8ybRGhG
+   LBQ8tJOdt/sRrNodju3nZ3HwGC5LdHJmUE782Crc8e8LDomUv+Oq7bk8M9vpxT2+r3OwrpulfsA7
+   ctkCJ9/rcp2IHIuO7Iz3b1OdUsUCpRb801DdgbwTsrH9VSeFNqSK0awzV/YCQijDFtinz39G203O
+   3MfGfEvB8O8ueZdPY2AgwPPsSND/VeHV4Em33A==
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=caresly.com;
+ b=ZN3Vi5wprGwF4cJtEFaeo5y67TUj7WOqhm6oZ8TLWGSiyFgFUOrKgLY8EiQiXsPCsx+XKiCvBxRP
+   Ghtsi4+KdmzzT+ThpYsov6v40xGPyAIwikwvASDsdAF9WQh3dde6x2CNvlL5d/xnH4qzSdxBrL90
+   d/sFhS2wQ1ljk63/jjxwGpWqQz9YPeWwz5/gfHp05aNlFNVcohmc9Vp/0VcWIlu0ba0K84Lp1lwJ
+   vmO2UECfxFMPqRWkie9Kv+gS4TeJNqx7LOZnzp0oS1EqvtWzj6BBh/VdzNafJgYZ8YTbPSD9MrhB
+   JeoxhxdHgRkoWHLDcCuLK23AlxumNqUo1BbVmg==;
+From: "cpanel" <anne@caresly.com>
+To: jose@monkey.org
+Subject: incoming emails on hold!
+Date: 29 Sep 2023 10:43:37 -0700
+Message-ID: <20230929104337.80DC0EF13766FBB0@caresly.com>
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Rspamd-Server: rspam12
+X-Rspam-User: 
+X-Spam-Status: No, score=4.20
+X-Stat-Signature: 9i3e9y5oukdty6jtwptnbiisqdh15cbb
+X-Rspamd-Queue-Id: A798A12000B
+X-HE-Tag: 1695984221-152927
+X-HE-Meta: 
+ U2FsdGVkX1/68H1Pmr0R3AqRMZb2hha1oJPEB2TRIx99YKJV7UjkUs6uuaEqbvPLzkFQRW3bqqikptKZszpB+agejWRSH7/JIL9iqH1C2uKOH3Qo9q1ahId9qzed69gLZk0DHbRS3M6ysk+jyb09mkVpOfn/a7n17IZh8UKURb9zumjVT6Ar4Hmv0w+sc15BrKVyrShpb4NOSHLDiwZKDGgIyio+kPo+GyZ4g+/C3Eo=
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 296

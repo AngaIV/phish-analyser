@@ -1,0 +1,134 @@
+Return-Path: bounces+32072060-24c9-jose=monkey.org@sendgrid.net
+Delivered-To: jose@monkey.org
+X-FDA: 80421455520.33.5FC16A2
+Received: from cskrhhvt.outbound-mail.sendgrid.net
+ (cskrhhvt.outbound-mail.sendgrid.net [198.21.0.135])
+	by imf10.b.hostedemail.com (Postfix) with ESMTP id 769A118E4D9DB
+	for <jose@monkey.org>; Thu,  2 Feb 2023 07:01:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.net;
+	h=content-type:from:mime-version:subject:reply-to:to:list-unsubscribe:
+	cc:content-type:from:subject:to;
+	s=smtpapi; bh=m5KMIaTeHLDEH3VRhDsV4FNk5bFCcG79nC4y1SRqipU=;
+	b=egOBzJ0qQIeNjEVErUdherIWBC6icdLItW+xk/l7VkZpYngDtKg3sNY6OCjfC7QMnATK
+	7qQ6VpHAjXnLUP8ntRpJ/2vjPpUP/Qx6/5XUP4dStQN147ElZVyPFSJk6NZMerpFBa4iop
+	YHW/69gXpeHiotXPy/k+cTGd5GEcniLVk=
+Received: by filterdrecv-68b7b95b4b-plvn5 with SMTP id
+ filterdrecv-68b7b95b4b-plvn5-1-63DB58C8-2B
+        2023-02-02 06:31:37.063634682 +0000 UTC m=+6593159.472638246
+Received: from MzIwNzIwNjA (unknown)
+	by geopod-ismtpd-4-1 (SG) with HTTP
+	id tdMPlGcBR6ytSt0Z_GdPWg
+	Thu, 02 Feb 2023 06:31:36.897 +0000 (UTC)
+Content-Type: multipart/alternative;
+ boundary=63d2c87c79e861e26778e9082833395629e8f7220c98555566fc0f488964
+Date: Thu, 02 Feb 2023 06:31:37 +0000 (UTC)
+From: Doc Sign <docs-sign@post.com>
+Mime-Version: 1.0
+Message-ID: <tdMPlGcBR6ytSt0Z_GdPWg@geopod-ismtpd-4-1>
+Subject: DocSign sent you a file for sign and approval
+Reply-To: docs-sign@post.com
+X-SG-EID: 
+ =?us-ascii?Q?IzNH6WyVjGdjSUzFcYRKlwZ6kp87Fc22BoKhCdZ3I002nUmuVEfKk=2F13OOv9=2Fg?=
+ =?us-ascii?Q?MXZTp38UqimZ6HETbuVBeWvNpTPnPR1lhY85zkx?=
+ =?us-ascii?Q?B8oMJVIbzY1a02TMHqDAqQiroCcxd=2FDiVS24Iyr?=
+ =?us-ascii?Q?Zp6kIlbx2Nnmd71y1VsSUBsUBUCtyNwDxmkrnjH?=
+ =?us-ascii?Q?4tkw+I+4e5z6ncpDJ47orkj9VxQavE8gK9UBDHS?=
+ =?us-ascii?Q?JFdOoDBXrhksf+1Zg=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?se=2F49CGmbS0sfR97ImeXvDoOrI1ra2UfBi=2FYp+tM4sZNnFcdeo8cVPRMz3vfJ1?=
+ =?us-ascii?Q?B4lB8ss1VLTXJ6ibLPDs95VBUlMzbRCfT5eXVrQ?=
+ =?us-ascii?Q?W0=2FHUF422+2vdJJjTwe62q2qbrhiL6QiDy2c2cw?=
+ =?us-ascii?Q?YWMaV+XIg6ypmjuRokyf+vj8ZzLhE3YzKLLMcNo?=
+ =?us-ascii?Q?t6En6=2Fl+7FEgX8SDTit6tmxr+6uKWW74ZoVPSSl?=
+ =?us-ascii?Q?HX5YiI=2F15pviCPcl9UlzEp0f0FDxC7hdXdh5z09?=
+ =?us-ascii?Q?u0LenRQ+D+JPe3kkLs=2F8rjtSqkqOQRkpbYSsSOw?=
+ =?us-ascii?Q?JE0Vpo+nimOUb0cyltKttgKb0JriQvbEa+rQrrD?=
+ =?us-ascii?Q?W39NQqLLJuTKZvMwkMFDXK2euDCK3FoXPk7n3oA?=
+ =?us-ascii?Q?mBbUhrJVEA1HucePmXX2dWHzw2BrEBomQY2xXWr?=
+ =?us-ascii?Q?83zKLtFf6p+Gmv6BOGJyPuAKimcJ78pNP3DixKl?=
+ =?us-ascii?Q?ZlhmomU+SLDuN2OJymuoEa5xVK=2FRA1M0UOBN7aO?=
+ =?us-ascii?Q?07P=2F914re6cXWTwWPeWhx3JlZc83fwHbemOec+Z?=
+ =?us-ascii?Q?PbwQHv+fxJn6VeIHi7fTS=2FzNdThTLat3aVGXERc?=
+ =?us-ascii?Q?VOlZlq4f17FLPf2p4DM7i7nALgY7WG1GFNZzAOM?=
+ =?us-ascii?Q?tlfrCHGSE2TD8lr2mPWBRsL8OmZL6j4+sLewnQx?=
+ =?us-ascii?Q?XvJ1W4h72GzptwiUcfRcZeBug0ka2tiebf7MObJ?=
+ =?us-ascii?Q?wTUFB0yu17Rs8M1yS7h8zDGu38ZABCQoot4Ic0K?=
+ =?us-ascii?Q?K0cehFnrMW=2FkWXS8HWAdsI=3D?=
+To: jose@monkey.org
+X-Entity-ID: 7aYiBO1PptaaaSLaSe3VbQ==
+List-Unsubscribe: 
+ =?us-ascii?Q?=3Cmailto=3Aunsubscribe=40sendgrid=2Enet=3Fsubject=3D32072060=2Ej23FJHS5qUwb?=
+ =?us-ascii?Q?R=5Fk4-LeJS5yAoATxIEW47Kh4I5TuY=5FxoMDAwdTA?=
+ =?us-ascii?Q?wMOL9Rwpik9pVW2z3BuE-WgaePcHXB1jGQjKaEy?=
+ =?us-ascii?Q?TTXfxs7rW7M1cMV-R2WQSVfUkJ06XgeZZIGL-6f?=
+ =?us-ascii?Q?nN9uoTw7VHOh3ovI62VxisADSZq2owj=2EAWCNURU?=
+ =?us-ascii?Q?FPJaBuyaZ6PoakLOVHquuNLal4J7fL6ztYZBoMD?=
+ =?us-ascii?Q?AwdTAwMPOOGtlDxtMrAVEVQ98iOm8JR2Gyh448n?=
+ =?us-ascii?Q?DZRMvLzlM3s3A4Io4ivIe0sREoZdvsks7XhKT0Q?=
+ =?us-ascii?Q?a-D-lbjmuiMpp66P8bLlfcCJJiMjjf5bNdP3-fr?=
+ =?us-ascii?Q?54Mh3QetTsT9d8A1tznLTHSwy=5F54CrCSIwZrIj2?=
+ =?us-ascii?Q?t-AFcLe19zzVpeefqMkI-WIzURW9FllluUZZWzK?=
+ =?us-ascii?Q?BaJLclnMapjkR4Qrzjp3RRIa1zfLwB9C=5FMKQL8h?=
+ =?us-ascii?Q?8yK-Ve7phadsym4SuCX2XdmivTsUA6DUmTUuEbp?=
+ =?us-ascii?Q?heXEFxI0f6jxkJGZbrzyrUUoTsmf=5F7EbPhp8Xdh?=
+ =?us-ascii?Q?k5NDrUZMp6MkuWRM1JfLWQr09mtBRwlpmCWLpNj?=
+ =?us-ascii?Q?61VHowkkwSRGDgJ3VSF0HCYsXQ0q6vllk7AJ6S=5F?=
+ =?us-ascii?Q?X=5F42YzIZKTi4Ip8GiVSTHRXCM5uCwRrnlhhUm9t?=
+ =?us-ascii?Q?AGet9SkZ9w-rsdIiJ07=5Fovn4EkPEhfjfHjzMw4D?=
+ =?us-ascii?Q?bNL-m5Ig0l4zUAH7imdyP0Ko5ABmZQWec4SDNW8?=
+ =?us-ascii?Q?-6zvnjoOBRe5UJQySOHGPDVViX3eKnZ=5Fl06NGdo?=
+ =?us-ascii?Q?TfgsvMrotIpC8kzpLOzpiTvGPtMDKVBz8T3=5FMRX?=
+ =?us-ascii?Q?NQWGxCVOkVYL09uocYnn3BnXD8TW9mw6PfEVzn-?=
+ =?us-ascii?Q?N8jw8j9Nd9aUx-aXNJGFzu2oHm5o5uQ6LqO6CwM?=
+ =?us-ascii?Q?YnEzUrM7PurZda0R8DUIf3DMZ=5FPtMbMdheUECP6?=
+ =?us-ascii?Q?zLKpXEOY0et7nE2FFt95zC9uId5rbz-DjbHB2YW?=
+ =?us-ascii?Q?VXoTJAAgi=5FptWf4tiZ6gwjJkS0z4xk3FR2DcKrk?=
+ =?us-ascii?Q?s-npKNJT5rDPevnUoLcCtzo9YeAEghWmMaNCUBR?=
+ =?us-ascii?Q?aP6DJ8hPVNQPFZqXrnQ=5FcNMA1BNyjsoNqXgMJg4?=
+ =?us-ascii?Q?87dj-w5FxqKkrtZQKRNtPMA96cPPqxkYlMJvkqK?=
+ =?us-ascii?Q?Dv7luGSwA8Ycm62GOsts4zMlUL0xmcrK5zH08CL?=
+ =?us-ascii?Q?ypN0pdyt7R=3E?=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1675321279; a=rsa-sha256;
+	cv=none;
+	b=ect2RGppIFKsbWTmjB8E3Qg+56/SGFu3jGm1TJK1YGvVbEBwO3aQcaQ4AbrASmyOUafQgz
+	yIpeFT2Qu/W58IQ7Rn31U4NQopW21cCNb6q1Ky73bOx0dHFC0Y67wAaI1XP3qaRjnyoVhJ
+	rTqBY3pfsYCA17htflqaty7QRNrSW+8=
+ARC-Authentication-Results: i=1;
+	imf10.b.hostedemail.com;
+	dkim=pass header.d=sendgrid.net header.s=smtpapi header.b=egOBzJ0q;
+	dmarc=none;
+	spf=pass (imf10.b.hostedemail.com: domain of
+ "bounces+32072060-24c9-jose=monkey.org@sendgrid.net" designates 198.21.0.135
+ as permitted sender)
+ smtp.mailfrom="bounces+32072060-24c9-jose=monkey.org@sendgrid.net"
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1675321279;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:list-unsubscribe:dkim-signature;
+	bh=m5KMIaTeHLDEH3VRhDsV4FNk5bFCcG79nC4y1SRqipU=;
+	b=nqUdj4s57EcxvHnHUT9U2xKTfwpjYXyWqSDvP6ZPdcuPg4xLFt6VB+8BflHpTO7rCJSM9Y
+	LnfQZ1SROcv3NQodIU6K0+zCG8QO22+lyTwH72KMvWjmIo/+B3eQDcMmdfjHeU8T4TZ5En
+	sbv1pDnY1pwMl0fFO37qrha72urubxk=
+Authentication-Results: imf10.b.hostedemail.com;
+	dkim=pass header.d=sendgrid.net header.s=smtpapi header.b=egOBzJ0q;
+	dmarc=none;
+	spf=pass (imf10.b.hostedemail.com: domain of
+ "bounces+32072060-24c9-jose=monkey.org@sendgrid.net" designates 198.21.0.135
+ as permitted sender)
+ smtp.mailfrom="bounces+32072060-24c9-jose=monkey.org@sendgrid.net"
+X-Rspamd-Server: rspam10
+X-Spam-Status: Yes, score=10.39
+X-Stat-Signature: igtghckfieufbcg5uiakgiq4xqkneob9
+X-Rspamd-Queue-Id: 769A118E4D9DB
+X-Rspam-User: 
+X-HE-Tag: 1675321279-843650
+X-HE-Meta: 
+ U2FsdGVkX1911rSLJVy3q9L7cm5C63H9fhOchxvjqcHX9dj2sB0+vzHH6NW2W5mrjqlY21vqHz8l/wvQUlXIrOyYmwRHRKnnl0C4ibAQNO4uMBu1yHFg4zxuapPVbpd63+fALeT6Ak4sZycnUt0NfoRg2IXrg0VEhWGtnduwn4+e0tIzdNzvMYu66U9kzgldmbXCy6/7dc9a7qIVNw7sDHNWowMBfIXUS2+Uncra0jKy2KTZHif0kNi/XU8SRCTu4XrnoyZN7qsloQc3KlHYrUGMG5QVg4RAnpzg2N/n4zdOQJpbFGBJVlx82KAlBGqPIPZ8phNAMdrYbQYlzThudT4qVfxedIbHg8kubNZhhoZoGYb739CfBQitzPs+KwETBuO2cph4jZQjOfTTP6GZeWYYWR5KI55mr/qnvSK3VrNTr6UmuWiLYZUpsk4V8ivPTlFc4PuVfmW7gKzFd5lkHp/0yx8ywOFdk+WqbE/fZWUflS9gU6EV8VY7tHiBN/1QOHE6+0z6rcfqysD3vykFkihRIkxUoE6GWfyMFJ4lzy9F44EBC0RUlAAFSONgcLWdd4pyCCLVpGJ2GfXPyJo8lwsGAUo8QEMy+aAB1M0CqZ1/0P8q9sDvLlLFIglvufE8JRjoEUVfTuQxtDLc8lTQ+PEqO1pIyG89+MwNNdpVFgbbVbJy40REXblbp7bgl/rCJ+VUZu87rk7giWwzymshCvwwHcmdEgWSKnejZz+z61G9/9f1lhCpO9PA+qh0o9TaNJGSYDboyv8+BLCIBLgwg3Dqm9XyJP6lJSFg8XvLxL+Gy7EVOdTfXLu5dlW+8yJJWMSMC/csLHsBoHelPHyQOsiddH5nwZ2K8J7dtJ58kj9UZPs4pgMRB2NBQr0y/EcOsBL8KXf3cDCquNTGOLTLW1kawb8wFNTWBvaM3HlOf9NhwOckIQOHnlEAgsTWWdbtR7kPJCd7FlIJJhbW4Bye7XyOkmP
+ kSIF3OX3EXs6g990nJ3Hx6ZzcdO/bu0YTDpW1mRY/q+/fbul+NDYFiddmBQULGIymgvsRkGOSobIyJL69NeFNNpdhHaVV2eQNnvX+eLzLWHpH/Rtv54B5DZeNsyYcqIOuolLnKBgC18oip1f5Xss1GbVgC/ajzAEC+aHhlrbWgL+/PkM1huRuDBpBaQcitT6K3fCkmohzKUqheMdi8s2oArea7LAr6vEFQoyuDpfShD41FL9qJd7lRh6mBWA42UjnsPUAVyQNOxJkWKBJchyb3UvhAxa9Ud5GgQFqeWlbOpFNs4jnduLTvdH3VwdsY9fiYAm7O20qQbpyw+hq/FOXByhlEZztqTZKsb+NgEwcPBbQfzO0fhK2q/bD6ZG35aL8GTnuK51wV4tFCWaviXTZJZdH2slrC9yRg/TbYYsSl9QKYnLlsJ5FN0mLClmf20Sfqb1j1+dJlcUUu5rlR+jmYXPs2MIPHyBjDZv5bU3YPBS4XYi+Zps9G3j9+ay2HEJn1EB2whkj8trgitN6NabB1npMQr5eKKYs21fQgi84X0/fvRB34sw3YI2xJJnelOPEYFVGI5qqx3xtqahc1DzQLsQQmc3yq2+V4Bud8XmylgL54O12eHz8CmQ//Xp6+MIF5RFZECFU9qcE0LfqtB0bJvAvYQ==
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 25

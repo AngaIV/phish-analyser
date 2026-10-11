@@ -1,0 +1,87 @@
+Return-Path: support@hkyholdings.co.zm
+Delivered-To: jose@monkey.org
+X-FDA: 81334527960.32.94433CF
+Received: from webserver4.zamtel.zm (webserver4.zamtel.zm [41.72.99.142])
+	by imf28.b.hostedemail.com (Postfix) with ESMTP id 90772100010
+	for <jose@monkey.org>; Wed, 11 Oct 2023 21:51:38 +0000 (UTC)
+Authentication-Results: imf28.b.hostedemail.com;
+	dkim=pass header.d=hkyholdings.co.zm header.s=default header.b=3Ks3ScHF;
+	spf=pass (imf28.b.hostedemail.com: domain of support@hkyholdings.co.zm
+ designates 41.72.99.142 as permitted sender)
+ smtp.mailfrom=support@hkyholdings.co.zm;
+	dmarc=pass (policy=quarantine) header.from=hkyholdings.co.zm
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1697061099;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=T0aDcv+yAJ1vRaPLVX2i+/ySrhRRR2FXuaEvWriJl/4=;
+	b=YHMQif01uG5rBhOM9AGOa67yLRUb+maT12N8HxrBDNKa3+mPzhtWxdntONeAOHVC9wHwmN
+	TKMDpzbG7Q5eyqV0XvCpAAPR1V63TUu0ddGANDsZYZEPqHOHJ+bKdiM7OdfACEBHEvh3RV
+	AmXp0rrrIQ++xhaYRhm3wnRjuRfIsGw=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1697061099; a=rsa-sha256;
+	cv=none;
+	b=wx8ZGJBAe/xlBpm2VAptakIFVUyTIB6HLH9RsmCblsIHbuNWjcg3tTf2shdRjey2766QkS
+	aJtDkVPOm5NftZv7uyUTpo7wB5A3RsesGS/RxC2nGuwplQM3vKO4bMLJo/VI/KjoHev6s8
+	wvFXDsMH8U80dRuvfHx0N7t8VHlp6M0=
+ARC-Authentication-Results: i=1;
+	imf28.b.hostedemail.com;
+	dkim=pass header.d=hkyholdings.co.zm header.s=default header.b=3Ks3ScHF;
+	spf=pass (imf28.b.hostedemail.com: domain of support@hkyholdings.co.zm
+ designates 41.72.99.142 as permitted sender)
+ smtp.mailfrom=support@hkyholdings.co.zm;
+	dmarc=pass (policy=quarantine) header.from=hkyholdings.co.zm
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=hkyholdings.co.zm; s=default; h=Content-Transfer-Encoding:Content-Type:
+	MIME-Version:Message-ID:From:Date:Subject:To:Sender:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=T0aDcv+yAJ1vRaPLVX2i+/ySrhRRR2FXuaEvWriJl/4=; b=3Ks3ScHF33hHrLl6+FkfZcGfrd
+	v+TYmIcOp2TAPnAhaHIj34RdJoGJzBmJ6mYanIQy+3b62E6tu505XgmjGZFcw4KWJ9n7U+VqHYwXc
+	1xvk8WuaUaDdENhgqx4M19XyYiIpvhsMOD60Bg4Gd5ZspOMnR/+stCyZdmb/yZ2N7/X0fAWIlVFhg
+	iadGC1cOceJgwhsjUB51e40XyBIsnxnHgIzzhs67UWkcPxhPFop5aLExV9oUtUJti7ANmIjcejjmd
+	TJas9ku+prh0Fm7HKrD/pDfRZ6Y+WZDCn9UKdFWGCIyXdWIRBGi/q5g06FMWZB/FXqBqdVGV+29/f
+	lXpSslZQ==;
+Received: from hkyholdings by webserver4.zamtel.zm with local (Exim 4.96.1)
+	(envelope-from <support@hkyholdings.co.zm>)
+	id 1qqh75-0008Ue-1C
+	for jose@monkey.org;
+	Wed, 11 Oct 2023 23:51:31 +0200
+To: jose@monkey.org
+Subject: 87029152585717 PASSWORD TEMPORARILY DISABLED
+X-PHP-Script: hkyholdings.co.zm/test/left.php for 178.236.246.135
+X-PHP-Originating-Script: 1056:left.php
+Date: Wed, 11 Oct 2023 21:51:31 +0000
+From: "monkey.org Security" <support@hkyholdings.co.zm>
+Message-ID: <cd191c8271d03d03aed259f41e60bb92@hkyholdings.co.zm>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="b1_cd191c8271d03d03aed259f41e60bb92"
+Content-Transfer-Encoding: 8bit
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - webserver4.zamtel.zm
+X-AntiAbuse: Original Domain - monkey.org
+X-AntiAbuse: Originator/Caller UID/GID - [1056 994] / [47 12]
+X-AntiAbuse: Sender Address Domain - hkyholdings.co.zm
+X-Get-Message-Sender-Via: webserver4.zamtel.zm: authenticated_id:
+ hkyholdings/from_h
+X-Authenticated-Sender: webserver4.zamtel.zm: support@hkyholdings.co.zm
+X-Source: 
+X-Source-Args: php-fpm: pool hkyholdings_co_zm                          
+X-Source-Dir: hkyholdings.co.zm:/public_html/test
+X-Rspamd-Server: rspam03
+X-Rspamd-Queue-Id: 90772100010
+X-Stat-Signature: k7minkdswjczqe34iyoh4o8uhg8syjy5
+X-Rspam-User: 
+X-Spam-Status: Yes, score=9.80
+X-HE-Tag: 1697061098-201339
+X-HE-Meta: 
+ U2FsdGVkX19mx7R0l+mRVqelrGPp5y9IyZ/EqlNeW6wi2iQQH9DIf0JNvTnU2vLmE8drcsJp3dSTCZGw6/aPoh0LMsD5uSAEu241DkVYx6ZX+i2cG4YR7RvDIwoO8IoTvyQ3yZUPpmyCwvwezEzQEtBuMDTdYXYOsJavxPYiXeF5/+aNtTJbba96tnBgJqHplltJSJTAbQ3abXnei9XJ0YnxacvOE/G0gA1NCHw0TV2uupYupQ5ZizU9E7ZbhKqLDh2kdUVPvHS/zGO1Y86bq8EkkThSR99CG4zxLhwt0xifnrSENCFhaxlBnbtRw3ji64ssQuD8DZBAs0dSlF552YCG9f3M3QSGvGfv/OSHAGVr+11ZPQ5CLw2r6cRyHcqOdnyAxMWKS0E9FHpdkmp91Kcu4dzeirwnpcnWUhvdx7BSU7YT2X63W2C3MN9ZzN4WeNRHKVb/8TI=
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 310
