@@ -1,0 +1,10 @@
+ham_005_fm_news.eml
+ham_014_hertz_deals.eml
+ham_015_securiteinfo.eml
+ham_006_useperl_headlines.eml
+ham_008_ntk_now.eml
+phish_012_usps_package.eml
+phish_004_icloud_billing.eml
+phish_014_icann_validation.eml
+phish_001_netflix_renewal_scan.eml
+phish_008_nedbank_statement.eml

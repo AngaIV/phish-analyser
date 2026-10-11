@@ -38,3 +38,15 @@ def test_raw_originals_are_never_committed():
         cwd=ROOT, capture_output=True, text=True, check=True,
     ).stdout.strip()
     assert out == "", f"unsanitised originals are tracked in git:\n{out}"
+
+def _split(name):
+    return {l.strip() for l in (TESTDATA / "splits" / f"{name}.txt").read_text(encoding="utf-8").splitlines() if l.strip()}
+
+def test_splits_are_disjoint_and_complete():
+    dev, holdout = _split("dev"), _split("holdout")
+    labelled = {r["file"] for r in _rows()}
+    assert dev.isdisjoint(holdout), "a file appears in both splits"
+    assert dev | holdout == labelled, "splits do not cover every labelled file"
+
+def test_holdout_is_a_meaningful_size():
+    assert len(_split("holdout")) >= 9, "holdout too small to measure with"
