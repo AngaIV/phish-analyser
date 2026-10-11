@@ -1,28 +1,31 @@
-﻿using MimeKit;
-using PhishAnalyser.Engine.Models;
+﻿using PhishAnalyser.Engine.Parsing;
 using PhishAnalyser.Engine.Rules;
 
 if (args.Length == 0)
 {
-    Console.Error.WriteLine("Usage: Cli <path-to-eml-file>");
+    Console.Error.WriteLine("Usage: Cli <path-to-eml-file> [--headers]");
     return 1;
 }
 
-try
-{
-    using var stream = File.OpenRead(args[0]);
-    var message = MimeMessage.Load(stream);
+var showHeaders = args.Contains("--headers");
+var result = SafeMessageLoader.Load(args[0]);
 
-    var rule = new AuthResultsRule();
-    foreach (var finding in rule.Evaluate(message))
-    {
-        Console.WriteLine($"[{finding.Status}] {finding.Severity} {finding.RuleId}: {finding.Explanation}");
-    }
-}
-catch (Exception ex)
+foreach (var warning in result.Warnings)
+    Console.WriteLine($"warning: {warning}");
+
+if (!result.Succeeded)
 {
-    Console.Error.WriteLine($"could not parse: {ex.Message}");
+    Console.Error.WriteLine("could not parse");
     return 1;
 }
+
+var message = result.Message!;
+
+if (showHeaders)
+    foreach (var header in message.Headers)
+        Console.WriteLine($"header: {header.Field} = {header.Value.Replace("\n", " ")}");
+
+foreach (var finding in new AuthResultsRule().Evaluate(message))
+    Console.WriteLine($"[{finding.Status}] {finding.Severity} {finding.RuleId}: {finding.Explanation}");
 
 return 0;
