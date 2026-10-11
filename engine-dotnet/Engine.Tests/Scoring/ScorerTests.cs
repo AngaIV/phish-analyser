@@ -96,4 +96,25 @@ public class ScorerTests
         Assert.Equal(5, verdict.Score);
         Assert.Equal(BubbleColour.Red, verdict.Colour);
     }
+
+    [Fact]
+    public void OneWeightOneFindingPlusUnknown_IsNotGreen()
+    {
+        // Regression: this combination previously showed green despite an unchecked rule.
+        var verdict = Scorer.Score([
+            F(RuleStatus.Flagged, Severity.Low, 1),
+            F(RuleStatus.Unknown, Severity.Info, 0),
+        ]);
+
+        Assert.Equal(1, verdict.Number);
+        Assert.Equal(BubbleColour.Unknown, verdict.Colour);
+    }
+
+    [Fact]
+    public void OneWeightOneFindingWithNoUnknowns_IsStillGreen()
+    {
+        var verdict = Scorer.Score([F(RuleStatus.Flagged, Severity.Low, 1)]);
+
+        Assert.Equal(BubbleColour.Green, verdict.Colour);
+    }
 }
