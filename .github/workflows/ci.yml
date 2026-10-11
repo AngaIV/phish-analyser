@@ -18,15 +18,17 @@ jobs:
 
   typescript:
     runs-on: ubuntu-latest
-    if: hashFiles('engine-ts/package.json') != ''
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm run lint --workspaces --if-present
-      - run: npm test --workspaces --if-present
+      - name: TypeScript checks (skipped until engine-ts exists)
+        run: |
+          if [ ! -f engine-ts/package.json ]; then
+            echo "engine-ts/package.json not present yet — skipping."
+            exit 0
+          fi
+          npm ci
+          npm run lint --workspaces --if-present
+          npm test --workspaces --if-present
 
   python:
     runs-on: ubuntu-latest
