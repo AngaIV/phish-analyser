@@ -1,0 +1,8 @@
+Return-Path: 
+ 010b018577235c83-549c9401-5a0e-4952-8d6f-dfd6a0f4319f-000000@mailfrom.asroma.com
+Delivered-To: jose@monkey.org
+X-FDA: 80313087372.12.9FDC09E
+Received: from c183-123.smtp-out.eu-west-2.amazonses.com
+ (c183-123.smtp-out.eu-west-2.amazonses.com [76.223.183.123])
+	by imf20.b.hostedemail.com (Postfix) with ESMTP id 7D15B800C038
+	for <jose@monkey.org>; Tue,  3 Jan 2023 10:18:05 +0000 (UTC)
