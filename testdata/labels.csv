@@ -1,0 +1,31 @@
+file,label,source,confidence,notes
+phish_001_netflix_renewal_scan.eml,phishing,nazario-phishing-2023,high,netflix lookalike display name + spoof domain
+phish_002_teams_file_share.eml,phishing,nazario-phishing-2023,high,brand impersonation: Microsoft Teams share
+phish_003_fastway_courier.eml,phishing,nazario-phishing-2023,high,SA courier spoof; lookalike info.fastway.co.za
+phish_004_icloud_billing.eml,phishing,nazario-phishing-2023,high,Apple iCloud billing impersonation
+phish_005_paypal_unusual_activity.eml,phishing,nazario-phishing-2023,high,PayPal credential phish; mismatch domain
+phish_006_onedrive_share.eml,phishing,nazario-phishing-2023,high,OneDrive document-share phish
+phish_007_irs_tax_review.eml,phishing,nazario-phishing-2023,high,government tax impersonation
+phish_008_nedbank_statement.eml,phishing,nazario-phishing-2023,high,SA bank statement phish
+phish_009_dhl_delivery.eml,phishing,nazario-phishing-2023,high,DHL parcel phish; generic service.com addr
+phish_010_wetransfer_invoice.eml,phishing,nazario-phishing-2023,high,WeTransfer invoice phish; has List-Unsubscribe
+phish_011_amazon_signin.eml,phishing,nazario-phishing-2023,high,Amazon unusual sign-in
+phish_012_usps_package.eml,phishing,nazario-phishing-2023,high,USPS package delivery phish
+phish_013_wellsfargo_alert.eml,phishing,nazario-phishing-2023,high,Wells Fargo banking alert
+phish_014_icann_validation.eml,phishing,nazario-phishing-2023,high,ICANN domain validation phish
+phish_015_ups_delivery.eml,phishing,nazario-phishing-2023,high,UPS delivery suspension alert
+ham_001_fwd_camram_hashcash.eml,legitimate,spamassassin-easy_ham_2,high,CANARY: forwarded message (fwd)
+ham_002_oreilly_conference.eml,legitimate,spamassassin-easy_ham_2,high,CANARY: newsletter via third-party platform
+ham_003_rhn_errata_alert.eml,legitimate,spamassassin-easy_ham_2,high,CANARY: mailing-list distribution (Delivered-To)
+ham_004_securityfocus_news.eml,legitimate,spamassassin-easy_ham_2,high,security newsletter (list)
+ham_005_fm_news.eml,legitimate,spamassassin-easy_ham_2,high,"freshmeat newsletter (list, unsub)"
+ham_006_useperl_headlines.eml,legitimate,spamassassin-easy_ham_2,high,use Perl daily headlines
+ham_007_world_wide_words.eml,legitimate,spamassassin-easy_ham_2,high,World Wide Words newsletter
+ham_008_ntk_now.eml,legitimate,spamassassin-easy_ham_2,high,NTK now newsletter
+ham_009_vulnwatch_php.eml,legitimate,spamassassin-easy_ham_2,high,security advisory list (VulnWatch)
+ham_010_freebsd_advisory.eml,legitimate,spamassassin-easy_ham_2,high,FreeBSD security advisory (list)
+ham_011_cron_sitescooper.eml,legitimate,spamassassin-easy_ham_2,high,system/automated cron mail
+ham_012_uw_robot_mime.eml,legitimate,spamassassin-easy_ham_2,high,automated robot reply (MIME info)
+ham_013_blogged_item.eml,legitimate,spamassassin-easy_ham_2,high,personal-ish blog notification
+ham_014_hertz_deals.eml,legitimate,spamassassin-easy_ham_2,high,marketing/bulk-style deals email
+ham_015_securiteinfo.eml,legitimate,spamassassin-easy_ham_2,high,security news bulletin

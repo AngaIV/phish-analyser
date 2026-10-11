@@ -1,0 +1,41 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  dotnet:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet restore engine-dotnet
+      - run: dotnet build engine-dotnet --configuration Release --no-restore
+      - run: dotnet test engine-dotnet --configuration Release --no-build
+
+  typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: TypeScript checks (skipped until engine-ts exists)
+        run: |
+          if [ ! -f engine-ts/package.json ]; then
+            echo "engine-ts/package.json not present yet — skipping."
+            exit 0
+          fi
+          npm ci
+          npm run lint --workspaces --if-present
+          npm test --workspaces --if-present
+
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r tools-python/requirements.txt
+      - run: python -m pytest tools-python/tests

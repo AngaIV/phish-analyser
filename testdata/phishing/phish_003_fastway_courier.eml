@@ -1,0 +1,86 @@
+Return-Path: bounces+31140812-5f50-jose=monkey.org@em5269.xfund02.ml
+Delivered-To: jose@monkey.org
+X-FDA: 80264591148.60.0AD010A
+Received: from wrqvwpzc.outbound-mail.sendgrid.net
+ (wrqvwpzc.outbound-mail.sendgrid.net [149.72.147.236])
+	by imf14.b.hostedemail.com (Postfix) with ESMTP id B325D10CC7324
+	for <jose@monkey.org>; Wed, 21 Dec 2022 01:33:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xfund02.ml;
+	h=mime-version:from:subject:content-type:to:cc:content-type:from:
+	subject:to;
+	s=s1; bh=7c89FnVfktEJL7NoQuqrFWzGbTS4ehkRKV4YRSy6oBg=;
+	b=Pr29ObibcpNB5pGdDWPk0jZhX0O7zlyFuKg1IF8vFwXs1cCd40YftTSqff4tyuUZW1X+
+	jt4ejMUVXvESLJNC4dq+5GQdacGeaE/Ky4zckyW7H7Sxe9LgDrmH9Y79P89NERZWZyTXT8
+	40Xq+5cT4R2uofguuqptE9ffgDgEv1mTeu2SrZ7nymw/4yoTOdfh1lGn/lucPW37Z7tmMB
+	RKM4QGiyOX4DtxMTFDOxkMFd+Ufzqj5J/CVU5ZFLjULM2M58fdBgAHYLtKsPA/zZ8PbESp
+	ja85AVsbNe/e2gP5/PWb96F6nA0SlGqRILzzXWrD1q4EYBkoEVaNs6fBLAQrOAVQ==
+Received: by filterdrecv-74cfdccb9f-4z4r6 with SMTP id
+ filterdrecv-74cfdccb9f-4z4r6-1-63A2626C-3C
+        2022-12-21 01:33:32.631475307 +0000 UTC m=+2860077.990245553
+Received: from EC2AMAZ-TEUFE5B (unknown)
+	by geopod-ismtpd-canary-0 (SG)
+	with ESMTP id 2xWMPntOQWG-woaiHmLMqg
+	for <jose@monkey.org>;
+	Wed, 21 Dec 2022 01:33:32.473 +0000 (UTC)
+MIME-Version: 1.0
+From: Fastway
+	<info.fastway.co.za_info.fastway.co.za_info.fastway.co.za154565@em5269.xfund02.ml>
+Date: Wed, 21 Dec 2022 01:33:32 +0000 (UTC)
+Subject: Your shipment is on the way
+Content-Type: multipart/alternative;
+ boundary=--boundary_45892_9d7a2fb5-8e4e-4715-9e29-d1a76ee3cc89
+Message-ID: <2xWMPntOQWG-woaiHmLMqg@geopod-ismtpd-canary-0>
+X-SG-EID: 
+ =?us-ascii?Q?ejQYeIv8I+BYGNlHnrrZukcpjUhOVe+Alb367yu0=2FOt=2FIkcaDRxee8g8f64I5s?=
+ =?us-ascii?Q?8Ha9lN=2FNhDobjIYFRZFx6DOhaLz8A3t1gRK6gRD?=
+ =?us-ascii?Q?chLHW9T+cuJ=2FP3k6Ftx1InEAqwCaXdzUNLEzvZR?=
+ =?us-ascii?Q?YDNrtr8QqZVAFPIu=2FvHVW5Hl24wiZhvItrwglrY?=
+ =?us-ascii?Q?fdSC7VVYHhqX54TSDB+gjZQfEUjKqmthGMuMG3L?=
+ =?us-ascii?Q?r+krvhlnRHCu05NFFS5pPKiwcv1frcIqZicGSyv?=
+ =?us-ascii?Q?tnRFXm6cE1sWCBpQJJYcVvhWEutay+DI0iT1OOO?=
+ =?us-ascii?Q?dmM9i7n=2FjfXebBNqc=2FjIpE+c?=
+To: jose@monkey.org
+X-Entity-ID: Zl5znHITI9VFO+yDUYCoVg==
+ARC-Authentication-Results: i=1;
+	imf14.b.hostedemail.com;
+	dkim=pass header.d=xfund02.ml header.s=s1 header.b=Pr29Obib;
+	spf=pass (imf14.b.hostedemail.com: domain of
+ "bounces+31140812-5f50-jose=monkey.org@em5269.xfund02.ml" designates
+ 149.72.147.236 as permitted sender)
+ smtp.mailfrom="bounces+31140812-5f50-jose=monkey.org@em5269.xfund02.ml";
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1671586414;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=7c89FnVfktEJL7NoQuqrFWzGbTS4ehkRKV4YRSy6oBg=;
+	b=urjwtdy8ryNTJzaID+ReZd9JjQQ9IC6QD3VqeJeIFh8eLQvsrn83hdWYpPhkuASwW5Krj4
+	T0IES1djUNbky+tGeTo3lke6EtMif5OIijyYQHnlOkgWWTFMu4b1n0PPygnc1RqxlJzQBK
+	mqKp04YWlL9GxMAF3box5+1KgEuDoxw=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1671586414; a=rsa-sha256;
+	cv=none;
+	b=G6jizxooYK1Q8WkMIm7wDFT3samV6m0lccLyk8kDE2fyty5zMJjMjmDFVsqY5Nnw3U6X+s
+	go3QitTi8d5T4mTUYIV9OIe3i5wzYKZfcqQd4qYOtlTdyodtDPIMastrrtVxyKjGks6dBO
+	PhsiyVcV6/3p9ARoV/vnE7DIsK2+umM=
+X-Rspamd-Server: rspam03
+X-Rspamd-Queue-Id: B325D10CC7324
+Authentication-Results: imf14.b.hostedemail.com;
+	dkim=pass header.d=xfund02.ml header.s=s1 header.b=Pr29Obib;
+	spf=pass (imf14.b.hostedemail.com: domain of
+ "bounces+31140812-5f50-jose=monkey.org@em5269.xfund02.ml" designates
+ 149.72.147.236 as permitted sender)
+ smtp.mailfrom="bounces+31140812-5f50-jose=monkey.org@em5269.xfund02.ml";
+	dmarc=none
+X-Rspam-User: 
+X-Stat-Signature: bs6yfkozznotixdyoumg4b3erfuts3kh
+X-Spam-Status: No, score=1.60
+X-HE-Tag: 1671586413-560300
+X-HE-Meta: 
+ U2FsdGVkX19g5TYyDpyNOhsC2cVZRinNfbzKdznIehSO/NWVXIl0DqnEtG45pJbr0zkJY+A17rekPhl2P3ATaJF+TopgF69VCsS0w8U+Fvk/57QH5ZB3P0advPST8l6BvF+IjxA+Ajz4jO5lf+ZdAotpoqFPuh9IFdjQdHLyxpS/libWJtzT17RHbxgMb7Tk63tKQ2agd+vqM+0pNoUtWAeyHIrrNUGsMLJGg5ubEAqQiKyO4PcWnQmXjuT7NY0kP7wRZLbju5br4vHq09kWTqcNY5JtbyVXq8dmg1ckVlImKoQdI3IP+Wz12343u83OWS5L++Gk+JGsgkSc6UuBDqusS8Nhn8oK1dxEPgGVOrj2shcYr2gjqcoTt2pPXKLR5lze9TOoVYDGPWV6EnuvT0za+Zcfr4DDM14Xdm5EoWZ3aOj62leTcuudCormuDx4aZ0ghMO0ME6TxxcwQ8okejdQlZEnm6zMvTyCcBQXu1SuVkVSuKE4NlXjUkX+6LZBzCDPmRQcnz4Aqjr2EuKzUtxXaQxe/NHX0flSOKljkEFBazkxXSY5Xq7sK9v3wbEsc0Z4Zsaa6nyDIZUgTSuMLvEryg7uSmHP4KdK/3sSw6Xp/+FSemZ5eCbOR9WnkHszz9ufowbVASpTGRzcB09LpJpLz+/9jBiEm56eL6KuoMRh6aRIwULsQ5vdpBMhVecCoAxv65HcXacFKKIa6/+bnYYVxDVdonSMUazBX7uY5LRV7VybpCakbsWn1w5hr3VtE4bGeaZrAA/WciwQQQJsmzNd7BCLDMLe/EDE//iROetuGdBsfj0U0Oigb0SCdn1SSOrxwpqjHBUjV/P+IcAiFraI6xFcx7RxxE7BASwSgUJSBvzlI7e0so9uO1axgpT8b2VTSq+nVIWClOKG6ANf+ZIksIlZAZNi3bb+k/HADNQ0drSUMsRzEcWquEAcxwe2ubJrrMLYZcwkivdXi2SN5XTYPag
+ 6sYamg9+y1t+KAaa/ko0PS5OiwqeHRjJNzCNvZhQ7tOB+wkGYJaIoSERcUT4NKQqJx2BYuM1dsPOKyH6Y4Zh85T2RIxhzay2HjNt5H49sJJfdq96xsrOX/72NWZEZwco4harGoX1uPmD+Aae2LEIMGL+uelO049EPSv62vG6SDtstlxsIVMTJkH6XrbBARteztHH5lipdUmncCouu+jDnYSW1trabRxMTVTRL2nTiz82cBAGG0laGcp8TbXB8LxDjUApltB8RjmKeQ8Mz8W538KZq+W5sYtFocUmhlCbUAW45wEPFmw7H2hL9ZhNOfhmXBwmCWvHzrFjk2aBiRWJG5wf60cmxkWUqFgS1m8B/xP72VDNnh0I+s8NJeZ6ZyOO8SLx29eeyi0wdWFPXxqZcC0blnHzTdioAfykMFzZJJj3mgwSd0yDeUqD2ql+WZHqKR+9HLF895xi1KdHB+biokfH48OmwIw5h/lIwDNVSf27zJ6Mt7TRwmxxYmuHkwLyY0qcnII+VVNg/S+nAhMo/Lq9ufqDjBxNYrP8pPPx35Ap9O7Ivr5Toelg3ZSLQT7jyqh+CfBc3X8D24UF49eOsJpRqrLIdJ8ggxj3dDITTnXLhaH7NjZGy9EPQ+dx3HUnDo3xz0MWd4UnvTdCqWh/nlWbDF248ccMN6xZp2R5AW55DDksRrbKLd6lSQI83tF4t1MEa4l5Q/VsNYod55L7D1QiH/ErxkMmOtJ9iUYJyRwjAvSOgv6ZokhDs5vD91SO4Z4RpaVZKQ8TuxmR9gkLCm8KtRYG2TPVJS8BUe9mUjvU+OaYHTYbz3GZ9BDyrF5hhyXesuceFDKV1QJsnTYrvvR4zoA8RCdMl4LtiI1b/5PVjEdFXiPMtmAZMB+gqOgY4rK4xiRXGtist3V8f1x2m5Nrzxqvq9gPkwHnB
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 5

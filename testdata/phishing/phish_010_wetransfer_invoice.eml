@@ -1,0 +1,73 @@
+Return-Path: wetransfer@digitechitsupport.com
+Delivered-To: jose@monkey.org
+X-FDA: 80869648944.25.B88414D
+Received: from smtp.digitechitsupport.com (smtp.digitechitsupport.com
+ [176.124.32.48])
+	by imf22.b.hostedemail.com (Postfix) with ESMTP id DFB6F160009
+	for <jose@monkey.org>; Mon,  5 Jun 2023 19:15:49 +0000 (UTC)
+Authentication-Results: imf22.b.hostedemail.com;
+	dkim=pass header.d=digitechitsupport.com header.s=default header.b=qio6qrH8;
+	dmarc=pass (policy=reject) header.from=digitechitsupport.com;
+	spf=pass (imf22.b.hostedemail.com: domain of wetransfer@digitechitsupport.com
+ designates 176.124.32.48 as permitted sender)
+ smtp.mailfrom=wetransfer@digitechitsupport.com
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1685992550;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:list-unsubscribe:dkim-signature;
+	bh=5dmBm+oMh4lww8C2YEBnzDfnG/S3jyaNc4OR/FxtmM8=;
+	b=rkzuhbMBgoK1eW5UGuEZugjzAvFySxKFd16C9ZRnYZV07CTQv4B7CTF7Nx0TLCVKJ9cULr
+	T4zu7ldtiB1S7MIOmJVrj5frtQ1FbCDxPVh1z/lv+DS2n9KkQSDxBVgV0ZK7n+WrFOgYpU
+	eN2M70jKh/nE47vhULCIlb4m3jsJE+E=
+ARC-Authentication-Results: i=1;
+	imf22.b.hostedemail.com;
+	dkim=pass header.d=digitechitsupport.com header.s=default header.b=qio6qrH8;
+	dmarc=pass (policy=reject) header.from=digitechitsupport.com;
+	spf=pass (imf22.b.hostedemail.com: domain of wetransfer@digitechitsupport.com
+ designates 176.124.32.48 as permitted sender)
+ smtp.mailfrom=wetransfer@digitechitsupport.com
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1685992550; a=rsa-sha256;
+	cv=none;
+	b=MKpQzK/DfXEja/b7frI0+UmHAKqqMzOWAntSsbkLOaACqx1sjSbp6qWTxTV2Clhj29xBhG
+	qjoy03aru4cM+N4jlRVBVUGGzw4xSkJcgJsRRWdkaDK4jrHR6xyvBr0Er7QwjakFzuER6a
+	+ei4D3ySAzZC0iFeZ6o9BOSnytds5J8=
+Received: from [138.68.158.119] (unknown [138.68.158.119])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.digitechitsupport.com (Postfix) with ESMTPSA id 8EBC9461C3
+	for <jose@monkey.org>; Mon,  5 Jun 2023 19:13:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
+	d=digitechitsupport.com; s=default; h=Reply-To:From:To:Subject:
+	MIME-Version:List-Unsubscribe:Organization:Content-Type; bh=lbCI
+	uzC0sVvlr0cjCW7bkGE/RR4=; b=qio6qrH83GSZ9Hge+abi6sy/7VRjwLRxFfAG
+	AR9GLBHjp0YfvD+b9PL0uNtkF9dEISY1T8HThJd8HyCxxWiUotm6eDFXiJfMKpaK
+	m6oX2cvZZkRicthD2T9PtMMWeu8glfMi+FZJwzd30AFzcTISckxgtnr2WwkJRLJy
+	BIHyFcIC5mgGzQ5MqSw4iv5XpV9B/Js9NIXUXxEhQ4kxD4IKDpn89RmG7/utl0q6
+	upzGQe/6q40r9VjmHFj6PK7xu7jRWmFCunhx059Otw5SxW0a+G/xGgyQgT5F7qA7
+	fI2GP279kXsAhHisprIAJMJfBxcwG9Xx5aTuEbHvMku52pDyFw==
+Reply-To: WeTransfer <no-reply@techydeets.com>
+From: WeTransfer <wetransfer@digitechitsupport.com>
+To: jose@monkey.org
+Subject: WeTransfer File: Revised-002EM Invoice PO-091K43Z9 (Biogen)
+Date: 5 Jun 2023 12:13:47 -0700
+Message-ID: <20230605121347.D38E6C2F26D41B32@digitechitsupport.com>
+MIME-Version: 1.0
+List-Unsubscribe: <mailto:wetransfer@digitechitsupport.com>
+Organization: Foobar Inc.
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0012_E7785F56.64F67464"
+X-Rspamd-Server: rspam11
+X-Rspamd-Queue-Id: DFB6F160009
+X-Stat-Signature: nsndxa53guq1dh1tsknn9mshhgb5zdhf
+X-Rspam-User: 
+X-Spam-Status: No, score=6.39
+X-HE-Tag: 1685992549-572533
+X-HE-Meta: 
+ U2FsdGVkX18EK2AVwqCpl2qcxKl2lcFP9vgQV6oIGPjR+74S9G1Yxm5gwEIodj62+9Nh73KY3QYVAIaxRac2PXblrzyc2+9PGJmVc2+o0/XfR/ZVyZ98HKaSdnvkHdhSjuppBhY4PywyEcwELG0sPDMgfre0mxNU1G+KcJokdfvLTn+ztWK8kaemRV7kU3kM1grJZTqIXYY6tFAKB59Sc2gU872LOZcy67JqcVGMcKE=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 147

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phish Analyser — Bubble &amp; Panel</title>
+<style>
+  :root {
+    --bg:      #F6F8FA;
+    --surface: #FFFFFF;
+    --ink:     #0F172A;
+    --ink-2:   #475569;
+    --muted:   #94A3B8;
+    --line:    #E9EDF2;
+    --safe:    #0EA47A;
+    --warn:    #E0900B;
+    --danger:  #E5484D;
+    --info:    #3B82F6;
+    --radius:  16px;
+    --shadow-sm: 0 1px 2px rgba(15,23,42,.06);
+    --shadow-md: 0 6px 20px rgba(15,23,42,.10), 0 1px 3px rgba(15,23,42,.06);
+    --shadow-lg: 0 20px 48px rgba(15,23,42,.16), 0 2px 8px rgba(15,23,42,.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 40px 36px 64px;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  h1 { font-size: 19px; font-weight: 650; letter-spacing: -.01em; }
+  .sub { font-size: 13px; color: var(--ink-2); margin-top: 3px; }
+  h2 {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: .09em; color: var(--muted);
+    margin: 36px 0 18px;
+  }
+  .row { display: flex; flex-wrap: wrap; gap: 34px; align-items: flex-end; }
+
+  /* ---------- Bubble: ring gauge ---------- */
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 104px; }
+  .cell .label { font-size: 11.5px; color: var(--ink-2); text-align: center; line-height: 1.35; }
+
+  .bubble {
+    position: relative; width: 46px; height: 46px; border-radius: 50%;
+    background: var(--surface);
+    box-shadow: var(--shadow-md);
+    display: grid; place-items: center;
+    transition: transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s;
+    cursor: pointer;
+  }
+  .bubble:hover { transform: translateY(-2px) scale(1.04); box-shadow: var(--shadow-lg); }
+  .bubble:focus-visible { outline: 2px solid var(--info); outline-offset: 3px; }
+  .bubble .ring { position: absolute; inset: 0; transform: rotate(-90deg); }
+  .bubble .ring circle { fill: none; stroke-width: 3.5; }
+  .bubble .track { stroke: #EDF1F6; }
+  .bubble .arc { stroke-linecap: round; transition: stroke-dashoffset .5s ease; }
+  .bubble .glyph { position: relative; font-size: 15px; font-weight: 640; letter-spacing: -.02em; }
+
+  .safe   .arc { stroke: var(--safe); }
+  .safe   .glyph { color: var(--safe); font-size: 17px; }
+  .warn   .arc { stroke: var(--warn); }
+  .warn   .glyph { color: var(--warn); }
+  .danger .arc { stroke: var(--danger); }
+  .danger .glyph { color: var(--danger); }
+  .idle   .arc { stroke: var(--muted); }
+  .idle   .glyph { color: var(--muted); }
+  .idle   .arc { animation: sweep 1.15s linear infinite; transform-origin: 23px 23px; }
+  .unknown .arc { stroke: #C3CBD6; stroke-dasharray: 3 6 !important; stroke-dashoffset: 0 !important; }
+  .unknown .glyph { color: var(--muted); font-weight: 600; }
+
+  @keyframes sweep { to { transform: rotate(360deg); } }
+
+  .tooltip {
+    position: absolute; bottom: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: rgba(15,23,42,.94);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    color: #fff; font-size: 11.5px; font-weight: 500; letter-spacing: -.005em;
+    padding: 6px 11px; border-radius: 8px; white-space: nowrap;
+    box-shadow: var(--shadow-md);
+    opacity: 0; pointer-events: none; transition: opacity .16s, transform .16s;
+  }
+  .cell:hover .tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .tooltip::after {
+    content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    border: 5px solid transparent; border-top-color: rgba(15,23,42,.94);
+  }
+
+  /* ---------- Detail panel ---------- */
+  .panel {
+    width: 372px; background: var(--surface); border-radius: var(--radius);
+    box-shadow: var(--shadow-lg); overflow: hidden;
+    border: 1px solid rgba(15,23,42,.04);
+  }
+  .panel-head { padding: 18px 20px 16px; border-bottom: 1px solid var(--line); }
+  .verdict { display: flex; align-items: center; gap: 9px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .dot.danger { background: var(--danger); box-shadow: 0 0 0 4px rgba(229,72,77,.12); }
+  .verdict h3 { font-size: 15.5px; font-weight: 640; letter-spacing: -.01em; }
+  .meta { display: flex; align-items: center; gap: 7px; margin-top: 7px; font-size: 11.5px; color: var(--muted); }
+  .chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; color: var(--ink-2); background: #F4F7FA;
+    border-radius: 20px; padding: 3px 9px 3px 7px;
+  }
+  .chip svg { flex-shrink: 0; }
+
+  .panel-body { padding: 4px 0; }
+  .finding { padding: 13px 20px; border-bottom: 1px solid var(--line); }
+  .finding:last-child { border-bottom: none; }
+  .finding:hover { background: #FBFCFD; }
+  .f-top { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; }
+  .f-label { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; }
+  .f-label.high { color: var(--danger); }
+  .f-label.med  { color: var(--warn); }
+  .f-label.low  { color: #8A6D3B; }
+  .f-label.info { color: var(--info); }
+  .f-rule { font-size: 10.5px; color: var(--muted); letter-spacing: .01em; }
+  .f-text { font-size: 13px; color: var(--ink); letter-spacing: -.003em; }
+
+  details { margin-top: 7px; }
+  summary {
+    font-size: 11.5px; color: var(--ink-2); cursor: pointer;
+    list-style: none; display: inline-flex; align-items: center; gap: 4px;
+    border-radius: 5px; padding: 2px 4px; margin-left: -4px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { color: var(--ink); background: #F1F5F9; }
+  summary:focus-visible { outline: 2px solid var(--info); outline-offset: 1px; }
+  summary .chev { transition: transform .18s; font-size: 9px; }
+  details[open] summary .chev { transform: rotate(90deg); }
+  .raw {
+    margin-top: 6px; font-family: "SF Mono", ui-monospace, Consolas, monospace;
+    font-size: 11px; line-height: 1.55; color: var(--ink-2);
+    background: #F8FAFC; border: 1px solid var(--line); border-radius: 8px;
+    padding: 9px 11px; white-space: pre-wrap; word-break: break-word;
+  }
+
+  .advice {
+    display: flex; gap: 10px; margin: 0 14px 14px;
+    background: #FFFBEB; border: 1px solid #FDE9B8; border-radius: 10px;
+    padding: 11px 13px; font-size: 12.5px; color: #7A4E00;
+  }
+  .advice strong { font-weight: 620; }
+  .advice svg { flex-shrink: 0; margin-top: 1px; }
+
+  .panel-foot { display: flex; gap: 8px; padding: 13px 16px; border-top: 1px solid var(--line); background: #FCFDFE; }
+  .btn {
+    font: inherit; font-size: 12.5px; font-weight: 550; letter-spacing: -.005em;
+    padding: 8px 12px; border-radius: 9px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-2);
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .btn:hover { background: #F6F8FA; color: var(--ink); }
+  .btn:focus-visible { outline: 2px solid var(--info); outline-offset: 1px; }
+  .btn.primary {
+    background: var(--danger); border-color: var(--danger); color: #fff;
+    box-shadow: 0 1px 2px rgba(229,72,77,.3);
+  }
+  .btn.primary:hover { background: #D93A3F; border-color: #D93A3F; color: #fff; }
+  .btn.ghost { border-color: transparent; background: transparent; }
+  .btn.ghost:hover { background: #F1F5F9; }
+
+  /* ---------- Dark surface ---------- */
+  .dark {
+    background: #10151C; border-radius: 14px; padding: 22px 24px;
+    display: flex; gap: 30px; align-items: flex-end; box-shadow: var(--shadow-md);
+  }
+  .dark .cell .label { color: #8494A8; }
+  .dark .bubble { background: #1A212B; box-shadow: 0 4px 14px rgba(0,0,0,.45); }
+  .dark .bubble .track { stroke: #2A3442; }
+  .dark .unknown .arc { stroke: #54627A; }
+
+  .strings { display: grid; gap: 9px; max-width: 640px; }
+  .strings p {
+    font-size: 12.5px; color: var(--ink-2); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 10px; padding: 11px 14px;
+    box-shadow: var(--shadow-sm);
+  }
+  .strings code {
+    font-family: "SF Mono", ui-monospace, Consolas, monospace; font-size: 11px;
+    color: var(--warn); background: #FFF8E8; padding: 1.5px 6px; border-radius: 5px;
+    margin-right: 6px;
+  }
+  .notes { font-size: 12.5px; color: var(--ink-2); max-width: 660px; margin-top: 14px; }
+  .notes li { margin: 5px 0 0 16px; }
+</style>
+</head>
+<body>
+
+  <h1>Phish Analyser — reading-pane bubble &amp; findings panel</h1>
+  <div class="sub">Ring gauge shows risk level; number shows count of flagged checks. 46&nbsp;px, bottom-right of the reading pane, draggable.</div>
+
+  <h2>Bubble states</h2>
+  <div class="row">
+    <div class="cell">
+      <div class="bubble safe" tabindex="0" role="img" aria-label="No suspicious signals">
+        <svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="0"/></svg>
+        <span class="glyph">&#10003;</span>
+      </div>
+      <div class="label">Safe &#183; no flags</div>
+    </div>
+
+    <div class="cell">
+      <div class="bubble warn" tabindex="0" role="img" aria-label="3 suspicious signals, medium risk">
+        <svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="56"/></svg>
+        <span class="glyph">3</span>
+      </div>
+      <div class="label">Low / medium</div>
+    </div>
+
+    <div class="cell">
+      <div class="bubble danger" tabindex="0" role="img" aria-label="7 suspicious signals, high risk">
+        <svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="14"/></svg>
+        <span class="glyph">7</span>
+      </div>
+      <div class="label">High risk</div>
+    </div>
+
+    <div class="cell">
+      <div class="bubble idle" tabindex="0" role="img" aria-label="Analysing">
+        <svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="40 125.7" stroke-dashoffset="0"/></svg>
+      </div>
+      <div class="label">Analysing</div>
+    </div>
+
+    <div class="cell">
+      <div class="bubble unknown" tabindex="0" role="img" aria-label="Could not analyse">
+        <svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20"/></svg>
+        <span class="glyph">&#8212;</span>
+      </div>
+      <div class="label">Could not analyse</div>
+    </div>
+
+    <div class="cell">
+      <div class="bubble warn" tabindex="0" role="img" aria-label="3 suspicious signals">
+        <svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="56"/></svg>
+        <span class="glyph">3</span>
+        <span class="tooltip">3 suspicious signals</span>
+      </div>
+      <div class="label">Hover &#183; tooltip</div>
+    </div>
+  </div>
+
+  <ul class="notes">
+    <li><strong>Fail-safe:</strong> the dashed grey ring is never green — when headers are missing the tool says so rather than showing an all-clear.</li>
+    <li><strong>Accessibility:</strong> the number is never the only signal — colour is paired with a tick, a dash, or the ring fill.</li>
+    <li>Snoozed / disabled: the bubble fades out rather than showing a muted state over the message.</li>
+  </ul>
+
+  <h2>Findings panel</h2>
+  <div class="panel">
+    <div class="panel-head">
+      <div class="verdict">
+        <span class="dot danger"></span>
+        <h3>High risk</h3>
+      </div>
+      <div class="meta">
+        <span>7 flagged checks</span>
+        <span class="chip">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Analysed on this device
+        </span>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="finding">
+        <div class="f-top"><span class="f-label high">High</span><span class="f-rule">auth-results</span></div>
+        <div class="f-text">The sender's domain failed SPF. The server that sent this message is not authorised to send for this domain.</div>
+        <details>
+          <summary><span class="chev">&#9656;</span> Technical detail</summary>
+          <div class="raw">Authentication-Results: imf20.b.hostedemail.com;
+  spf=fail smtp.mailfrom=example.com</div>
+        </details>
+      </div>
+
+      <div class="finding">
+        <div class="f-top"><span class="f-label med">Medium</span><span class="f-rule">identity-mismatch</span></div>
+        <div class="f-text">The Reply-To address goes to a different domain than the sender. Replies would not reach the person who appears to have written this.</div>
+        <details>
+          <summary><span class="chev">&#9656;</span> Technical detail</summary>
+          <div class="raw">From: support@example.com
+Reply-To: bob@phish-site.ru</div>
+        </details>
+      </div>
+
+      <div class="finding">
+        <div class="f-top"><span class="f-label low">Low</span><span class="f-rule">display-name-spoof</span></div>
+        <div class="f-text">The display name contains an email address that does not match the real sender.</div>
+        <details>
+          <summary><span class="chev">&#9656;</span> Technical detail</summary>
+          <div class="raw">From: "PayPal &lt;admin@paypal.com&gt;" &lt;support@kplusinternational.com&gt;</div>
+        </details>
+      </div>
+
+      <div class="finding">
+        <div class="f-top"><span class="f-label info">Info</span><span class="f-rule">structural</span></div>
+        <div class="f-text">This message has no List-Unsubscribe header, which is unusual for bulk mail.</div>
+        <details>
+          <summary><span class="chev">&#9656;</span> Technical detail</summary>
+          <div class="raw">List-Unsubscribe: (missing)</div>
+        </details>
+      </div>
+    </div>
+
+    <div class="advice">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <div><strong>Do not click links or reply.</strong> Verify the sender through another channel.</div>
+    </div>
+
+    <div class="panel-foot">
+      <button class="btn primary">Report phishing</button>
+      <button class="btn">Not suspicious</button>
+      <button class="btn ghost">Settings</button>
+    </div>
+  </div>
+
+  <h2>Dark surface</h2>
+  <div class="dark">
+    <div class="cell">
+      <div class="bubble safe"><svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="0"/></svg><span class="glyph">&#10003;</span></div>
+      <div class="label">Safe</div>
+    </div>
+    <div class="cell">
+      <div class="bubble warn"><svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="56"/></svg><span class="glyph">3</span></div>
+      <div class="label">Medium</div>
+    </div>
+    <div class="cell">
+      <div class="bubble danger"><svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="14"/></svg><span class="glyph">7</span></div>
+      <div class="label">High</div>
+    </div>
+    <div class="cell">
+      <div class="bubble unknown"><svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20"/></svg><span class="glyph">&#8212;</span></div>
+      <div class="label">Unknown</div>
+    </div>
+  </div>
+
+  <h2>Explanation strings</h2>
+  <div class="strings">
+    <p><code>SPF fail</code> The sender's domain failed SPF. The server that sent this message is not authorised to send for this domain.</p>
+    <p><code>DKIM fail</code> The signature on this message is not valid for this sender.</p>
+    <p><code>DMARC fail</code> This message did not pass the domain's authentication policy.</p>
+  </div>
+
+</body>
+</html>

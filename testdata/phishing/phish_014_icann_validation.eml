@@ -1,0 +1,70 @@
+Return-Path: info@mynewsg.com
+Delivered-To: jose@monkey.org
+X-FDA: 81358722270.06.14B6E7D
+Received: from mail.mynewsg.com (mail.mynewsg.com [194.163.44.149])
+	by imf22.b.hostedemail.com (Postfix) with ESMTP id 1013516000A
+	for <jose@monkey.org>; Wed, 18 Oct 2023 13:52:33 +0000 (UTC)
+Authentication-Results: imf22.b.hostedemail.com;
+	dkim=pass header.d=mynewsg.com header.s=default header.b=AUFwktEQ;
+	spf=pass (imf22.b.hostedemail.com: domain of info@mynewsg.com designates
+ 194.163.44.149 as permitted sender) smtp.mailfrom=info@mynewsg.com;
+	dmarc=pass (policy=reject) header.from=mynewsg.com
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1697637154;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:list-unsubscribe:dkim-signature;
+	bh=bNFzY4WwL6UlksrmLKEq0Tx3YUm19TVy3nHOJTyLBrk=;
+	b=RAFBWhlBnsat06cjoBhMztx1FI61UKtzJNJ6hXFjnuecw9KjZss38gx7JK2FwFpuvrs+ql
+	G1KsdqANLvMGIqPoPXsfzv+BIIYmxQDakKsABlQWT9nB2e7ie2zXmQ14uzNzsMihv46x8T
+	R+g15BxUIJmxB7yHdLP3T3mj1Lwxt+I=
+ARC-Authentication-Results: i=1;
+	imf22.b.hostedemail.com;
+	dkim=pass header.d=mynewsg.com header.s=default header.b=AUFwktEQ;
+	spf=pass (imf22.b.hostedemail.com: domain of info@mynewsg.com designates
+ 194.163.44.149 as permitted sender) smtp.mailfrom=info@mynewsg.com;
+	dmarc=pass (policy=reject) header.from=mynewsg.com
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1697637154; a=rsa-sha256;
+	cv=none;
+	b=hxvW8N7sJQoY2bdpjmTli4J9riHYTFwU80iLzcnFFarv0sL7ay6+vXPaix6/MowBavRLUK
+	xbQPjn8k98HeIYfWD2qd2RH+YuOvEKSb72yPRXt0hAucCKNTFUMfwnFBS89mbWeGQlMzDa
+	8lIzNg8bBJyGlF6lZFVFYshimgEjjMk=
+Received: from ip-144-155.dataclub.eu (unknown [109.248.144.155])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.mynewsg.com (Postfix) with ESMTPSA id 8D0F4485C14
+	for <jose@monkey.org>; Wed, 18 Oct 2023 12:16:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
+	d=mynewsg.com; s=default; h=Reply-To:From:To:Subject:
+	MIME-Version:List-Unsubscribe:Organization:Content-Type; bh=ehBl
+	rgAoLCF6W6vbbVXvjtOELGs=; b=AUFwktEQiprd0FnkeRX/lcgF1IZ6IBbaV4yn
+	kcpyBCax/6+7iiLc1rOsx8Ro5+qsW3mNmppgDyBJsKerJE/iEJw3wcEZZwkkocD+
+	suE7Nvo/p+NTPatxywRU+XPs7CcTaWqRxTZckiyYZNM2Mj1QNKsnlRO4VE8tbtJ+
+	7MjMus4tzHnD2nr69jsS8gVUgkdaTDWEiRTyzCvjN73vKceHGSi87MKMBBiqk49c
+	2WGcOXXrLuNOkVUYaFE4sLl7foDz5WAPFKm0e8SH7Dmx42bzMx8iUkXVUxfFbo3w
+	hk1zbcLu6swRgZp346EhzgH26yCrolEWW1ANXQ280CHvejyzqA==
+Reply-To: ICANN Domain Validation <reply-to@mynewsg.com>
+From: ICANN Domain Validation <info@mynewsg.com>
+To: jose@monkey.org
+Subject: Action Required: Domain owner validation for monkey.org user(s)
+Date: 18 Oct 2023 14:15:43 +0200
+Message-ID: <20231018141543.77BDC9EB03CD771A@mynewsg.com>
+MIME-Version: 1.0
+List-Unsubscribe: <mailto:info@mynewsg.com>
+Organization: Foobar Inc.
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_0012_09F4474E.B8CA2288"
+X-Rspamd-Queue-Id: 1013516000A
+X-Stat-Signature: f486n9h7iety4s76b5zxh456baxu11jx
+X-Rspam-User: 
+X-Spam-Status: No, score=0.49
+X-Rspamd-Server: rspam05
+X-HE-Tag: 1697637153-52071
+X-HE-Meta: 
+ U2FsdGVkX19ncP5ZGScMNYiDWmuV8U0BNoptNABTEll0F8AVCxFJXurYK0q9exsmYU1ykCJ37vyfrCHJfE5OjqxjYeElU01hZ3VqJpIcBaEuaPl7+CsFguQPUfCYCIzVYcQlqz/2x9TQXgoCNEZkHKPmCR6J5EuN6RcXPFSW0SWLfv40fiYxSjoEXlXsbODKUdDrfkdlHynqgbjessdEkFSgQuXy1ZeEdNU3AkTifvE=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 319

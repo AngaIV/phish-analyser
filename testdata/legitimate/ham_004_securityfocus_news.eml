@@ -1,0 +1,33 @@
+From linux-secnews-return-67-legit-lists-secfocus=jmason.org@securityfocus.com  Tue Aug  6 17:21:19 2002
+Return-Path: <linux-secnews-return-67-legit-lists-secfocus=spamassassin.taint.org@securityfocus.com>
+Delivered-To: yyyy@localhost.netnoteinc.com
+Received: from localhost (localhost [127.0.0.1])
+	by phobos.labs.netnoteinc.com (Postfix) with ESMTP id 6B029440C8
+	for <jm@localhost>; Tue,  6 Aug 2002 12:21:00 -0400 (EDT)
+Received: from phobos [127.0.0.1]
+	by localhost with IMAP (fetchmail-5.9.0)
+	for jm@localhost (single-drop); Tue, 06 Aug 2002 17:21:00 +0100 (IST)
+Received: from outgoing.securityfocus.com (outgoing3.securityfocus.com
+    [66.38.151.27]) by dogma.slashnull.org (8.11.6/8.11.6) with ESMTP id
+    g76GLIk09510 for <legit-lists-secfocus@jmason.org>; Tue, 6 Aug 2002
+    17:21:18 +0100
+Received: from lists.securityfocus.com (lists.securityfocus.com
+    [66.38.151.19]) by outgoing.securityfocus.com (Postfix) with QMQP id
+    9D913A30D7; Tue,  6 Aug 2002 10:12:42 -0600 (MDT)
+Mailing-List: contact linux-secnews-help@securityfocus.com; run by ezmlm
+Precedence: bulk
+List-Id: <linux-secnews.list-id.securityfocus.com>
+List-Post: <mailto:linux-secnews@securityfocus.com>
+List-Help: <mailto:linux-secnews-help@securityfocus.com>
+List-Unsubscribe: <mailto:linux-secnews-unsubscribe@securityfocus.com>
+List-Subscribe: <mailto:linux-secnews-subscribe@securityfocus.com>
+Delivered-To: mailing list linux-secnews@securityfocus.com
+Delivered-To: moderator for linux-secnews@securityfocus.com
+Received: (qmail 14854 invoked from network); 6 Aug 2002 16:05:02 -0000
+Date: Tue, 6 Aug 2002 10:03:52 -0600 (MDT)
+From: John Boletta <jboletta@securityfocus.com>
+To: linux-secnews@securityfocus.com
+Subject: SecurityFocus Linux Newsletter #92
+Message-Id: <Pine.LNX.4.43.0208061003200.9767-100000@mail.securityfocus.com>
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII

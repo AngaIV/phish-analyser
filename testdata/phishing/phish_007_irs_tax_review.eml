@@ -1,0 +1,84 @@
+Return-Path: bounces+32291408-3b20-jose=monkey.org@em7020.itgcoservices.com
+Delivered-To: jose@monkey.org
+X-FDA: 80438287146.23.F96E12F
+Received: from wfbtscqq.outbound-mail.sendgrid.net
+ (wfbtscqq.outbound-mail.sendgrid.net [159.183.108.68])
+	by imf21.b.hostedemail.com (Postfix) with ESMTP id 11FCE3BC00
+	for <jose@monkey.org>; Mon,  6 Feb 2023 22:20:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=itgcoservices.com;
+	h=content-type:mime-version:subject:from:to:cc:content-type:from:
+	subject:to;
+	s=s1; bh=RkBY+AGwqfEumhSagmbmZjN9jSaTZXP2OwDlKLoWtPk=;
+	b=KZE2sH8nOXb1KdR7Fgwf/IoE1jOrsuRGn4irzQPVvKJvTQUToZyPGwhmPrXP6gWj6tPf
+	fhsoqwGV8NLYcGopFLOomCknbeqvLd57kqcVoM5huRPHiaRl4PoDS7ZXdZWfpqIAioh9aJ
+	TGPyOU42XvvHYtvtZNARIozOp2ZyCAC9ZYbdttrWKHHWCIi/l3oEhkivAdsPj6eifnpLXB
+	9gw++/rTfZRfx/gFH4D31UwOIWo8GPntXYTajruYqvA11iEJhcArjjAnxeV0bdikvTTRnB
+	NJPO46p75LK4YtXo2+ZHZFhn5ZDGjX7Tf6tlCosl8BJHc/szBMB0BMdylZPmNiSQ==
+Received: by filterdrecv-7cdd7b88b7-cbt4w with SMTP id
+ filterdrecv-7cdd7b88b7-cbt4w-1-63E17D2F-5A
+        2023-02-06 22:20:31.88781407 +0000 UTC m=+6995538.164878987
+Received: from Emmet.FEDNET.net (unknown)
+	by geopod-ismtpd-5-5 (SG)
+	with ESMTP
+	id oOuHKb0zRcOlPI0FBCMl-w
+	Mon, 06 Feb 2023 22:20:31.340 +0000 (UTC)
+Content-Type: multipart/mixed; boundary="===============0761133919=="
+MIME-Version: 1.0
+Subject: Tax : Kindly review document immediately.
+From: "do_not_reply@irs.gov" <cynthia@itgcoservices.com>
+Date: Mon, 06 Feb 2023 22:20:32 +0000 (UTC)
+Message-ID: <oOuHKb0zRcOlPI0FBCMl-w@geopod-ismtpd-5-5>
+X-SG-EID: 
+ =?us-ascii?Q?HapJGx6XXZbCsghIW9VllxrsG3yMEGgq0WKy4oXJqWFFREJds4aiFXiBDIzxIg?=
+ =?us-ascii?Q?0Kzy8XpjP0KGhTvVrIfUPlRHTrEhV9W6NFCnEe9?=
+ =?us-ascii?Q?oq9ZV6PBxtEKTaEHUP6uLWbgY5B71tqICIS37CW?=
+ =?us-ascii?Q?8fuMJ8s3fPAVeLGlv6i3X8t2fqUahSf2dU9iw3k?=
+ =?us-ascii?Q?gKyP3VFBBMgSAS8YvIElmbzQgL8XxOewm5q22Qr?=
+ =?us-ascii?Q?ogdtuv72M5IF+eSn5v4eclnPNvNSkfaLT57LnWt?=
+ =?us-ascii?Q?ONsyUFl68LblG8Dc7ddhQ=3D=3D?=
+To: Recipients <cynthia@itgcoservices.com>
+X-Entity-ID: Bozd5LfqyaJosPoDIvuFfQ==
+ARC-Authentication-Results: i=1;
+	imf21.b.hostedemail.com;
+	dkim=pass header.d=itgcoservices.com header.s=s1 header.b=KZE2sH8n;
+	dmarc=none;
+	spf=pass (imf21.b.hostedemail.com: domain of
+ "bounces+32291408-3b20-jose=monkey.org@em7020.itgcoservices.com" designates
+ 159.183.108.68 as permitted sender)
+ smtp.mailfrom="bounces+32291408-3b20-jose=monkey.org@em7020.itgcoservices.com"
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1675722033;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=RkBY+AGwqfEumhSagmbmZjN9jSaTZXP2OwDlKLoWtPk=;
+	b=4AdmfWJbc2/sSoN47plKvg/lLI/1eLVUZXyu8gCX4uUlGtLVm8TXfwv3y8nwMCiWD5BAUJ
+	DOlSAQ3+QeHl8OzVqXrvFxtxJyy+/8cd63aMS4DP9VVe4WsPBAvYY7BVxaVkdYUDZEmtd0
+	zucI4/vWS2ZNLgW5PRfZ9sUmYOmvjro=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1675722033; a=rsa-sha256;
+	cv=none;
+	b=nW2jdimyvFhq6QXUhT3vW+T27GCLQ33t7iqaXvtIsNsCEYgdA96TSanUcEe8XWCswlAbGX
+	MO6UCDUQsojKdQ1ASZGKICECypsoi8BeE69IYyWOMeRlbCKN4nMECboRPx7ETrXIkaQnzd
+	hqNvkLiuNMyXwX+xK904bg9d4BzVsCk=
+X-Rspamd-Server: rspam06
+X-Rspam-User: 
+Authentication-Results: imf21.b.hostedemail.com;
+	dkim=pass header.d=itgcoservices.com header.s=s1 header.b=KZE2sH8n;
+	dmarc=none;
+	spf=pass (imf21.b.hostedemail.com: domain of
+ "bounces+32291408-3b20-jose=monkey.org@em7020.itgcoservices.com" designates
+ 159.183.108.68 as permitted sender)
+ smtp.mailfrom="bounces+32291408-3b20-jose=monkey.org@em7020.itgcoservices.com"
+X-Spam-Status: Yes, score=54.40
+X-Rspamd-Queue-Id: 11FCE3BC00
+X-Stat-Signature: gtreu98o66616at6uecg4yqm8pmzredt
+X-HE-Tag: 1675722032-161170
+X-HE-Meta: 
+ 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
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 29

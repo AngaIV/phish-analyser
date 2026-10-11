@@ -1,0 +1,2 @@
+# Corpus tooling. Standard library only where possible.
+pytest==8.3.4
