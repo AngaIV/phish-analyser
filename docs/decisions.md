@@ -149,3 +149,153 @@ cases to add to that theory, not to establish it.
 **When it runs:** Locally and capped (~20 samples × 50 mutations), kept out of the
 per-PR CI run, since fuzzing is inherently variable and a flaky red build costs more
 than it catches.
+
+---
+
+## D-009 — Rule 4 (`message-id-alignment`) deferred behind an ESP allow-list
+
+**Decided:** Rule 4 is **not** built next, despite the plan listing it fourth. It is
+deferred until it can consult an allow-list of legitimate sending platforms.
+
+**Why:** A probe over the 18 phishing samples that rules 1–3 miss showed rule 4 would
+have caught **7 of them** — which looked like an easy win until the Message-ID domains
+were inspected:
+
+| Message-ID domain | What it actually is |
+|---|---|
+| `eu-west-2.amazonses.com` | Amazon SES |
+| `geopod-ismtpd-4-1` | SendGrid |
+| `schoolm.smtp.e.sparkpost.com` | SparkPost |
+| `webmail.emailsrvr.com` | Rackspace |
+| `desktop-0nldaac…` | Google desktop client |
+
+**Every one of those 7 catches is legitimate sending infrastructure.** `Message-ID` is
+stamped by the platform that sends the mail, not by the brand, so a `Message-ID`-versus-
+`From` mismatch is *normal* for any organisation using an email platform — which is
+almost all of them. Building rule 4 as written would have flagged a large share of
+legitimate bulk mail, repeating rule 2's 0.27-precision failure and likely worse.
+
+**Rejected alternative:** implementing it anyway and tuning the weight down. The signal
+is not weak, it is *inverted* — it fires on the normal case. A lower weight just makes a
+useless finding quieter.
+
+**Revisit when:** an allow-list of ESP and client domains exists to subtract from the
+comparison. Then the remaining mismatches are genuinely informative.
+
+**Lesson:** a rule's *catch count* says nothing until you look at *what* it caught. The
+probe cost one script and prevented building the wrong rule.
+
+---
+
+## D-010 — Edit distance and homoglyph matching rejected for rule 5
+
+**Decided:** `lookalike-domain` v1.0 implements **three** signals — a brand plus a lure
+word in a host label, cheap TLDs, and IP-derived or digit-heavy labels. It deliberately
+omits **edit-distance (typosquat) matching**, **homoglyph / mixed-script detection** and
+bare **hyphen heuristics**, all of which the plan's rule 5 lists.
+
+**Why — edit distance:** probed at Levenshtein ≤2 against the brand list, it flagged 5
+phishing samples but **2 legitimate ones**, and the "hits" were nonsense:
+
+| Domain | Matched | Reality |
+|---|---|---|
+| `aaps.k12.mi.us` | `ups` | A US school district |
+| `hw.ac.uk` | `dhl` | Heriot-Watt University |
+| `ucd.ie` | `ups` | University College Dublin (false positive) |
+| `users.sourceforge.net` | `usps` | SourceForge (false positive) |
+
+The cause is brand length: `ups`, `dhl` and `fnb` are three characters, so at distance
+≤2 they match almost any short domain. Restricting to brands of ≥6 characters and
+distance 1 removed both false positives — **and removed all the true positives too,
+yielding zero catches.** The classic typosquats (`paypa1.com`, `rnicrosoft.com`) simply
+do not occur in this corpus, so the machinery would have been unvalidated code earning
+nothing.
+
+**Why — homoglyphs:** detecting them properly requires decoding punycode, because IDN
+domains are normally converted to `xn--` form before the engine ever sees them. A naive
+"contains non-ASCII" check would therefore rarely fire on real mail while penalising
+legitimate international domains. The punycode lookalike `xn--pypal-4ve.com` is **not
+detected**, and that is documented as a known limitation rather than half-implemented.
+
+**Why — hyphen heuristics:** legitimate domains use hyphens constantly
+(`users.sourceforge.net`). Only hyphens that *join a brand to a lure word*
+(`paypal-secure.com`) are treated as evidence, via signal 1.
+
+**What was kept, and why it is honest to keep it:** brand-plus-lure-word matching earns
+its place despite catching **zero** development samples, because it targets the dominant
+real-world phishing pattern (`paypal-secure.com`, `apple-id-verify.com`) and is unit-
+tested from hand-made snippets. It is explicitly recorded as **corpus-unvalidated**.
+
+**Consequence for the measurement:** rule 5's measured recall on this corpus (3 of 35)
+comes entirely from cheap TLDs and IP-derived labels. The high-confidence signal
+contributes nothing to the dev-set figure, and its real-world false-positive rate is
+**unmeasured**. Stated in the rule spec and in `docs/results.md`.
+
+---
+
+## D-011 — False green is restated as 0%-where-checked, with a documented 20% residual
+
+**Decided:** Success criterion I1 changes from *"0% false green on phishing"* to *"0%
+false green on messages where no rule returned `Unknown`"*, with the measured residual
+**7/35 (20%)** on the dev split recorded as a known, unfixable limitation.
+
+**Why:** The original criterion **was never achievable and should not have been
+asserted**. Seven development phishing samples leave no header evidence: ordinary real
+domains (`caresly.com`, `t_users.com`, `swiftactivation.net`, `tontransport.ga`,
+`hw.ac.uk` — a genuine university domain hosting a Wells Fargo phish), no brand claim, no
+domain anomaly, and either passing authentication or carrying no authentication headers.
+Every rule runs and correctly returns `Pass`. No scoring change can fix this, because
+there is nothing to find.
+
+**A real bug was found in the same measurement, and it was separate.** The first scorer
+run reported 11/35 green. Four of those were **green *despite* an explicit `Unknown`
+finding** — `Scorer.Colour` consulted unknowns only on the zero-flag path, so any
+weight-1 finding bypassed the fail-safe. This is exactly the D-004 promise broken by an
+implementation detail. Fixed, pinned by regression test
+`OneWeightOneFindingPlusUnknown_IsNotGreen`, and those four samples now show grey.
+
+**Distinguishing the two was the point.** The 11 conflated an implementation bug (4,
+fixable) with an analytical limit (7, not fixable). Reporting them as one number would
+have hidden a genuine fail-safe breach behind an unavoidable ceiling.
+
+**Binding consequence for Phase 3:** the green state must be presented as a neutral
+**"no issues found"** — never a tick, shield or checkmark. A tick asserts a safety
+guarantee the engine cannot make. This is a UI constraint, not a wording preference.
+
+**Lesson:** an integrity criterion asserted *before* measurement is worth writing down,
+because the measurement is what reveals it was aspirational. The value was in stating it
+up front and then revising it honestly, rather than quietly softening the target later.
+
+---
+
+## D-012 — Rule weights tuned from per-sample simulation, not aggregate arithmetic
+
+**Decided:** Before changing a rule weight to influence a success criterion, simulate the
+change in Python against the **actual per-sample findings** and confirm the effect. Do not
+reason from aggregate counts.
+
+**Why:** U1 needed 18/35 phishing samples at amber or red and stood at 15. Working from
+aggregate numbers, the obvious move was to raise `identity-mismatch`'s Return-Path weight
+from 1 to 2. Simulating it showed the advice was **wrong in both directions**:
+
+| Scenario | U1 | P3 (legitimate amber/red) |
+|---|---|---|
+| Raise `identity-mismatch` 1→2 | 16/35 = 46% — **still short** | 1/35 = 3% — **loses the only clean FP record** |
+| Raise `lookalike-domain` 1→2 | **18/35 = 51% — clears U1** | **0/35 = 0% — unaffected** |
+
+The aggregate reasoning failed because it counted flags without knowing which rule produced
+them. Four of the seven green samples were fail-safe breaches already showing grey (from
+D-011), not sub-amber flags, and the only genuinely sub-amber sample was a
+`lookalike-domain` one. Aggregate counts cannot distinguish those cases; per-sample data
+can.
+
+**Applied:** `lookalike-domain` signals 2 and 3, weight 1 → 2. Re-measurement matched the
+simulation exactly (U1 51%, false green 17%, P3 0%).
+
+**Cost of the method:** one throwaway Python script per weight question. **Cost of not
+using it:** a rule change that would have shipped, failed to meet the criterion, and spent
+the project's only legitimate-sample precision margin on nothing.
+
+**Generalisation:** this is the same lesson as D-009 (rule 4) and D-010 (edit distance) —
+a plausible-looking change is worth ten minutes of measurement before it is worth a line
+of code. Three for three so far.

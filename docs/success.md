@@ -54,7 +54,8 @@ they protect the user from the one failure mode that actively causes harm.
 
 | # | Criterion | Target |
 |---|---|---|
-| I1 | **False green on phishing** — a phishing sample scored as entirely clean, all rules `Pass` | **0%** |
+| I1 | **False green on phishing** — a phishing sample scored as entirely clean with **no rule returning `Unknown`** | **0%** |
+| I1b | Residual false green on phishing where all rules ran and passed | **20% measured, documented as unfixable** |
 | I2 | Missing or uninterpretable evidence | `Unknown`, never `Pass` |
 | I3 | Hostile or malformed input | Never throws; surfaces warnings |
 | I4 | Explanation strings readable by a non-technical user | 100%, checked per rule |
@@ -64,8 +65,29 @@ against something; this one does not. A tool that turns a phishing message green
 worse than no tool, because it converts user caution into misplaced confidence. If a
 future tuning decision improves P3 at the cost of I1, the decision is wrong.
 
-Note the asymmetry: it is acceptable for the engine to say `Unknown` on a phishing
-message (I1 still passes). It is never acceptable to say `Pass`.
+### I1 has been revised, on measurement
+
+The original wording — *"0% false green"* — **was not achievable and should not have
+been asserted.** Measured on the dev split, **7 of 35 phishing samples (20%)** produce no
+flag and no `Unknown` from any rule: every rule ran and returned `Pass`. They use
+ordinary real domains (`caresly.com`, `t_users.com`, `hw.ac.uk`) and carry no header
+evidence of any kind.
+
+I1 is therefore restated as **0% false green on messages where no rule returned
+`Unknown`** — which the engine now meets — with the 20% residual recorded as a **known,
+unfixable limitation** of header-only analysis.
+
+A genuine fail-safe breach *was* found at first measurement: **4 samples showed green
+despite an explicit `Unknown` finding**, because the scorer's weight-1 branch bypassed
+the unknown check. Fixed (pinned by regression test), moving those to grey.
+
+**Binding UI requirement:** the green state must read as a neutral **"no issues found"**,
+never a tick, shield or checkmark. A tick asserts a safety guarantee the engine cannot
+make. This constrains the Phase 3 design.
+
+Note the asymmetry that survives the revision: it is acceptable for the engine to say
+`Unknown` on a phishing message. It is never acceptable to say `Pass` when a rule could
+not check.
 
 ---
 
@@ -153,10 +175,21 @@ Current state against U1:
 | `auth-results` | 0.17 | 6 of 35 |
 | `identity-mismatch` v1.1 | 0.11 | 4 of 35 |
 
-Neither rule approaches U1 alone, and their overlap is unknown until the scorer exists.
-**This is the single biggest open risk in the project: if rules 3–6 do not lift combined
-detection toward 50%, the tool is honest, safe and nearly useless.** Recorded in
-`docs/risk-register.md` and revisited after rule 5.
+**Measured update after rule 5 (weights v1.1):** combined coverage across rules 1–5 is
+**20 of 35 phishing samples (57%)**, with **18/35 = 51% scoring amber or red** — U1's floor
+is **met**. P3 is **met** at 0/35 legitimate samples amber or red.
+
+**But the evidence also suggests 50% is close to the achievable ceiling.** Several of the
+remaining misses are ordinary-looking domains — `hw.ac.uk` (a real university),
+`aaps.k12.mi.us` (a real school district), `mfm.net.pk`, `caresly.com`,
+`swiftactivation.net`, `montroiz.com.br` — with no brand claim, no domain anomaly and no
+authentication failure. **They are indistinguishable from legitimate mail using headers
+alone.** Realistic header-only coverage is estimated at **55–65%**, not 90%+.
+
+**Consequence:** U1 stays at 50% and should **not** be raised, even though it is now met.
+The 6 remaining false greens cannot be reached by any weight change — those samples carry
+no findings at all, so only a new rule could reach them, and whether one can is unproven.
+Recorded in `docs/risk-register.md` (RSK-01).
 
 ---
 
