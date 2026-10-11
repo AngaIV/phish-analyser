@@ -4,7 +4,7 @@ Live risks, reviewed weekly as part of the journal. Likelihood and impact are ra
 low / medium / high. Each risk names the mitigation and, where possible, the **early
 warning signal** that tells us it is materialising.
 
-Last reviewed: 2026-10-11 (Phase 1 close, Phase 2 start).
+Last reviewed: 2026-10-11 (Phase 2 close — holdout run complete).
 
 ---
 
@@ -16,7 +16,7 @@ Last reviewed: 2026-10-11 (Phase 1 close, Phase 2 start).
 |---|---|
 | **Likelihood** | High |
 | **Impact** | High |
-| **Status** | **Materialising — measured** |
+| **Status** | **Materialised — quantified on holdout** |
 
 **What:** Phishing that passes authentication and arrives with intact headers is
 invisible to every planned rule. Measured on the dev split, `auth-results` reaches
@@ -25,16 +25,20 @@ signals.
 
 **Early warning:** Combined detection rate stays below the 50% floor in
 `docs/success.md` (U1) after rules 3 and 5 are implemented.
+**Signal fired.** Dev set reached 51% only after the v1.1 weight change; the **holdout
+returned 40%**, below the floor.
 
 **Mitigation:** Rules 3 (display-name) and 5 (lookalike domains) are the intended
-detection load — lookalike-domain analysis is the highest-value remaining rule.
-Acceptance is explicit: the tool is a *warning aid*, not a filter, and it never claims
-safety (see RSK-02).
+detection load.
+**Mitigation exhausted.** Rules 6 and 7 were probed and rejected — rule 6 would have
+produced 13 false positives to catch 2 phishing samples (D-013). Header-only coverage is
+now measured at **40–51%** and there is no remaining rule idea that survives a probe.
 
-**Contingency:** If coverage stays low, restate the value proposition honestly as
-"warns on a meaningful minority of phishing that other tools miss, and never cries
-wolf" rather than a general-purpose detector. Discuss with the I&TS stakeholder whether
-that is still useful.
+**Contingency (now active):** Restate the value proposition honestly as *"warns on roughly
+half of header-anomalous phishing, with essentially no false positives"* rather than a
+general-purpose detector. The tool is a *warning aid*, not a filter, and it must never
+claim safety — see RSK-02 and D-011. **Discuss with the I&TS stakeholder whether a
+precision-first, half-coverage aid is still useful.**
 
 ---
 
@@ -44,7 +48,7 @@ that is still useful.
 |---|---|
 | **Likelihood** | **Certain** |
 | **Impact** | Critical |
-| **Status** | **Materialised — measured at 7/35 (20%) on the dev split** |
+| **Status** | **Materialised — 20% dev / 33% holdout; fail-safe itself holds at 0%** |
 
 **What:** If the bubble shows green on a phishing message, the user is actively
 misled. This is the one failure mode that causes harm rather than inconvenience.
@@ -75,6 +79,13 @@ or carry no authentication headers. **There is no header evidence to find.**
 returned `Unknown`** (met), with the residual **7/35 = 20%** recorded as a documented,
 unfixable limitation. The original "0% false green" wording is restated in
 `docs/success.md`; it was not achievable and should not have been asserted.
+
+**Holdout confirms the split.** On 15 unseen phishing samples: **0/15 showed green while a
+rule returned `Unknown`** — the fail-safe itself holds on data it was never tuned on. The
+residual all-`Pass` rate was **5/15 = 33%**, higher than dev's 20%, consistent with the
+holdout simply containing more header-clean phishing. The criterion that matters
+(fail-safe integrity) is **met**; the criterion that cannot be met (catching header-clean
+phishing) remains a documented limit.
 
 **Early warning:** Any rule emitting `Pass` on missing evidence. The one approved
 exception (missing `Reply-To`) is documented in the rule spec with its reasoning.

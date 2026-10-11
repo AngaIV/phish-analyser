@@ -125,4 +125,58 @@ written — see D-010.
 
 ## Holdout results
 
-Not yet run. Recorded here once, at the end of Phase 2, with no tuning afterwards.
+**Run once, on 2026-10-11, after all tuning was finished. No threshold was adjusted
+afterwards, and no rule or weight was changed in response to these figures.** The holdout
+split is 15 phishing / 15 legitimate samples — never used for development.
+
+| Rule | Flags | TP | FP | Precision | Recall |
+|---|---|---|---|---|---|
+| `auth-results` | 6 | 6 | 0 | **1.00** | 0.40 |
+| `display-name-spoof` | 3 | 3 | 0 | **1.00** | 0.20 |
+| `identity-mismatch` | 4 | 4 | 0 | **1.00** | 0.27 |
+| `lookalike-domain` | 0 | 0 | 0 | — | 0.00 |
+
+| Metric | Dev split (35) | **Holdout (15)** | Target | Status |
+|---|---|---|---|---|
+| U1 — phishing amber or red | 51% | **40% (6/15)** | ≥50% | **Not met** |
+| I1 — false green | 17% | 33% (5/15) | 0% | Not met |
+| I1 — green despite `Unknown` | 0% | **0% (0/15)** | 0% | **Met** |
+| P3 — legitimate amber/red | 0% | **0% (0/15)** | under 5% | **Met** |
+
+**Six phishing samples in the holdout scored amber or red**, out of 15.
+
+### What the holdout says, stated plainly
+
+**P3 holds on unseen data: zero legitimate samples flagged.** The corpus's central
+promise — that the tool does not cry wolf — survives the holdout. Not one of 15 legitimate
+samples was flagged by any rule, and none was pushed to amber.
+
+**I1's fail-safe holds on unseen data.** No holdout phishing sample showed green while a
+rule returned `Unknown` — 0/15, the same as dev.
+
+**U1 does not hold: 40% against a 50% floor.** The dev set measured 51%; the holdout says
+40%. Both are correct for their samples, and the gap is the ordinary cost of measuring on
+data you did not tune against.
+
+**Small-sample caution.** With 15 samples, **one sample is 6.7%**. A single additional
+catch would have produced 47%, and one more miss 33%. The holdout cannot resolve the
+difference between 40% and 50% — it can only say the figure is in that region. Reporting
+"40%" without this caveat would imply precision the sample size does not support.
+
+**`lookalike-domain` scored zero on the holdout.** Its three dev-set catches came entirely
+from cheap TLDs and IP-derived labels, and no holdout sample carries those signals. This is
+consistent with D-010's warning that the rule is carried by its weakest signals while its
+high-confidence brand-plus-lure check remains corpus-unvalidated. The holdout gives that
+check **no evidence either way**.
+
+**The five unreached holdout samples** — `phish_012_usps_package`, `phish_016_centersecure`,
+`phish_046_mabblecroppinginfo`, `phish_035_utilitycertification`, `phish_021_hkyholdings` —
+were **not** investigated for new rule ideas, because doing so would convert the holdout
+into a second dev set and destroy its value. They are recorded and left alone.
+
+### Honest summary for the project record
+
+> Header-based phishing detection on this corpus reaches **51% on the development split and
+> 40% on the holdout**, at **zero false positives on legitimate mail in both**. Every
+> flagged sample was genuinely phishing. The tool does not cry wolf; it misses roughly half
+> of what it sees, and the misses are messages with no header anomaly to find.

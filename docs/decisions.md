@@ -299,3 +299,107 @@ the project's only legitimate-sample precision margin on nothing.
 **Generalisation:** this is the same lesson as D-009 (rule 4) and D-010 (edit distance) —
 a plausible-looking change is worth ten minutes of measurement before it is worth a line
 of code. Three for three so far.
+
+---
+
+## D-013 — Rules 6 and 7 rejected on measurement; the header-only ceiling is reached
+
+**Decided:** `received-chain` (rule 6) is **rejected outright**. `structural-oddities`
+(rule 7) is **rejected** in the form the plan describes. No further detection rules are
+added in Phase 2.
+
+**Why — rule 6 (`received-chain`) would be an anti-detector.** The planned signal was
+"the `From` domain does not appear in the `Received` chain or the authentication headers."
+Measured on the development split:
+
+| | From-domain absent from **both** `Received` and `Auth/DKIM` |
+|---|---|
+| Phishing | **2/35** |
+| Legitimate | **13/35** |
+
+A rule flagging that condition fires **six times more often on legitimate mail than on
+phishing**. It would add 13 false positives to catch 2 true ones — worse than useless, and
+the third instance of the same failure mode as D-009 (rule 4's ESP trap) and D-010 (edit
+distance).
+
+**Why — rule 7 (`structural-oddities`) has almost nothing to find.** All six remaining
+unflagged phishing samples were probed for missing `Date`, missing `Message-ID`, missing
+`To`, duplicate `From`/`Return-Path`/`Date`/`Message-ID`/`Subject`, single-hop `Received`,
+suspicious `X-Mailer` values, and control characters in headers:
+
+| Signal | Greens caught | Legitimate false positives |
+|---|---|---|
+| `singleHop` (only one `Received`) | 2/6 | 1/35 |
+| every other signal | **0/6** | 0 |
+
+The remaining phishing samples are **not header-poor**. They are well-formed messages.
+A rule built on the one productive signal would catch 2 of 6 for 1 false positive, and
+`singleHop` is weak — legitimate mail relayed once is unremarkable.
+
+**Why this is a real conclusion and not a shortcut.** All six remaining samples were
+checked separately against the two strongest structural signals available:
+
+| Sample | From-domain in `Received` | in `Auth`/`DKIM` |
+|---|---|---|
+| `phish_043_swiftactivation` | ✅ | ✅ |
+| `phish_027_t_users` | ✅ | ✅ |
+| `phish_038_gmail` | ✅ | ✅ |
+| `phish_045_caresly` | ✅ | ✅ |
+| `phish_013_wellsfargo_alert` | ✅ | ✅ |
+| `phish_020_gmail` | ✅ | ✅ |
+
+Every one is internally consistent. `caresly.com`, `t_users.com` and `swiftactivation.net`
+are the attackers' own registered domains, appearing legitimately in their own mail
+infrastructure; two are genuine `gmail.com` accounts. **There is no header anomaly to
+detect — not a hard one, none.**
+
+**Consequences accepted:**
+
+1. **Header-only detection is capped at ~40–51%** (18/35 = 51% dev, 6/15 = 40% holdout).
+   This is the measured ceiling, not an estimate.
+2. **Project criterion P2 ("at least 10 rules") is not met** — see D-014.
+3. **Rule 8 (`authserv-trust`) is still worth building** — it closes a security gap (a
+   forged `Authentication-Results` header) and is not a detection play. It is exempt from
+   this decision.
+4. **Remaining Phase 2 value is in the holdout run and the UI**, not more rules.
+
+**Lesson, fourth instance:** probing before building has now rejected rule 4, edit
+distance, a weight change, rule 6 and rule 7's core, at a cost of one script each. The
+pattern is consistent enough to state as project practice: **no detection rule is
+implemented until a probe shows it catches more phishing than legitimate mail.**
+
+---
+
+## D-014 — P2 restated: rules are measured, not counted; U1's floor is left unmet
+
+**Decided:** Project criterion **P2** changes from *"at least 10 detection rules"* to
+*"every rule built has a spec, unit tests, a probe justifying it, and measured precision
+and recall on the dev split"*. The rule count is **4**, with **3 documented rejections**
+(rules 4, 6, 7). U1's 50% floor is **left unmet on the holdout (40%) and not adjusted.**
+
+**Why P2 is restated rather than met by adding rules.** The plan asked for 10 rules; six
+were specified. Four are built and measured. Of the remaining three, **two were probed and
+found to be actively harmful or empty** (D-013). Building them anyway to reach a count
+would ship a detector that flags 13 legitimate messages to catch 2 phishing ones. **A rule
+count is a proxy for thoroughness; satisfying the proxy while making the tool worse is the
+definition of over-engineering.**
+
+**Why U1 is left unmet.** The holdout returned **6/15 = 40%** against the 50% floor.
+Raising the measured number is possible — lowering a threshold, or raising a weight — but
+every such change would be **tuning against the holdout**, which destroys the only clean
+measurement the project has. The floor stays where it was written, and the result is
+reported as a miss.
+
+**Why the floor should not now be lowered either.** Editing the target after seeing the
+result is the same failure in the other direction. The honest record is: *the criterion was
+set at 50%, the engine achieved 51% on dev and 40% on unseen data, and the floor is not
+reliably met.*
+
+**On the small holdout sample:** 15 samples means one sample is 6.7%. 40% and 50% are not
+distinguishable at this size. The defensible claim is *"roughly 40–50%, at zero false
+positives"*, not a precise figure.
+
+**Consequence for Phase 3 and beyond:** the tool's value proposition is **precision, not
+coverage**. It will flag roughly half of header-anomalous phishing and essentially no
+legitimate mail. The UI must therefore never imply that an unflagged message is safe —
+which is exactly the constraint D-011 already imposed on the green state.

@@ -184,29 +184,41 @@ remaining misses are ordinary-looking domains — `hw.ac.uk` (a real university)
 `aaps.k12.mi.us` (a real school district), `mfm.net.pk`, `caresly.com`,
 `swiftactivation.net`, `montroiz.com.br` — with no brand claim, no domain anomaly and no
 authentication failure. **They are indistinguishable from legitimate mail using headers
-alone.** Realistic header-only coverage is estimated at **55–65%**, not 90%+.
+alone.**
 
-**Consequence:** U1 stays at 50% and should **not** be raised, even though it is now met.
-The 6 remaining false greens cannot be reached by any weight change — those samples carry
-no findings at all, so only a new rule could reach them, and whether one can is unproven.
+**The holdout confirms this and revises the estimate downward.** I had estimated
+header-only coverage at **55–65%**. The holdout returned **40%**, so that estimate was
+**too optimistic** and is corrected here. The defensible figure is **roughly 40–51%**, with
+the range reflecting sampling noise on 15 samples rather than a real difference.
+
+**Consequence:** U1 stays at 50% and is **not met** (holdout 40%). It is not adjusted
+downward after seeing the result, which would be the same error in reverse. The 6 remaining
+dev-set false greens cannot be reached by any weight change — those samples carry no
+findings at all, and probing showed no rule can reach them (D-013).
 Recorded in `docs/risk-register.md` (RSK-01).
 
 ---
 
 ## 6. Thresholds that are still open
 
-Three decisions this document cannot make alone:
+**Resolved by measurement — see D-013/D-014.** The holdout run is complete; the outcomes
+are recorded in `docs/results.md`. The items below are kept with their outcome.
 
 1. **Confirm or change P3's 5%.** It is the plan's example, not a measured requirement.
    A university I&TS deployment might justify a stricter bar, since a noisy tool is
    removed from a fleet rather than uninstalled by one user.
+   **Outcome: met with room to spare.** 0/15 legitimate holdout samples flagged; dev 0/35.
 2. **Confirm U1's 50% floor**, or accept a lower detection rate in exchange for the
    strongest possible precision guarantee.
+   **Outcome: the floor is NOT met on the holdout (6/15 = 40%), and is left unadjusted.**
+   Tuning to reach it would mean editing weights against the holdout set. The floor stays
+   as written and the result is reported as a miss — see D-014.
 3. **Rule-count target.** Phase 2's build order lists **8** rules; project criterion P2
-   says **at least 10**. These need reconciling — either two more rules are added
-   (candidates: a `Reply-To` display-name mismatch, or a brand allow-list check) or P2 is
-   restated as 8. **Recommendation: keep the plan's 10 and add two, rather than lowering
-   a stated project criterion.**
+   says **at least 10**. These need reconciling.
+   **Outcome: restated, not met by addition.** 4 rules are built and measured; rules 4, 6
+   and 7 were probed and rejected on evidence (rules 6 and 7 would have made the tool
+   worse). Recommend P2 becomes "every rule built is spec'd, tested, probed and measured"
+   rather than a count. **This one still needs your sign-off** — see D-014.
 
 ---
 
