@@ -11,22 +11,29 @@ Order follows the plan: easiest and highest value first. Each rule runs the same
 six-step routine (spec → failing tests → implement → measure on dev → investigate
 false positives → record precision).
 
-1. **Rule 3 — `display-name-spoof`.** An email address or known brand name inside the
-   display name while the actual address is unrelated (`"PayPal Service" <x@evil.ru>`).
-2. **Rule 4 — `message-id-alignment`.** `Message-ID` domain and DKIM signing domain
-   should align with the `From` domain.
-3. **Rule 5 — `lookalike-domain`.** Homoglyphs, mixed scripts, edit distance against a
-   brand list, suspicious TLDs, hyphen tricks. **Priority: the measurements say this is
-   where detection has to come from** (`auth-results` recall is 0.17).
-4. **Rule 6 — `received-chain`.** Hop count, timestamp order, private and reserved IPs.
-5. **Rule 7 — `structural-oddities`.** Missing required headers, duplicated headers,
-   unusual `X-Mailer`, malformed fields.
-6. **Rule 8 — `authserv-trust`.** Only trust `Authentication-Results` written by our own
-   receiving server. Closes the forged-header gap in rule 1.
-7. **Scoring module.** Bubble number = count of flagged findings; bubble colour from the
-   weighted score (green none, amber low/medium, red high). Move weights and brand lists
-   to configuration (D-005).
-8. **Holdout run.** Once, at the end of Phase 2, recorded and never tuned against.
+- [x] **Rule 1 — `auth-results`.** Measured precision 1.00, recall 0.17.
+- [x] **Rule 2 — `identity-mismatch`.** Measured precision 0.80 after the list/bulk fix (v1.1).
+- [x] **Rule 3 — `display-name-spoof`.** Measured precision 1.00, recall 0.29 — highest yield so far.
+- [ ] **Rule 5 — `lookalike-domain` (in progress).** Scoped to brand-plus-lure-word labels,
+      cheap TLDs and IP-derived labels. Edit distance, homoglyphs and bare hyphen heuristics
+      were **rejected on evidence** — see D-010.
+- [ ] **Rule 7 — `structural-oddities` (probe next).** Missing required headers, duplicated
+      headers, unusual `X-Mailer`, malformed fields. The remaining misses are mostly
+      header-poor, sloppy phish, which is what this rule targets. **Probe before building.**
+- [ ] **Rule 6 — `received-chain`.** Hop count, timestamp order, private and reserved IPs.
+- [ ] **Rule 8 — `authserv-trust`.** Only trust `Authentication-Results` written by our own
+      receiving server. Closes the forged-header gap in rule 1.
+- [ ] **Rule 4 — `message-id-alignment` (deferred).** Deferred behind an ESP allow-list.
+      `Message-ID` is stamped by the sending platform, so a mismatch is normal for nearly
+      all legitimate bulk mail — see D-009.
+- [ ] **Scoring module.** Bubble number = count of flagged findings; bubble colour from the
+      weighted score (green none, amber low/medium, red high). Move weights and brand lists
+      to configuration (D-005).
+- [ ] **Holdout run.** Once, at the end of Phase 2, recorded and never tuned against.
+
+**Rule order is now driven by measurement, not by the plan's numbering.** The plan's own
+order put `auth-results` first and lookalikes fifth; the dev-set numbers show the cheap
+display-name check outperforming the elaborate one by 5×.
 
 ## Next — Phase 1 leftovers
 

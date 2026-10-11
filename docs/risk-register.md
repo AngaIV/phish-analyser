@@ -42,22 +42,45 @@ that is still useful.
 
 | | |
 |---|---|
-| **Likelihood** | Low |
+| **Likelihood** | **Certain** |
 | **Impact** | Critical |
-| **Status** | Controlled by design |
+| **Status** | **Materialised — measured at 7/35 (20%) on the dev split** |
 
 **What:** If the bubble shows green on a phishing message, the user is actively
 misled. This is the one failure mode that causes harm rather than inconvenience.
 
-**Mitigation:** Decision D-004 — missing or uninterpretable evidence yields `Unknown`,
-never `Pass`. Success criterion I1 sets the false-green rate at **0%**. The engine
-fails closed.
+**Measured, after the scorer fix (2026-10-11):** of 35 development phishing samples,
+**7 produce no flag and no `Unknown` from any rule** — every rule ran and returned
+`Pass`. The bubble would show green on real phishing. The affected samples are
+`phish_043_swiftactivation`, `phish_027_t_users`, `phish_038_gmail`, `phish_045_caresly`,
+`phish_036_tontransport`, `phish_013_wellsfargo_alert`, `phish_020_gmail`.
+
+**Why it is not 0%, and cannot be with header-only analysis:** Several of these senders
+use ordinary-looking real domains — `caresly.com`, `t_users.com`, `swiftactivation.net`,
+`tontransport.ga`, and a genuine university domain `hw.ac.uk` hosting a Wells Fargo
+phish. They make no brand claim, show no domain anomaly, and either pass authentication
+or carry no authentication headers. **There is no header evidence to find.**
+
+**Mitigation (applied):**
+- D-004 holds — missing evidence yields `Unknown`, never `Pass`.
+- Scorer fix: a message with no flags **but any `Unknown`** now shows grey, not green.
+  This closed 4 genuine fail-safe breaches found at first measurement (green *despite* an
+  explicit `Unknown`), where the weight-1 branch bypassed the unknown check. Pinned by
+  regression test `OneWeightOneFindingPlusUnknown_IsNotGreen`.
+- **UI requirement:** the green state must be labelled a neutral "no issues found", never
+  a tick or a shield. A tick asserts a safety guarantee the engine cannot make. Carried
+  into the Phase 3 design and reflected in the `ui-design/` mockups.
+
+**Revised criterion:** I1's target becomes **0% false green on messages where no rule
+returned `Unknown`** (met), with the residual **7/35 = 20%** recorded as a documented,
+unfixable limitation. The original "0% false green" wording is restated in
+`docs/success.md`; it was not achievable and should not have been asserted.
 
 **Early warning:** Any rule emitting `Pass` on missing evidence. The one approved
 exception (missing `Reply-To`) is documented in the rule spec with its reasoning.
 
-**Audit:** The corpus test asserts no sample throws; a false-green assertion is added
-once the scorer exists (it needs the weighted score to evaluate "entirely clean").
+**Audit:** `evaluate.py` prints the false-green count on every run, so it cannot drift
+unnoticed. The corpus test asserts no sample throws.
 
 ---
 

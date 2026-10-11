@@ -1,5 +1,6 @@
 ﻿using PhishAnalyser.Engine.Parsing;
 using PhishAnalyser.Engine.Rules;
+using PhishAnalyser.Engine.Scoring;
 
 if (args.Length == 0)
 {
@@ -25,9 +26,8 @@ if (showHeaders)
     foreach (var header in message.Headers)
         Console.WriteLine($"header: {header.Field} = {header.Value.Replace("\n", " ")}");
 
-var findings = new AuthResultsRule().Evaluate(message)
-    .Concat(new IdentityMismatchRule().Evaluate(message))
-    .ToList();
+var findings = RuleSet.EvaluateAll(message);
+var verdict = Scorer.Score(findings);
 
 if (args.Contains("--json"))
 {
@@ -35,6 +35,9 @@ if (args.Contains("--json"))
     {
         file = Path.GetFileName(args[0]),
         warnings = result.Warnings,
+        number = verdict.Number,
+        colour = verdict.Colour.ToString().ToLowerInvariant(),
+        score = verdict.Score,
         findings = findings.Select(f => new
         {
             rule = f.RuleId,
@@ -45,6 +48,8 @@ if (args.Contains("--json"))
     }));
     return 0;
 }
+
+Console.WriteLine($"bubble: {verdict.Number} {verdict.Colour.ToString().ToLowerInvariant()} (score {verdict.Score})");
 
 foreach (var finding in findings)
     Console.WriteLine($"[{finding.Status}] {finding.Severity} {finding.RuleId}: {finding.Explanation}");
