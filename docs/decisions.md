@@ -403,3 +403,70 @@ positives"*, not a precise figure.
 coverage**. It will flag roughly half of header-anomalous phishing and essentially no
 legitimate mail. The UI must therefore never imply that an unflagged message is safe —
 which is exactly the constraint D-011 already imposed on the green state.
+
+---
+
+## D-015 — VSTO add-in dropped; the tray app attaches to classic Outlook by COM
+
+**Decided:** Phase 3's MVP does **not** build a VSTO add-in. The tray app attaches to a
+running classic Outlook instance via **COM late binding**, reads the selected item's
+transport headers, and runs the engine in-process. The named pipe and the two-process
+split are dropped. VSTO becomes the documented **fallback**, not the starting point.
+
+**Why:** The toolchain is not present on the development machine, and installing it is a
+large tax for one add-in:
+
+| Requirement | Status |
+|---|---|
+| Visual Studio with the Office/SharePoint workload | **Absent** — BuildTools 2019 only, no IDE |
+| VSTO runtime | **Not installed** |
+| Admin rights to register the add-in | Deployment complexity, not a blocker |
+
+Classic Outlook **is** installed (16.0.20430.20146), and WPF `net10.0-windows` builds and
+runs on this machine (verified with a throwaway project).
+
+**What this buys:**
+
+- Deletes plan tasks 1, 2 and 5 (hello-world add-in, header read, pipe protocol) and the
+  entire tray-app/add-in split.
+- Deletes two documented failure modes: *"add-in does not load or is disabled by Outlook
+  after a slow start"* and *"header property unavailable for some items"* across a pipe.
+- No new NuGet package. COM late binding needs no reference assembly, so **MimeKit stays
+  the only dependency**.
+- Nothing to uninstall beyond the app itself, so the exit gate item *"uninstalling cleanly
+  removes the add-in and auto-start entry"* reduces to the auto-start entry.
+
+**Accepted cost, stated plainly:** Microsoft does **not** officially support driving
+Outlook from an external process. This approach works and is widely used, but it is
+unsupported surface — a policy or a future update could break it. That is the reason the
+plan's own fallback exists: if COM attachment proves fragile, the detail panel ships as an
+Outlook task pane add-in and the bubble is kept for the web and extension surfaces.
+
+**Consequence:** the engine and rules are unaffected. This changes only how headers reach
+the engine and how the overlay is drawn.
+
+---
+
+## D-016 — Phase 3 starts with U1 unmet; the phase is not blocked by it
+
+**Decided:** Phase 3 proceeds even though Phase 2's exit gate is **not fully passed** —
+U1 measured **40% on the holdout** against a 50% floor (D-014).
+
+**Why:** Phase 3's entry criterion is written as *"Phase 2 exit gate passed."* Read
+strictly it is not, and pretending otherwise would be exactly the kind of quiet
+target-shifting this project has avoided. But the gate exists to ensure the UI is built on
+a measured engine, and that is true: the engine is implemented, tested (66 tests), and
+measured on both splits. **The unmet criterion is coverage, and coverage does not affect
+any Phase 3 task** — every Phase 3 deliverable works identically at 40% or 90%.
+
+**What would genuinely block Phase 3** is an *unstable or unmeasured* engine, or an engine
+whose output contract is still moving. Neither applies.
+
+**Consequence:** the U1 shortfall is carried forward openly as a known defect of the
+product, not silently dropped. It is recorded in `docs/results.md`, `RSK-01`, and here.
+The repositioning in D-014 — precision-first warning aid, roughly half coverage — is what
+Phase 3's UI must communicate honestly, which is why D-011's green-state wording is
+binding on this phase rather than advisory.
+
+**Revisit if:** real-traffic testing (recommended after Phase 3) shows coverage is
+materially different from 40%, in either direction.
