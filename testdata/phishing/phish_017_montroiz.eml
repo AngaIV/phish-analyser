@@ -1,0 +1,86 @@
+Return-Path: vendas@montroiz.com.br
+Delivered-To: jose@monkey.org
+X-FDA: 81062978052.01.B586F6F
+Received: from newmail.digitalmidiaservice.com.br
+ (newmail.digitalmidiaservice.com.br [162.214.146.186])
+	by imf06.b.hostedemail.com (Postfix) with ESMTP id 86B15C0005
+	for <jose@monkey.org>; Sat, 29 Jul 2023 01:53:44 +0000 (UTC)
+Authentication-Results: imf06.b.hostedemail.com;
+	dkim=pass header.d=montroiz.com.br header.s=default header.b="wS/ap2b6";
+	spf=none (imf06.b.hostedemail.com: domain of vendas@montroiz.com.br has no
+ SPF policy when checking 162.214.146.186)
+ smtp.mailfrom=vendas@montroiz.com.br;
+	dmarc=pass (policy=quarantine) header.from=montroiz.com.br
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1690595624;
+	h=from:from:sender:reply-to:subject:subject:date:message-id:to:to:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:in-reply-to:references:dkim-signature;
+	bh=TIewL2HhLQoPC1hSuKuPz+4YzwkNz1SJrEt59QeXH64=;
+	b=NmxwvzaZVAbdGnO3E9lNxqIjX8l6VHLwYdw3Mze0koQOvs1yVZAMNrityeKhZolLpTgp6h
+	++gOoeyWyT8yZQ5QMlApZ5zkzYRbJGSphSlDWYdVaMvo0ewcHWxru3E1BcKQTlc6bcKEQj
+	WFtAaKJhLunFkBeKueK/tI6qf71hfHw=
+ARC-Authentication-Results: i=1;
+	imf06.b.hostedemail.com;
+	dkim=pass header.d=montroiz.com.br header.s=default header.b="wS/ap2b6";
+	spf=none (imf06.b.hostedemail.com: domain of vendas@montroiz.com.br has no
+ SPF policy when checking 162.214.146.186)
+ smtp.mailfrom=vendas@montroiz.com.br;
+	dmarc=pass (policy=quarantine) header.from=montroiz.com.br
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1690595624; a=rsa-sha256;
+	cv=none;
+	b=qDsUcz9ZcQqnEJHHb/bH+gDDAK/TcHNPvHFL7OHXvFukt7p/9Bq/gmnmTBF5EI3QjCQK5H
+	2rVuRWgIwo26da9SOJNrspGUyOZG2csZzkca2A5xjw4EEYwg8G8jYTfF4OoZTGe43fOlkP
+	+2m5YYKKZpLVBjfyBX1654LZTLG9CL4=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=montroiz.com.br; s=default; h=Subject:To:From:MIME-Version:Content-Type:
+	Sender:Reply-To:Date:Message-ID:Cc:Content-Transfer-Encoding:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=TIewL2HhLQoPC1hSuKuPz+4YzwkNz1SJrEt59QeXH64=; b=wS/ap2b6hvAc2GMh3Z4AFY5HvV
+	qqEWs/IUDNqAXnYKOjX7TPBkuN661JT9des/vPpUfPkkCyQ0E/0ZixAkQr3MNu5dF8/Z2osbS5YaD
+	PsiDoORYGOfBtfnAreO/jHu7DpcOCj0xOtOP1NAyX9Qz6iVYwSL3E+X8BIR48ZBaclGNGSE088/Fw
+	IpFROBe1dtHYfirD5V9KezJkEzQHHpmPz6ELLsTmYcVz9NWZhzldLEZN6v2N7w/jemSIbJ5U5oS49
+	RMfbVvB8uOJz+Ycs3lgRJo86l2s9euCVsK68y6KyCLagQAJPfeTRrEvH3TyDzT+Q/jQKpIFgnc377
+	Msuw1usw==;
+Received: from [154.6.81.143] (port=55498 helo=[10.13.18.209])
+	by vps-5279650.digitalmidiaservice.com.br with esmtpsa  (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <vendas@montroiz.com.br>)
+	id 1qPZ9K-0007NI-0y
+	for jose@monkey.org;
+	Fri, 28 Jul 2023 22:53:42 -0300
+Content-Type: multipart/alternative;
+ boundary="----=_Boundary_33961_105562080.4859409665098"
+MIME-Version: 1.0
+From: "=?utf-8?q?eChase_Center=C2=AE?=" <vendas@montroiz.com.br>
+To: jose <jose@monkey.org>
+Subject: Account Security Update 28 July, 2023
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - vps-5279650.digitalmidiaservice.com.br
+X-AntiAbuse: Original Domain - monkey.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - montroiz.com.br
+X-Get-Message-Sender-Via: vps-5279650.digitalmidiaservice.com.br:
+ authenticated_id: vendas@montroiz.com.br
+X-Authenticated-Sender: vps-5279650.digitalmidiaservice.com.br:
+ vendas@montroiz.com.br
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Rspamd-Queue-Id: 86B15C0005
+X-Stat-Signature: ky4zoepwcdhtz5t715ttgpdgysnz4pko
+X-Rspam-User: 
+X-Spam-Status: Yes, score=9.40
+X-Rspamd-Server: rspam05
+X-HE-Tag: 1690595624-508084
+X-HE-Meta: 
+ U2FsdGVkX199ljxpeFBiGNMXjovN1hX0FuDDz3NMziu4YU/tTiLQUcRZ3MZ608P8ADl7e3v+MdwFati7Qvn+rtwlGo0Y67hVoj8hpZC8yKvuWuZPBjgrusW1c5pfPqO+gGYWLP0IRx7DlboIgG9NMQSqKZSM++ojjQCqlc7t8Z/3PE69sxdodsClO3H+Tp2IAMVQhyJ4VWLMDk3EQziZfDLZa/o+nLDbfqNZDBXjxnZiozed3g+7JcDUnlj1RFJJFfRVT60TrQ9CTfbSfiqsUiSD3n5X6zRJD/EegoZtCPvNzNBNf3dw8dZVWM6a3E9+oLnuPV5tlkGzBex7v+42JOAjUomatVVc6poww98PNYsWX/FWjj7gXGs2JnVCBuixKwFviXnwbgWa7aEmFKupc6KFaVH6UtRsIlVNaqMUo+97qxHj92r8Fad7gSRaKlrx2Ww+0dineZo70WSHmKu3DSnAo7VGjXtwGSDOKIz+S+rmBdxrrfGIfh1x9z8rsPwk5RFJvI14lPCALKZzWmVrE8yVHy0nfqsOHgkMJRbqKoZBJFtB3jsMT2Ce5td6pdBSUfUGUYc5UiyikfMcTQ7p3AyTpu2eMh+w5KmYUhU4VEvyjMVvpcDlqZcIo0uB91ReS5E0LKKzjejGCUORlEzsa7KkKp5TwiUt8131bpK3fZeXcMfc/EFoCdxLQU2H6Bnodm7aWu1v4riafosICbMe3omJZlrKA1Pn
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 221

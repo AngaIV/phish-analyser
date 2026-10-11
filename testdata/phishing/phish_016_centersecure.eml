@@ -1,0 +1,85 @@
+Return-Path: secure@centersecure.cam
+Delivered-To: jose@monkey.org
+X-FDA: 81284753214.11.1BEDBB0
+Received: from mail.centersecure.cam (mail.centersecure.cam [198.23.242.205])
+	by imf25.b.hostedemail.com (Postfix) with ESMTP id E55BB120004
+	for <jose@monkey.org>; Thu, 28 Sep 2023 04:39:45 +0000 (UTC)
+Authentication-Results: imf25.b.hostedemail.com;
+	dkim=pass header.d=centersecure.cam
+ header.s=3EA96D72-5804-11EE-B4FE-0B8E0A59BDD9 header.b=HjSIqGIB;
+	spf=pass (imf25.b.hostedemail.com: domain of secure@centersecure.cam
+ designates 198.23.242.205 as permitted sender)
+ smtp.mailfrom=secure@centersecure.cam;
+	dmarc=pass (policy=none) header.from=centersecure.cam
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1695875986;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=+jkXYdwRMWWoggv1H4n+/H2fuzEL1Y9b9ckRyQAfDp4=;
+	b=HnP+rKP4DoMDKAk4WWObjs2+29Nao86sURDXyEM47czNHZwaMe/GuqzCBf3vyrOu6U3O9j
+	k6iAYOkBhipSFyeGCPEvLPieNE5EHIIOvsog81f3DmlYhS7M6diy217Vm4OQisnhQ+MAWf
+	8W1I2IrFLHRldCzzDYTTdOv+3Av/w1Y=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1695875986; a=rsa-sha256;
+	cv=none;
+	b=fwDN3HO2gkdckOAGCRtkCY5xkPETOuiYxBZGjMLy2R7u9GVCtQ18EIidsVPAfdL+Uut1N9
+	Tll5MpSYbVN+XU0/79Ly3Hfue0dDgCQPs8l5DLl1WAapEIhPoDhHb8IwJKNnvG2crmhiFs
+	b3J9Ema3m9XldG1p3LTDc3HfZXMdBbA=
+ARC-Authentication-Results: i=1;
+	imf25.b.hostedemail.com;
+	dkim=pass header.d=centersecure.cam
+ header.s=3EA96D72-5804-11EE-B4FE-0B8E0A59BDD9 header.b=HjSIqGIB;
+	spf=pass (imf25.b.hostedemail.com: domain of secure@centersecure.cam
+ designates 198.23.242.205 as permitted sender)
+ smtp.mailfrom=secure@centersecure.cam;
+	dmarc=pass (policy=none) header.from=centersecure.cam
+Received: from localhost (localhost [127.0.0.1])
+	by mail.centersecure.cam (Postfix) with ESMTP id EF001C4365
+	for <jose@monkey.org>; Thu, 28 Sep 2023 00:39:43 -0400 (EDT)
+Received: from mail.centersecure.cam ([127.0.0.1])
+ by localhost (mail.centersecure.cam [127.0.0.1]) (amavis, port 10032)
+ with ESMTP id NATNc7ZcttDi for <jose@monkey.org>;
+ Thu, 28 Sep 2023 00:39:39 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+	by mail.centersecure.cam (Postfix) with ESMTP id 92F0AC4133
+	for <jose@monkey.org>; Wed, 27 Sep 2023 23:27:31 -0400 (EDT)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.centersecure.cam 92F0AC4133
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=centersecure.cam;
+	s=3EA96D72-5804-11EE-B4FE-0B8E0A59BDD9; t=1695871652;
+	bh=+jkXYdwRMWWoggv1H4n+/H2fuzEL1Y9b9ckRyQAfDp4=;
+	h=From:To:MIME-Version:Date:Message-Id;
+	b=HjSIqGIBW952YksRHYt+pq+Qa+hHI8CcdjQJ17GTvL2FiAeOYsXBZCXUCu/11Xk9V
+	 R667fxDQ+N4WS3x8KuWlsrFZophtrK35EGJqIzk1tPEz9piW+qttuh/GlZUGEGuMio
+	 g3mM01uZmSa9CyiSTchNw1CF9GdgcGBAuoh3A4eHaBZ+YqQQKQrMLFH1m7Rvcide30
+	 j/+igzMTWV99aZ7BBmclI7eIr4Ut2gHv8GLz1muevyAWZyFp1jgq87YtZ4WrVkT+Bu
+	 3tFIJRGvOEHVjL83Ao0LlV+h4KtoOjv07AxzFwgM4OGu94xYNd2mPu8nrmUbh/wack
+	 7E9mdmNrZNF2g==
+X-Virus-Scanned: amavis at mail.centersecure.cam
+Received: from mail.centersecure.cam ([127.0.0.1])
+ by localhost (mail.centersecure.cam [127.0.0.1]) (amavis, port 10026)
+ with ESMTP id ASVbKZXFpniH for <jose@monkey.org>;
+ Wed, 27 Sep 2023 23:27:29 -0400 (EDT)
+Received: from IP-134-38 (unknown [84.38.134.38])
+	by mail.centersecure.cam (Postfix) with ESMTPSA id 76BC6C5C89
+	for <jose@monkey.org>; Wed, 27 Sep 2023 22:17:31 -0400 (EDT)
+From: "secure@centersecure.cam" <secure@centersecure.cam>
+Subject: Verification
+To: <jose@monkey.org>
+Content-Type: multipart/alternative;
+ boundary="Vp3hypvPlDHxZek=_GxaS2VFu5AxV9R8hJ"
+MIME-Version: 1.0
+Date: Thu, 28 Sep 2023 05:17:30 +0300
+Message-Id: <282920230917053DF0CE0F2D-0827F8629C@centersecure.cam>
+X-Rspamd-Server: rspam10
+X-Rspamd-Queue-Id: E55BB120004
+X-Stat-Signature: hxufyadgrfqxzk3bxas6swzrzusrjeb4
+X-Spam-Status: No, score=2.31
+X-Rspam-User: 
+X-HE-Tag: 1695875985-318193
+X-HE-Meta: 
+ U2FsdGVkX1/UaFNxOUFdVB4I4TQCPx0BX9oPIbSLhbLgaua+J+0EtLS7COnKsvh6bdbDa3vXPbqqeGPN481MWbPnU78PkLZfIEO/FtW05nesy83e/K7Q5nyjilXwm3LVT7P6LO5n3NUD0kO42RUZu3aAAynMyTsj82+CEclz48SFPkYtX+8WaRqEjpm7r0lH0GFpI1HLPTLkqa6B87JvV3PU9GeyuNPcELzRf/SISIY=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 292

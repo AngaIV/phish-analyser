@@ -1,0 +1,136 @@
+Return-Path: bounces+32992138-83a2-jose=monkey.org@sendgrid.net
+Delivered-To: jose@monkey.org
+X-FDA: 80599622250.20.8FD1B0E
+Received: from xvfrpbcd.outbound-mail.sendgrid.net
+ (xvfrpbcd.outbound-mail.sendgrid.net [168.245.59.205])
+	by imf19.b.hostedemail.com (Postfix) with ESMTP id 537AC40003
+	for <jose@monkey.org>; Thu, 23 Mar 2023 09:22:23 +0000 (UTC)
+Authentication-Results: imf19.b.hostedemail.com;
+	dkim=pass header.d=sendgrid.net header.s=smtpapi header.b="GZ/XML6f";
+	dmarc=fail reason="SPF not aligned (relaxed),
+ DKIM not aligned (relaxed)" header.from=mail.com (policy=none);
+	spf=pass (imf19.b.hostedemail.com: domain of
+ "bounces+32992138-83a2-jose=monkey.org@sendgrid.net" designates
+ 168.245.59.205 as permitted sender)
+ smtp.mailfrom="bounces+32992138-83a2-jose=monkey.org@sendgrid.net"
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1679563343;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:list-unsubscribe:dkim-signature;
+	bh=VAZOFExbIGe1EEQfUcj+fZhIDg5qrD/0xHWQsnVK2p4=;
+	b=IIDSyHBajICNWYnipKD9uBqVcWmJKESkMZhctzV6AFQ7Qo16sAbukt32D6vJyASQUyzJfJ
+	QKaLlI/YgkFtTbhsDffiXRPqA/75CRkDYNhWxkzCYYXw+haVM1gAkrXnrmU0tMW7+uywLG
+	pzQrs1wXR0AJejoa86EWU8o9wQ7V0lY=
+ARC-Authentication-Results: i=1;
+	imf19.b.hostedemail.com;
+	dkim=pass header.d=sendgrid.net header.s=smtpapi header.b="GZ/XML6f";
+	dmarc=fail reason="SPF not aligned (relaxed),
+ DKIM not aligned (relaxed)" header.from=mail.com (policy=none);
+	spf=pass (imf19.b.hostedemail.com: domain of
+ "bounces+32992138-83a2-jose=monkey.org@sendgrid.net" designates
+ 168.245.59.205 as permitted sender)
+ smtp.mailfrom="bounces+32992138-83a2-jose=monkey.org@sendgrid.net"
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1679563343; a=rsa-sha256;
+	cv=none;
+	b=Jtv4tUSjvUnQwWaZ/KuP95F0dLvTtbaEXEa7BJL/tUdwy4dVHxwQsZoHSq6b2aaAVAk/S7
+	zuuoETC/jdqY2nhZV2FYRJZmqLzR6sfzCu1BRENQ5gThj44sFe3YDMfTP7jQrKE9kj6009
+	5kOnyhp43Urbo7D/OpglPkg38fomZJ4=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.net;
+	h=content-type:from:mime-version:subject:reply-to:to:list-unsubscribe:
+	cc:content-type:from:subject:to;
+	s=smtpapi; bh=VAZOFExbIGe1EEQfUcj+fZhIDg5qrD/0xHWQsnVK2p4=;
+	b=GZ/XML6fgB017s7u9e53ggwotPk9HPEuWR45TBgX/bJo2nhCfOb9WYxTOiMLVZm+fGCb
+	BcMx7XqpE3f1nqZ86r0s3SwBGCyQ2hpVnZH3HTOrmz8zPzXWvkUHYlScBEkg6OUGC2Zvfx
+	kFnTTV7V3V1rVy7hvhp03ml+nJkFu+O+0=
+Received: by filterdrecv-55c95cf7cc-6m2s5 with SMTP id
+ filterdrecv-55c95cf7cc-6m2s5-1-641C10B1-2B
+        2023-03-23 08:41:21.594181656 +0000 UTC m=+1250903.383875201
+Received: from MzI5OTIxMzg (unknown)
+	by geopod-ismtpd-20 (SG) with HTTP
+	id lq73778KS5arQ9wb0VIBXw
+	Thu, 23 Mar 2023 08:41:21.437 +0000 (UTC)
+Content-Type: multipart/alternative;
+ boundary=25b487451310cd93b7c9ab49bd62591c6ab7372104701edc2e8ea79162de
+Date: Thu, 23 Mar 2023 08:41:22 +0000 (UTC)
+From: Sharepoints File Review <Sharepoints_verfication@mail.com>
+Mime-Version: 1.0
+Message-ID: <lq73778KS5arQ9wb0VIBXw@geopod-ismtpd-20>
+Subject: [SPAM] SharePoint send you file for your review and  approval
+Reply-To: Sharepoints_verfication@mail.com
+X-SG-EID: 
+ =?us-ascii?Q?R4ipsYZ=2F0Ou5VNI49ZfnEebLW89sxzKK5GDd=2Fo8kHIGvprkHzi4a3IAlackjSW?=
+ =?us-ascii?Q?gLzz0nAjZtVBmSY0REKoCBOo7hp5Ir=2Fo5K6CYvG?=
+ =?us-ascii?Q?LKHO0GYSuc2r9Elstqpp4ZqDg5d3Pw3jdD1uHUx?=
+ =?us-ascii?Q?IpzvoCp1aZUfFySKitgjF0bpJcCLzFL8dDPevps?=
+ =?us-ascii?Q?LyHxavnVR8HV6JVkQ9wzRlttbsk1P7FodG6vmLE?=
+ =?us-ascii?Q?guTrs=2F2WD9oN8+n8tREW1gfxgVnK0sVRogMYbtA?=
+ =?us-ascii?Q?rS9rvUReUpovtL+u=2Fa1ZQ=3D=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?se=2F49CGmbS0sfR97ImeXvDoOrI1ra2UfBi=2FYp+tM4sZNnFcdeo8cVPRMz3vfJ1?=
+ =?us-ascii?Q?B4lB8ss1VLTXJ6ibLPDs95VBUlMzbRCfT5eXVrQ?=
+ =?us-ascii?Q?W0=2FHUG0cxN1s2=2FEzV9Re5AAP5QijGyK7i0XknWN?=
+ =?us-ascii?Q?IKOnnDeuMAemqu=2FOgq=2FCC53WRLVucaoWoLTbGts?=
+ =?us-ascii?Q?zgPkSdHhRmUsY=2FmtFGHyK+jsAVgjuK1EqePuu0Z?=
+ =?us-ascii?Q?eKgG=2F54Hc2HjIggNt2dE1PFogeknN0dXbJTbHax?=
+ =?us-ascii?Q?q4a7Ej2nQwLDZnsazHoLChJf6AlppienGt7fPv9?=
+ =?us-ascii?Q?3tUwfxOHxhefU7B8WtSb1oBRLP732pQ1JAOx74B?=
+ =?us-ascii?Q?rkwqMyixgoY+nPifQQ=2FV6w25Wd8gxfhBZ4wW8F2?=
+ =?us-ascii?Q?wK0tZLYK4zXVvd4Xn9nMmV+E8wK4pb3cqYnHou3?=
+ =?us-ascii?Q?tI69rtBfHoDA1DXX24gelv+zHwYQYnKEQe6LJOZ?=
+ =?us-ascii?Q?W0uQv00DqjAVCwcnGABqbcOrchHfksIBlJDYsXC?=
+ =?us-ascii?Q?eOIreDJ7tT8zW5HKjjw5l6j5R6wZT02bFnlQJme?=
+ =?us-ascii?Q?C3ZkvZAZjtn8vL0OTpbXUTZRRki3tXxQU0ST6DU?=
+ =?us-ascii?Q?ka8cZ+xllx7Poban2KxbtMlrvtA0Ww4981EC2Gg?=
+ =?us-ascii?Q?ApgTtSXfev4MjZuNr5T7j9tRBNqWiEXjm7z04SD?=
+ =?us-ascii?Q?=2Fou6RV4uIocahDSGjlcIx5FJrWyEUQ2mysirxml?=
+ =?us-ascii?Q?DvIcVyRdwaANZ83lyv7ZXuhPBJkuKWQQTHDVhxq?=
+ =?us-ascii?Q?nujxhigm=2FL=2FrSEGj+yHorM=3D?=
+To: jose@monkey.org
+X-Entity-ID: OMchbT9gvKEcZqxp0wyGiA==
+List-Unsubscribe: 
+ =?us-ascii?Q?=3Cmailto=3Aunsubscribe=40sendgrid=2Enet=3Fsubject=3D32992138=2EXbNufZ1Sui4q?=
+ =?us-ascii?Q?N9CME8RKMakV3IpderUOmTSnYbcHQy1oMDAwdTA?=
+ =?us-ascii?Q?wMK0=5F0f5oogovbdewv74vnqy2915vmkqgib40D4?=
+ =?us-ascii?Q?XX5hL5qwQQXmD4rNHQle7lJmTmNGHeUWTauqvVe?=
+ =?us-ascii?Q?zcRSIHS9=5FK9jSUnWo2KCVJy=5Fx5ba11P=2EnUcifv5?=
+ =?us-ascii?Q?oQ-ZuI30u1uMLybljUcNFx77V7KkUCUe6X1FoMD?=
+ =?us-ascii?Q?AwdTAwMGG2MlJANYUEQQF=5F1OVhiTtVGZTcNtJvG?=
+ =?us-ascii?Q?dWDY=5FCupU6IoGqiQRA6lPkbm1feoiLQ-ab7lWaj?=
+ =?us-ascii?Q?GaFqq7Db8ckNebBdQnp3qlNsvBEJAu4AGrcP7HJ?=
+ =?us-ascii?Q?XX-VSnDpLb99K1gbfaH5Xow2ys88N6nK4zFNRAd?=
+ =?us-ascii?Q?ZR2hXldgdM9AyfTH4N2VK186u5UXSGGygMk3g=5FI?=
+ =?us-ascii?Q?4X1f9QjCDrP5Nw1XaZZiwyaqTgXy57RSUyuK8xN?=
+ =?us-ascii?Q?FBqGpBJK5VV27atAbbJifNO6Z7durqpv5MHHHlF?=
+ =?us-ascii?Q?ijxmkvn6fssttthJdgh1Skx4FR0ziLwOU7DRTpL?=
+ =?us-ascii?Q?NG8G6h7sHFECIA9uvMrmtQ68v5f9DbTqkD4PBr8?=
+ =?us-ascii?Q?jCjdlVTCamNR2jNGPniPmPMD0qDHLuH=5F=5FQMM6sp?=
+ =?us-ascii?Q?KoDoKsXKMPa1g2qap4M2aEEnlFVI089ngd-PxCn?=
+ =?us-ascii?Q?O9HwKggbBD2XwF9Ov7Z0mEiAq6LWb7bGtU1a1Kt?=
+ =?us-ascii?Q?zgGcEdDgWpKSyjofxWYCXKM0xDogy7CJrJxXdHk?=
+ =?us-ascii?Q?4wdDQXDSttu5gB6oIm2dXkaRd6WdFIAxfv1=5Fkzb?=
+ =?us-ascii?Q?0vu8ehFSa4myIrhc5YFuR7qrG-n3Efwa8HEol=5Fo?=
+ =?us-ascii?Q?IHULhbjalXtCaLKF1NCECm9kcfoC=5FEZt7OHHfkK?=
+ =?us-ascii?Q?sgnxKM8DJQSa-KJw1iYD5QY=5FlII1KJY4WHUqHaV?=
+ =?us-ascii?Q?zte-BHBUoGx2zp=5Fk3Y-ri96K0ejBx5pskEnHPbU?=
+ =?us-ascii?Q?W7R-ciUTsaLfpH0Lgx1UM8TjbAcud7Fc-SWHFxF?=
+ =?us-ascii?Q?hqjCHs7=5FHQW1Ai3fhQDXtnnfX0XUsreimUKnyOI?=
+ =?us-ascii?Q?fjr3h-olw7ks2gwzkXyU67CMjgIxzFfkl1VNUZT?=
+ =?us-ascii?Q?ipKgjgNrQcwKdK7MEXAhwMCswX5EVmOZKdPA3bY?=
+ =?us-ascii?Q?CmUJVAk1zR8GAgcFBXEc8iGdZbKWHUt0kn6j4eN?=
+ =?us-ascii?Q?QWL9UJS9yfaP1fDgKvCAmBTiZ77ikejnc7Q4Fgp?=
+ =?us-ascii?Q?nJsJfp2VJX=3E?=
+X-Rspamd-Server: rspam11
+X-Rspamd-Queue-Id: 537AC40003
+X-Stat-Signature: gk7sc6s6sqauup3tw358if15h6atoeyb
+X-Rspam-User: 
+X-Spam-Status: Yes, score=11.16
+X-HE-Tag: 1679563343-501755
+X-HE-Meta: 
+ U2FsdGVkX1+yiRje6Ru3yvy6nxgDvMRuTwn33CtP+72UBmjHytTMf8QGXbkTDufy99RyxMrtipbxK3tS6eOP4CozRX43VumZa+PG7edWTvpk139utiT+eZYI6XMM9tJG4p3ubFepKcifJ9/ycSVYezRXIFqeGBdVBRjdyZJq2DybnIkIK/Zpc29Zs0gR9Ok/w5pVbJXqu4SEOGJ2zo49fVODrMPOW9QGGaLLQWSwZHFnZX5Jp7wyhU2xk6yPlBX0f0f+1trZ06gqGReGFxtnAI2qL0gFxuvJqDVVayFdWoTTaaddgbB87nNAMJ7XhOWk
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 56

@@ -1,0 +1,63 @@
+Return-Path: info@tontransport.ga
+Delivered-To: jose@monkey.org
+X-FDA: 80738496426.18.65D18C5
+Received: from to.tontransport.ga (to.tontransport.ga [5.182.112.125])
+	by imf16.b.hostedemail.com (Postfix) with ESMTP id 498A9120042
+	for <jose@monkey.org>; Sun, 30 Apr 2023 15:51:10 +0000 (UTC)
+Authentication-Results: imf16.b.hostedemail.com;
+	dkim=pass header.d=tontransport.ga header.s=to header.b=T5ktJf1s;
+	spf=pass (imf16.b.hostedemail.com: domain of info@tontransport.ga designates
+ 5.182.112.125 as permitted sender) smtp.mailfrom=info@tontransport.ga;
+	dmarc=pass (policy=reject) header.from=tontransport.ga
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1682869871;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=tErosvaExmM5ayksjr1bccn60RTk2qvD7/GO3dciZyM=;
+	b=x8is42AYUT/v0pCRHx1tdJRlk6BLR3RIOYtevxGhiZJ+rQwDHvXCEAZ5R2xL6K+VLQJEe0
+	1b1NodhAAZ5eP8mvxcufu7ex6BAcY/CEHJ2MyYRl8e3ifj1Ti9fw95PUu6LjSACFv158bX
+	5+SCVxZFPyuKwIneT4cmkPt85SFNZfw=
+ARC-Authentication-Results: i=1;
+	imf16.b.hostedemail.com;
+	dkim=pass header.d=tontransport.ga header.s=to header.b=T5ktJf1s;
+	spf=pass (imf16.b.hostedemail.com: domain of info@tontransport.ga designates
+ 5.182.112.125 as permitted sender) smtp.mailfrom=info@tontransport.ga;
+	dmarc=pass (policy=reject) header.from=tontransport.ga
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1682869871; a=rsa-sha256;
+	cv=none;
+	b=hHrh1JGq/OM4f1RdunjuJfnUvf6NgFcoocmAoGH6RgRft0e9wQaExKkZ0tRsXatuPfsLM1
+	xuBdt42Hv+JwOKbFuMmzq48w7Flf/XrztoHYzX+Hlu7AOBL3OCQ/k2g8JhWVABApGp2YKM
+	wKVCZhbU+EXl7qxZ3zlx6KTrcmGNx3c=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=to; d=tontransport.ga;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; i=info@tontransport.ga;
+ bh=tErosvaExmM5ayksjr1bccn60RTk2qvD7/GO3dciZyM=;
+ b=T5ktJf1siYfsTHdj2/WBQC24W66qbUYYsD/6yVecTgHSsFPItGsE9sBnZ8nK9OoSaQeQ3eZkb5+L
+   LT+byk5vPfxpZy3HYJjvJavvZyLgp0XQNZQIOnxJgidISv/lnFWrHpBMO6xE1CW2N+0Yo0Oqc6IG
+   bYHeM3OA3AHGXR4gBSNh8RFEd7Tg64HIpvkmrt/FOaKCJaEH9z3q+lR76cVKrLuRGD+1PXYRHk/w
+   4EY/3difRZE1Rl/ed5z5iJivbyMqbGkadL3slDZMyGYIsQEG58K7icmTWdkSKu31AFf7plvv+8Fd
+   1DqXl5OQYUonDkQS22+YIkLq1i1VPrTeKyzwVg==
+From: EMAIL ADMIN<info@tontransport.ga>
+To: jose@monkey.org
+Subject: Notification: Your jose@monkey.org POP / SMTP settings are incorrect
+Date: 30 Apr 2023 11:18:49 +0000
+Message-ID: <20230430111848.F9742861149E4B28@tontransport.ga>
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Rspamd-Queue-Id: 498A9120042
+X-Stat-Signature: ridxif95wyr9w66yup8n95qh3qxs9snm
+X-Rspam-User: 
+X-Spam-Status: No, score=1.17
+X-Rspamd-Server: rspam02
+X-HE-Tag: 1682869870-35685
+X-HE-Meta: 
+ U2FsdGVkX1/tl2NCKJ2hlPV6lv+38ujV8bdAessWg9eFv/paCJXOAg0uQPeRGJ1sGwNSAaMkDBu5Htya/DSR5s4ftfOdJpnMW8mYgG3iNJmja34PjbWM5aJtz9CnEyPQbemYtwDSGTIyb6Z+7hjAuW+IHWu6y2Q1hDx7aLYJfDRufpAv6YFyRL77Ltmq5bgR0XyBdLA63WTH0XR2K4eAzf9Cljz5yA2DD+2uxtWFTuw=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 76

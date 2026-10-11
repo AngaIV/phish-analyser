@@ -1,0 +1,64 @@
+Return-Path: sales@t-users.com
+Delivered-To: jose@monkey.org
+X-FDA: 81053376768.36.2F2F51A
+Received: from t-users.com (t-users.com [185.81.128.125])
+	by imf07.b.hostedemail.com (Postfix) with ESMTP id 890EAA0002
+	for <jose@monkey.org>; Wed, 26 Jul 2023 10:23:42 +0000 (UTC)
+Authentication-Results: imf07.b.hostedemail.com;
+	dkim=pass header.d=t-users.com header.s=default header.b=aSQhTpZK;
+	dmarc=pass (policy=quarantine) header.from=t-users.com;
+	spf=pass (imf07.b.hostedemail.com: domain of sales@t-users.com designates
+ 185.81.128.125 as permitted sender) smtp.mailfrom=sales@t-users.com
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1690367022;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=7g5xWzmDolB/+o1iP+fVT9JJn/vMd0jAyeoycNtJl00=;
+	b=04pvLOyNjhoCulctKKcMtw9criiIsNakLe59JsLUkECKW/olZD5G4zq5A7F7rPSyn645OD
+	+/jxoJAQvu65zSSFf8mCqwJsbsVoZfutzL2NsgE+iEg4JS6c/2Er7DldDnjIW9i8WrHl7j
+	xAn09ZBOK/cNs2hAnKPDJrL6F0BA24M=
+ARC-Authentication-Results: i=1;
+	imf07.b.hostedemail.com;
+	dkim=pass header.d=t-users.com header.s=default header.b=aSQhTpZK;
+	dmarc=pass (policy=quarantine) header.from=t-users.com;
+	spf=pass (imf07.b.hostedemail.com: domain of sales@t-users.com designates
+ 185.81.128.125 as permitted sender) smtp.mailfrom=sales@t-users.com
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1690367022; a=rsa-sha256;
+	cv=none;
+	b=HSypJm10MEUELuBQXiIKgZWZ+pFxoGzpL0wawdzdxtI4FM1A61T3ZHg26J720pRoJucK6M
+	aOgACsr1VOZ69wmgtWT7YBckpCkwWSwH8zfyRKC6Qvt7WwnC8xjH8AZyeU5gfF/m3APVYA
+	5umM25W+Iej1GzcerJWgL/UU3BEGvUY=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=t-users.com;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=sales@t-users.com;
+ bh=fsJcIkS9aVxrCJFzO1uIr4RV3TA=;
+ b=aSQhTpZKB9I4EMk1fAYoSYGjiZBqQjtTMAlVAgYQuvasZkqqBlOfa+HWHIx04v5W9CXgCBURwyBd
+   bee9qrQh2G1m9Qfm2lNt2ONLC0W+LCpP7FyfboReDL4oPDp0uy2er9lbov2QAvKNodaZ3DEMghMt
+   1bGvz0cZ54opafUgEj0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=default; d=t-users.com;
+ b=Z3EK+GxVZxkEPAGnDsQnCZ3YqmD41PC+kpsadXIelsR+bOpnHspeQ+/ZAg2cc46kBLLYfOTm1mNu
+   BfoFxUjrudGcoc7xJNQ1+JUSOuveWKo8qlDjAvPCl8PJsovxyM+TuG5E9WlfUjID1BNO9aj0iUc+
+   +oqddAhtXTF/oh1NEAM=;
+From: Team <sales@t-users.com>
+To: jose@monkey.org
+Subject: Notice: Password Expiry Notice
+Date: 26 Jul 2023 12:23:39 +0200
+Message-ID: <20230726105318.59D6C6F47A143B88@t-users.com>
+MIME-Version: 1.0
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+X-Rspamd-Queue-Id: 890EAA0002
+X-Stat-Signature: czpmytsgcbx1enyi9ygt7tcxjj7hdc8n
+X-Rspam-User: 
+X-Spam-Status: No, score=5.14
+X-Rspamd-Server: rspam07
+X-HE-Tag: 1690367022-665966
+X-HE-Meta: 
+ U2FsdGVkX18MDVlomAaBibn1rRubYtYTTTe3jXRNDtwaQkyfTovDqXDfnWx9oXFs0lciBvQaG96JAHE3cKJLltQruh5lO4F4OfCzGRr8X4zx2SlQiBXHy7Rw00Pc/ZFaSHLlPYFf5gvfxPl8l8ZCHdFKeZXLHr3hjzYG3+0KdAQWenGSbJ64RYfXJLP0lzorLVztXkdzbUshMU4KrhMZQxhE49Uc9N8nfxIJOpCbhJk=
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 214

@@ -1,0 +1,79 @@
+Return-Path: support@chioscobaraipini.com
+Delivered-To: jose@monkey.org
+X-FDA: 81431226450.10.FAF6C40
+Received: from reseller4.myprivatehosting.biz (reseller4.myprivatehosting.biz
+ [37.156.244.20])
+	by imf25.b.hostedemail.com (Postfix) with ESMTP id 29E7E120013
+	for <jose@monkey.org>; Tue,  7 Nov 2023 13:24:02 +0000 (UTC)
+Authentication-Results: imf25.b.hostedemail.com;
+	dkim=none;
+	spf=pass (imf25.b.hostedemail.com: domain of support@chioscobaraipini.com
+ designates 37.156.244.20 as permitted sender)
+ smtp.mailfrom=support@chioscobaraipini.com;
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1699363443;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references; bh=f1J9rED1HEx8NGTSQo50iPIrUoo9c7dSv+twfXqh1Pc=;
+	b=3DekWCDr9A1TFS9GoP0Zk7P5eSTB2rc28feY3t+XFxB1dZusYeRDE3xB5ZfdLHw6j0xGNn
+	/G2CgrActN6sLg70+1N9pCQnCLXa2cuoriIrBem110J0G8McqFx4tI6ZKYM/KDVQZairXP
+	2CPiUGrsevo4zRWUvAC1GrnDKDv4u+E=
+ARC-Authentication-Results: i=1;
+	imf25.b.hostedemail.com;
+	dkim=none;
+	spf=pass (imf25.b.hostedemail.com: domain of support@chioscobaraipini.com
+ designates 37.156.244.20 as permitted sender)
+ smtp.mailfrom=support@chioscobaraipini.com;
+	dmarc=none
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1699363443; a=rsa-sha256;
+	cv=none;
+	b=2XGKGjoW0kl0LHfTnBhTVf1QhbFXBAKYCYXD71jBFd7eJcCSGuUPboi2b4FFjrtpiGcusJ
+	WSct3wITnHmXK2svQjPl8FuhsXssGq+7ymfumlzkehlzPUvl0dd74fAWaa/0vaaQkrHfsL
+	Pekd1eGL8ZXMrqJ3rcegh1ba8+Sv/mA=
+Received: from chioscobaraipini by reseller4.myprivatehosting.biz with local
+ (Exim 4.96.2)
+	(envelope-from <support@chioscobaraipini.com>)
+	id 1r0M3l-003yR9-1A
+	for jose@monkey.org;
+	Tue, 07 Nov 2023 14:24:01 +0100
+To: jose@monkey.org
+Subject: Undeliverable: outgoing messages failure
+X-PHP-Script: chioscobaraipini.com/wp-includes/theme-compat/46789054667668.php
+ for 185.5.46.59
+X-PHP-Originating-Script: 10743:46789054667668.php
+Date: Tue, 7 Nov 2023 13:24:01 +0000
+From: "Postmaster < check@mailserver.com>" <support@chioscobaraipini.com>
+Message-ID: <0a8a7cef9653ddb9ad636359edaecb0b@chioscobaraipini.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="b1_0a8a7cef9653ddb9ad636359edaecb0b"
+Content-Transfer-Encoding: 8bit
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - reseller4.myprivatehosting.biz
+X-AntiAbuse: Original Domain - monkey.org
+X-AntiAbuse: Originator/Caller UID/GID - [10743 994] / [47 12]
+X-AntiAbuse: Sender Address Domain - chioscobaraipini.com
+X-Get-Message-Sender-Via: reseller4.myprivatehosting.biz: authenticated_id:
+ chioscobaraipini/from_h
+X-Authenticated-Sender: reseller4.myprivatehosting.biz:
+ support@chioscobaraipini.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: chioscobaraipini.com:/public_html/wp-includes/theme-compat
+X-Rspamd-Server: rspam09
+X-Rspamd-Queue-Id: 29E7E120013
+X-Stat-Signature: 3tnpnnsswroq15jmk9yxrjmwecbfg6zr
+X-Rspam-User: 
+X-Spam-Status: No, score=3.99
+X-HE-Tag: 1699363442-715422
+X-HE-Meta: 
+ U2FsdGVkX18DCqOzGfqNxrkv0rRz0glBmnF89vBOLfky1UhE2qVaEpzri7m4B0IkFoh8vySk1xENd9xDPzv54B5UV21rV/SjxCrQF0MxsDjyaJSHGABv9AkKZhF0d96ny/RHQzvHrWC6nCCCOKZKKVuJysh8XihHANcwVZOkjHg3m5GaEEAmcpQVeS6TXNrTA9IcUnhXirO/uwf+OzVaeWHbBgE4HfCw6hHMVV8aeJwLj7iS55jzL80qTBiHO3NRZHkgta4Tc+UF2JX9TY0SBXDHf4JI/9Fu3UjCCPYMjzS/j/4ZLI1aPgm48kt+A199CQpyXjAZKrpBzZb8LA97R+kDK3vqCbY1k3Mp2416beAdv3IH3H2qyk4Oran9SOyRpdon71gRJYam2C6Oe22YCJL0w04uQsu5nMGQNfzpt16Pk1fNDKkAMLtmV83rMYRJm8py0uGvinOEM248nMg4H4OVfxpKxDyDq+q59DrkcvHRszJhugEeYB12oRqhi14PzhCMr32RcyYswCeHZ49FpHRQPlaDEXoj65W+Zje6c2H58m8s5hdAAAsNzcUJVF3Hj7dgLdLx2btaqxdyV7hrkrSvoFC3XlXCcnlSdohwZZishRdodPL7jCcs2FI3VMQsuIaZqtE07uChog05kQlzd91tpVJLC8QCffYxKAw61ckSsEE7iDG+DRIj1Cc1an0VdScW2jiOzx97+eiS4E8CF2039/Xp2MWQPe3SCqr8rw82/eSDKwgTLsli0xI3XC3L
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 361

@@ -1,0 +1,73 @@
+Return-Path: bounce+60ac3e.d1dbaa-jose=monkey.org@mg.shiftinglight.com
+Delivered-To: jose@monkey.org
+X-FDA: 80464549788.20.C6E7C9C
+Received: from rs228.mailgun.us (rs228.mailgun.us [209.61.151.228])
+	by imf23.b.hostedemail.com (Postfix) with ESMTP id B98A5102F2A8D
+	for <jose@monkey.org>; Tue, 14 Feb 2023 04:02:13 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.shiftinglight.com;
+ q=dns/txt; s=pic; t=1676347332; x=1676354532; h=Content-Transfer-Encoding:
+ Content-Type: MIME-Version: Message-ID: Subject: Subject: From: From: To: To:
+ Date: Sender: Sender; bh=5dyNcp7WWGjOXoppXwpuYcxOGWD33JcUCPEuN+VARb4=;
+ b=Ji78+ljKSL4Jf0igbgFA7OIWx8ZCO4tIGoUxGPy9EI0+aL8ZNF8k1ZV3Rp8q87LveZzBhjtUQO5Qln9Kej4z2V9l987+MxkCHQ4lL69perIrTWKGMtHXXHZOk+Io/Y/xDW3A6yQuNAIr8Hfw287n4ChnjJW1gWkoTlT0TI1ukIRMVvmc63NkFWkMG8GcMHE+pR7Zy1ywyZIBG0JG6suFxmI+8pPTXD69NvKiNaLOlQ1QnHUHJEkivKsi7LqYnc0lDvZ+H0x3b/YRiaFsvbT7kGzS4vyg0X3hja1H96XXmtmJQO6Hafa/RsemyhcfgFqsDWq7eELmBtaGjS+3KXO3eg==
+X-Mailgun-Sending-Ip: 209.61.151.228
+X-Mailgun-Sid: WyI1MjM0YiIsImpvc2VAbW9ua2V5Lm9yZyIsImQxZGJhYSJd
+Received: from shiftinglight.com (<unknown> [192.241.171.56]) by ab5b49108fac
+ with SMTP
+ id 63eb07c4e9836bb3ae200d64; Tue, 14 Feb 2023 04:02:12 GMT
+Sender: info=monkey.org@mg.shiftinglight.com
+Received: by shiftinglight.com (Postfix, from userid 33)
+	id E619837341A; Tue, 14 Feb 2023 05:02:12 +0100 (CET)
+Date: Tue, 14 Feb 2023 04:02:12 +0000
+To: jose@monkey.org
+From: "=?utf-8?Q?monkey.org?=" <info@monkey.org>
+Subject: 
+ =?utf-8?Q?=55=50=47=52=41=44=45=20=59=4f=55=52=20=45=4d=41=49=4c=20=41=43=43=4f=55=4e=54?=
+Message-ID: <7412c5e3718d18fa3c5fa6d9d9514771@ruthphillips.com>
+X-Priority: 1
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1676347333;
+	h=from:from:sender:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=5dyNcp7WWGjOXoppXwpuYcxOGWD33JcUCPEuN+VARb4=;
+	b=CPdkiWP+I8VRQFmbqd3aXryIgLG41jenIiaAJXNKn4O1V7OdM9DQ8+dYdniHVYkHLnedZi
+	vvmvCSAJHxvVfPWkV0KIWM6JGSZp5jkepvYoPKmJFwUC6Yh9olGN02c2ehsohT5tslf1hM
+	mX2E59kVdKG00A9aR0UfXTGaSyqGZm4=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1676347333; a=rsa-sha256;
+	cv=none;
+	b=WOvnUORxd4dTE1MGcFa3jYvuftd5TUQn9CNcSh5Q/yJAdttcPWbxSzdaC5E/aGli+77y1A
+	BX8AKKx92P1sgGRnuO/xSp1u9su39V/YrLjq835KglglIQFvtqqGG+qbhMTzMf6taygk4Z
+	DAzgDHeMmbzyYYJigvZd2QjFzEaeGbg=
+ARC-Authentication-Results: i=1;
+	imf23.b.hostedemail.com;
+	dkim=pass header.d=mg.shiftinglight.com header.s=pic header.b=Ji78+ljK;
+	spf=pass (imf23.b.hostedemail.com: domain of
+ "bounce+60ac3e.d1dbaa-jose=monkey.org@mg.shiftinglight.com" designates
+ 209.61.151.228 as permitted sender)
+ smtp.mailfrom="bounce+60ac3e.d1dbaa-jose=monkey.org@mg.shiftinglight.com";
+	dmarc=none
+X-Rspam-User: 
+X-Spam-Status: No, score=5.45
+X-Stat-Signature: xgqs6ggy8kir817unyew4yijc9xxeoh7
+X-Rspamd-Queue-Id: B98A5102F2A8D
+Authentication-Results: imf23.b.hostedemail.com;
+	dkim=pass header.d=mg.shiftinglight.com header.s=pic header.b=Ji78+ljK;
+	spf=pass (imf23.b.hostedemail.com: domain of
+ "bounce+60ac3e.d1dbaa-jose=monkey.org@mg.shiftinglight.com" designates
+ 209.61.151.228 as permitted sender)
+ smtp.mailfrom="bounce+60ac3e.d1dbaa-jose=monkey.org@mg.shiftinglight.com";
+	dmarc=none
+X-Rspamd-Server: rspam01
+X-HE-Tag: 1676347333-259609
+X-HE-Meta: 
+ U2FsdGVkX1+YvnErBp4OlqXJsdjlsQfrm1cJZhlj1edcFr7wjNWaq6KTJPYVknt/Lo1KEt+GP/KpKxKClSFoKJ1W2vhCquzDCr1O7UTz9FQ0z0lLc80K1WgH5W+66R79EDYs/ok1TcF65xA8yfzHiUjbeHYVTg/F485LRHWo7DzKuK5SRd+I6dVLfbYwWICbrEZZGhNXUo/cnEtPCQBh4vqvOBEyqPIPPMg1H/J1aoElkJqpW3yO5lzT/hmmUImHudOpoYntwz9AppVqs/cRgt7PPnEUHFKqqnJXkAi1zKn0TQ64ztTTesZweV0RIqrJP5UesWrMs6+m7s59kpRXrsb4bKyjJn7vW+eNw9jrMe6Tkhiwb14P2ULqrXzrObcJVsymdWjKv9WgPBnueQLZbNcK08ztszCR22HNI1E1XML/m9iIjvlYTgPySo+48lSiuHJF3VQx+Pfcq4rPZhayF3NIVE5wg0AfMej9HoEyXQOkHDqH/OFdtswks3Oyhw51oQiuo6Lvdwmvpj2FlQU2CNnt+6lLBg7qrqII0KG+Y1l2+K08Zp9k0g6EWnNsR/dLzUVmAPl44RAYPuM9h4Q9qV34cBlVoliAu9AevasMCbadt2YNKM2llQc7lGBk1HfSP+M7M/TpjaGGn4fhbq1WBNLyY0qcGgcDQJxfgbzQulLttOV+Tk/BF5DcxnyiO5j8ffuA7bdS7trDY0Sj0W8PYxUdSo/jrWRRH0EupyYbjARLsPulNmET4wwPXMAoh+daXtt8lVsXfnjtYitjKnwoOqeVPDiaquc+cLWNdNDCGAnE213CpQV5bhvYw2ZVbJj6BTVahvOomY19Bd4mqj3OpvylNsf3nYW9CRDZzvn5LS/1NNxZ2D+mrdirXFPIkC5TbTAE6hOlaVF7QJhqXRWn74tAu0osgC2PzevGLrfqhblzz1dd94MZ9+tcctkeFSFLo1xFtYGP7SBzaPQTbK0DkEVMB5l
+ OnDKbqeGq+FL8i5srShORQU4kKpZ9oLlAUHcRYH8YQF3Zjo/Ejhyp71HQ7WCnE1le8eVYwA7Nop6FVKLObLbNS+Kic/NNaXf+jEZVZZ0UDtaVmHh4AkrYpWiZsUGyrE04qkLFRB2mL/6+iULUTkUqpkRdjI+D99XV538Sg011o5e1lvVLxDM3q1F0BRQqZzFG/GfiAypYpOzOx1e3FE/xF0em3qbejr3msgpJG3rFevlW4zzrAKy8BdKb6OC3GL0bNIKdrpCbszg9mVDPEX1/Sqp31tNHIs6LqEgKP9VfDyardArZNgvybCqZhV0AezE7Y+4BVI0/P8Ptx5OjYYYO3DLfT6zrtyLe50eLrx4LL9VHP4YgFa0heZ68igKpYSIaPQAWbuqwwVi0gltrORuF/T8tpxLSM/WTLTS7bKHAi3loRsJXdbA0apb7cR1wHFRWlMkWrUUfokyhOLCE/eR6Wtr1bxRKjYL9qbdfNPxSvyTt6kl5YbD46/0KpjM8M9kH+H5v2D4f3YwDruZc2tJMGOrgLj7EWOjVY3ZKZ7znLkQPmnNlDGzKD3nZWlYMPwKWo79nYcemArU8IDqXFOs+PhSPVTxoRIpCCvO0jMCapgNDP14qF9N+DZk1L4UeABmeWmLWYU+BUSPvY8ynlevBJMoB0XHMbGDVfcvW6ObRBAVan1vQsj6gDTIi26juy5DaXDX9kSj/evwXr6xNQimMzFmwhb94aYU6D8KeqcjtKzL+giRqMmhOHp2XFUYwvlkzoaE70C937EEOWQEFvtT9XpZdadVTs2YdIabbtopa+t2AwljNp6HK9r+HEDm4zIr8oWILKJVqzoB75QjlgEuiL79Df97HZx/AA70Zz6EM59cZT0ywIbj+/m+BaNCCY4SEvm+P5/ZhxjgU0Rt4S6N0MDAkbRvqPXZRWGuYBYU96vFm8YIbtUNRmS8nxQ==
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 34

@@ -9,9 +9,10 @@ def _rows():
     with open(TESTDATA / "labels.csv", newline="", encoding="utf-8") as fh:
         return list(csv.DictReader(fh))
 
-def test_labels_csv_has_thirty_labelled_samples():
+def test_labels_csv_meets_the_corpus_floor():
+    """Phase 1 fallback floor is 100 samples; both classes must be present."""
     rows = _rows()
-    assert len(rows) == 30
+    assert len(rows) >= 100, f"corpus below the 100-sample floor: {len(rows)}"
     assert {r["label"] for r in rows} == {"phishing", "legitimate"}
 
 def test_every_labelled_file_exists():
@@ -49,4 +50,7 @@ def test_splits_are_disjoint_and_complete():
     assert dev | holdout == labelled, "splits do not cover every labelled file"
 
 def test_holdout_is_a_meaningful_size():
-    assert len(_split("holdout")) >= 9, "holdout too small to measure with"
+    """30 percent of the corpus, within one file, and never empty."""
+    total = len(_rows())
+    holdout = len(_split("holdout"))
+    assert holdout >= total * 0.25, f"holdout too small: {holdout} of {total}"

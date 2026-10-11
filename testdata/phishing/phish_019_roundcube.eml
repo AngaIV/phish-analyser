@@ -1,0 +1,55 @@
+Return-Path: noreply@roundcube.com
+Delivered-To: jose@monkey.org
+X-FDA: 80875453680.29.75B10EB
+Received: from markleville.hatzinakos.com (markleville.hatzinakos.com
+ [88.209.205.8])
+	by imf26.b.hostedemail.com (Postfix) with ESMTP id BD163180008
+	for <jose@monkey.org>; Wed,  7 Jun 2023 09:39:18 +0000 (UTC)
+Authentication-Results: imf26.b.hostedemail.com;
+	dkim=none;
+	dmarc=none;
+	spf=softfail (imf26.b.hostedemail.com: 88.209.205.8 is neither permitted nor
+ denied by domain of noreply@roundcube.com)
+ smtp.mailfrom=noreply@roundcube.com
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1686130759;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references; bh=uX0rrRkQ1xEiI2IlPsis73EsPVYXbsoktlyq5IRSoGA=;
+	b=A9vFhT+aD5nebSuyE05vutpVqrsW9OKE64W5YMFjlg+V3nF+Hz2Ro6ri1wIHzhOiS9pEDY
+	QnhUqIPEKMavwp3EDQc38yqDC34XkoJ+UFokQtSraMW7DGtCPjfX1Zh/B73l283TWdNGEi
+	Aoafm7X+ipqnRSSyJUMYp6Wdbd+xw6M=
+ARC-Authentication-Results: i=1;
+	imf26.b.hostedemail.com;
+	dkim=none;
+	dmarc=none;
+	spf=softfail (imf26.b.hostedemail.com: 88.209.205.8 is neither permitted nor
+ denied by domain of noreply@roundcube.com)
+ smtp.mailfrom=noreply@roundcube.com
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1686130759; a=rsa-sha256;
+	cv=none;
+	b=o96JhTmqLOMZQ2Oq6v3ZY7dFHdj3Zrqej1pDBnmyTSiQ99iuy7ZSnf+rBjX+fYlPLelQ7I
+	HFgUyExRngNqBfL7xieQOX8axqEeBszJ35aCwK9xw5PrX1TxjYBVUPQh3Y5U199Uf/IhBa
+	WyJL64brryT5Er3HxV+Zft458Zz44uU=
+From: cPanel E-mail Administrator <noreply@roundcube.com>
+To: jose@monkey.org
+Subject: Your password will expire today.
+Date: 6 Jun 2023 22:19:48 -0700
+Message-ID: <20230606221947.88F5E9A27C3D5DF2@roundcube.com>
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	boundary="----=_NextPart_000_0012_24C74545.EEA70BA8"
+X-Rspamd-Queue-Id: BD163180008
+X-Stat-Signature: nsjdjqojcjuxy74yfjh65mqg55b1a73n
+X-Rspam-User: 
+X-Spam-Status: No, score=8.60
+X-Rspamd-Server: rspam07
+X-HE-Tag: 1686130758-738475
+X-HE-Meta: 
+ U2FsdGVkX18vhCw29dM9YNR7FYzmp2skJCxIOa9Ly8IeXpbibnFcChOGkBBFzY1rK04ydYNRRs5cbW2Pp/OmkwxF2JGARhZ0hGBa4m/5ZFbwCm49UhANNvRhC69R8bceFRxNGkhOKx5t+kPD9M/FoS69eHHjYk+Ad7fT5wdJdABlbUKpvTrCbAe1tSmSFCpX67V3U02tfWgFscE6YCcdTxPQf5ooC+gAFaXSdyrEJMY=
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 151

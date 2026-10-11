@@ -1,0 +1,70 @@
+Return-Path: icann@wodoly.com
+Delivered-To: jose@monkey.org
+X-FDA: 81562785654.38.EAC23BE
+Received: from mail.wodoly.com (mail.wodoly.com [185.113.8.137])
+	by imf26.b.hostedemail.com (Postfix) with ESMTP id 92D69180013
+	for <jose@monkey.org>; Wed, 13 Dec 2023 19:30:05 +0000 (UTC)
+Authentication-Results: imf26.b.hostedemail.com;
+	dkim=pass header.d=wodoly.com header.s=default header.b=X+nOREby;
+	spf=pass (imf26.b.hostedemail.com: domain of icann@wodoly.com designates
+ 185.113.8.137 as permitted sender) smtp.mailfrom=icann@wodoly.com;
+	dmarc=pass (policy=reject) header.from=wodoly.com
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1702495805; a=rsa-sha256;
+	cv=none;
+	b=X5TlRbWgGmNjOZ/yf1XcI6Jv4aBvm7clwn+5wWw4p9d9+kwDfCRZUQLOUyvPZvQfYi/Ith
+	NJI5SMVAWIabp6OjTc31+6J1tJF3LULBGZyi203U/n9td1s/2ul2llrrCjIqQPjoXhzmRu
+	50p9+7FMI87AkC6L30VLhzId2sK3ND4=
+ARC-Authentication-Results: i=1;
+	imf26.b.hostedemail.com;
+	dkim=pass header.d=wodoly.com header.s=default header.b=X+nOREby;
+	spf=pass (imf26.b.hostedemail.com: domain of icann@wodoly.com designates
+ 185.113.8.137 as permitted sender) smtp.mailfrom=icann@wodoly.com;
+	dmarc=pass (policy=reject) header.from=wodoly.com
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1702495805;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:list-unsubscribe:dkim-signature;
+	bh=ac2FeuWsyJrb2kIHG3HGn6e2jD4WAhE0N7D0qHqhoC8=;
+	b=ROk8716Os4uQB1UHmSTUyQOanhWie/t6msy9gJ3Wr1SW+1EB2pBlCGXy8k9KsACX4Zi1EN
+	QbbILq8pcctzRM5w5iekwa29CHsiSsK7Ql731cNFs6d6f/WtH5epGW4VkZqQKyaN7exxBo
+	9+SAw4Nu4tecRimVb56ixJiXRhypIos=
+Received: from [109.248.151.60] (unknown [109.248.151.60])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.wodoly.com (Postfix) with ESMTPSA id 4F333A786C
+	for <jose@monkey.org>; Wed, 13 Dec 2023 20:55:33 +0200 (EET)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=wodoly.com;
+	s=default; h=Reply-To:From:To:Subject:MIME-Version:
+	List-Unsubscribe:Organization:Content-Type; bh=zsJ7j4LvgOhhFgYxC
+	ltOjRvyp20=; b=X+nOREbykWmVhhvAI9jVknR1VQiXtmGwDWvNphOwJWhPK68cB
+	UJJU/3NhY5jWsXC1liK5wTzvHTmW/ycx0lGBA7GzXBYjXqWMxFz25la2VbUYo9Y0
+	Py0GtVdxDMbU7ACSknbWqwYc9UJufVa7GW+vKaFrdVrLxy/dVNvLNuJ7e9+rxlQM
+	VP966KI0f/xsrS+VlnsXFvyKX4g8cAbhb2yJRvIl+OSRgylEK0rT6WR28pzK+Ptf
+	SoU+QBDjvH6jJyg2529Y6RxgSzcVI6dop2/heay3vFFhOHNu2ojdw0rSASrvOXTc
+	yOceKwwAGW1DZFn47hV19AU44skjCjBqvpGXw==
+Reply-To: ICANN Domain Validation <reply-to@wodoly.com>
+From: ICANN Domain Validation <icann@wodoly.com>
+To: jose@monkey.org
+Subject: ICANN: Domain ownership validation for monkey.org user(s)
+Date: 13 Dec 2023 20:55:33 +0200
+Message-ID: <20231213205532.55705EA57F7A4B95@wodoly.com>
+MIME-Version: 1.0
+List-Unsubscribe: <mailto:icann@wodoly.com>
+Organization: Foobar Inc.
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_0012_AB33A1EF.B79F0BCB"
+X-Rspamd-Server: rspam01
+X-Rspam-User: 
+X-Spam-Status: No, score=5.29
+X-Stat-Signature: xzsy5iuckcg7xdtmdcxxoi7gk7xrrsg5
+X-Rspamd-Queue-Id: 92D69180013
+X-HE-Tag: 1702495805-206145
+X-HE-Meta: 
+ U2FsdGVkX1/TGK80FJrxm28iei7qrzBXIKXZwa5Su83fAQS3HFirgby4F5I0WSW9PR+60vGwi5QNEB7nSsjhl+ioS+ZLa6K883i4pEWMojAtvvZVIsdyJBts8P/LqFR8ICFIbLUuPnwsmW16xcCWoQ7Y2Lj6C+KchfjWNL8SsH5MCVWYSQsswhTUxXGJu6WCNDJ3DE8LpWhmQvnT5+ZINGuqCjIHM1JOaVj7jQEaVJg=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 402

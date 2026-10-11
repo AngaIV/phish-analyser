@@ -1,0 +1,98 @@
+Return-Path: losbrkaridn@gmail.com
+Delivered-To: jose@monkey.org
+X-FDA: 80513630232.52.9989BB3
+Received: from mail-lj1-f194.google.com (mail-lj1-f194.google.com
+ [209.85.208.194])
+	by imf22.b.hostedemail.com (Postfix) with ESMTP id D86B5801BEDC
+	for <jose@monkey.org>; Mon, 27 Feb 2023 16:38:35 +0000 (UTC)
+Received: by mail-lj1-f194.google.com with SMTP id j17so7059384ljq.11
+        for <jose@monkey.org>; Mon, 27 Feb 2023 08:38:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:date:subject:to:reply-to
+         :message-id:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=NcrdbkJyTUtp5ptMUEipGl3sds53FsnvVd+DyJRaIp0=;
+        b=SyaQHhIOHjMt2+DgV2tpuQZMkXXaD1/iLS1POdNujbuX1/ry3woypaLEOPX7jc2uIL
+         OzOB4Pq1/ldf0Vo6hSGCaPOiyf/bTL+lJd03l9g66yFNSg/WgZlaV/U8hF4kWy0H5m7P
+         XneLa+31Bzn98PvuVUPk+s2dwGzdZNgFeKKnlRsvIhIDPMnYMmFwLTFD0xLjqjgNF9PX
+         2GhxCVwEgQAh+OyTJwU8a1tlTJ5WAS1nOLA4Sbb1s7mrHebtF98lVdV4BvEiOMZuCSVp
+         gUVj1rPHZZUAhDyAihy8jIqLQcZ+mh14B22SkJhAzTANwP3h/cXAT9hckR1b73KZwVev
+         wHRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:date:subject:to:reply-to
+         :message-id:from:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NcrdbkJyTUtp5ptMUEipGl3sds53FsnvVd+DyJRaIp0=;
+        b=d3Tx5baXh19GdBpWDbG0GnBrKAJjGjKgCCp57Ai89+xm1GM+xnSjKenQVdpcp+vHEF
+         q9zVfthewA+gaHhPBL+49vPoPHFioVhkgIgwz08En0v9WeZsvlxqtn//l1b6AJM6s2Zi
+         9HDDySEzlt/7mnyVGuyI0msQqwV6D7EcIfmuWOVlAeilbTgjXMNBXfg54+6h7esKUjC1
+         qMhWAo2u7e2Y0NHG4TXqyv3w6czUdGJrI3EO/bB+HcmCNO8EAK9/Svn39PePXbEq+r+B
+         DwEIhkBbCaQs381S0DMLSTprnf2UgcK1/XLvTf42T7LroqLi/zeXR0S0PkSU1URYFM+A
+         NdgA==
+X-Gm-Message-State: AO0yUKVV2y6gkByWkvqS6hP+32rYJUkhx0rvmDSmQQvsY/oifjXlD/uP
+	ngXCTOz6QCcTgM97Bp9L+9tViZrIKqltXdmLRCavsQ==
+X-Google-Smtp-Source: 
+ AK7set8CKCboQsvZN5vuRFB7Q+LO+wxy4uirLrpbfDNX97p6HrKLxRhPiNAMyobMNuHoWJd1WO9roA==
+X-Received: by 2002:a2e:8847:0:b0:295:a51f:9c78 with SMTP id
+ z7-20020a2e8847000000b00295a51f9c78mr3684731ljj.21.1677515914170;
+        Mon, 27 Feb 2023 08:38:34 -0800 (PST)
+Received: from DESKTOP-GNPNL1O ([217.138.219.180])
+        by smtp.gmail.com with ESMTPSA id
+ m6-20020a056512014600b004b5979f9ba8sm949734lfo.210.2023.02.27.08.38.33
+        for <jose@monkey.org>
+        (version=TLS1 cipher=DES-CBC3-SHA bits=112/168);
+        Mon, 27 Feb 2023 08:38:33 -0800 (PST)
+From: "Your Enjoin #5698722" <losbrkaridn@gmail.com>
+X-Google-Original-From: "Your Enjoin #5698722" <mcclureadelyn96@gmail.com>
+Message-ID: <0538febc-44984-03ac360025787@desktop-gnpnl1o>
+Reply-To: "Your Enjoin #5698722" <mcclureadelyn96@gmail.com>
+To: "Dear Customer" <jose@monkey.org>
+Subject: Order Confirmation
+Date: Mon, 27 Feb 2023 08:37:33 -0800
+MIME-Version: 1.0
+Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
+X-Priority: 3
+X-Mailer: My email client v3.3
+X-MimeOLE: Produced by my email client v3.3
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1677515915; a=rsa-sha256;
+	cv=none;
+	b=PAn8EpQntepYua2jCUMOhtwkz9F/Pxi7cRYHtFIJ7b5QeYjP2CkUcG70AE53qfh//ZBsJ1
+	ELw3y29N5FeA8YCBh3RgS/MEdqv6Jz0BgnvyhzkscADhxqYz0KIAtLz8VZj0Ea6zunvPex
+	5s3cK7MJRxKed/HwoblErbNbdd9H5fI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1677515915;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=NcrdbkJyTUtp5ptMUEipGl3sds53FsnvVd+DyJRaIp0=;
+	b=E3hpvejZPfAkvDyIGZy5wpG2x54jTd48vRyTNaEgoPScANkpXVO0nD3L793xWwh7iWo359
+	cr4zRFv2aaq/ovFphZRvifZ9HnV4O2mNaSTt1Fo2cy29QFQIOwM95xsCes/a2b1bA3fvOx
+	ubWcV17P6GIYe/FbcGTSRJYgK8iMAP0=
+ARC-Authentication-Results: i=1;
+	imf22.b.hostedemail.com;
+	dkim=pass header.d=gmail.com header.s=20210112 header.b=SyaQHhIO;
+	dmarc=pass (policy=none) header.from=gmail.com;
+	spf=pass (imf22.b.hostedemail.com: domain of losbrkaridn@gmail.com designates
+ 209.85.208.194 as permitted sender) smtp.mailfrom=losbrkaridn@gmail.com
+X-Rspam-User: 
+Authentication-Results: imf22.b.hostedemail.com;
+	dkim=pass header.d=gmail.com header.s=20210112 header.b=SyaQHhIO;
+	dmarc=pass (policy=none) header.from=gmail.com;
+	spf=pass (imf22.b.hostedemail.com: domain of losbrkaridn@gmail.com designates
+ 209.85.208.194 as permitted sender) smtp.mailfrom=losbrkaridn@gmail.com
+X-Rspamd-Queue-Id: D86B5801BEDC
+X-Rspamd-Server: rspam08
+X-Spam-Status: Yes, score=9.60
+X-Stat-Signature: bibyg8cmixb58hsawd5erf4mikpicqxs
+X-HE-Tag: 1677515915-859423
+X-HE-Meta: 
+ U2FsdGVkX1/LU3wdePskH3tCSQCuzCbI3kP7DS7eJC4O0P3HQBFAqvPPKKCjv+r0//xDtqr3d7CBhgibsq4Dne0o4yVmeszbZYyjzo+CJNcbV0XrL8AppnG6+3rCD7sRzjNsTB9i53bTLCje9wA2nR9sboTrLcvLXeNzx6RmnXEF1E8v+AZ1nunzVHCd8ND5mCDPAlI+I16iGJ/lbj9vtiTnKs7ruOFiZ1TSQCR84yCuUR14iCJ+aMlVyt1Gf1b320M6BGP42ZWXFLZA8y14pV1dVb/g9vPpXVxy7M+IiPqvEsIDI08JdDM7R7E0oX3o1MbfQJbqYtHzHQDuszGf7fvJbJswxzvFy6vTEVM+5/TSJIx8utEUbdDd2tLw3CNWWmzsGixUJk4db0e8RaY4ferJ2qvBpZkzoubRIvuQjLQUvG2v4oIlhHypXLk5qex1PgzHf6p5qng+C/OpXx9KZtKUCGFGT+Hmi433L5ClRhpB21fkRckleTxrEH1vBrNNm1kqUACVFH1SXUFKxZj3W+QO/QOno84GUyaZ5gg+HQXyoiMdvSjL79peoXXLPkZ6ffBtwKWswVfTdKWje7rZ0U2iDpRznykROLRmlYv8NoFZLrKomRx4uSNj3ju1PxwMZMj3WflYkUJM0mnvOgEYO4NSzSi8HM6iDMAzTbw1uZ2ianhFFhrVUMgISpzybWSMgid2eDAzYqOs1Z7T7S03wZcLLSzYRrANFSjhyM00apRxrsEDugDINb6W6cbL99hhwe4Frli3jvemtj7eq1SETezegUelRI98MhL1Jpf4EK5RrMg9L1nRv3K/JtoX4p/qfpHFF+aqERxQ50ivCiiWowloOjTDSOhLI0OnOz5Ujqgj/wdNrPYQrnvgaNi0T2ylbd7VkDjmfHyM2j08yeF0qId63BnPVpGFRunk15luiPSk/MgaEYBOxzDo3a3JwRFnz28hnWBfXpobgzoWMQhCYND6VtZ
+ YD46DhNvhBfQ3gGsNzdpv2dtvK+6bxw/Qv/nC7IOpbbodW0tHei6XDO6k7kTy3MWeV0pwqf7gJ8QBhUtg2D+IG24eNY01+YVo+lRiyPo2MnR2U7+nkW5NOKxAdqg/LhSCR0HoE6v9RWkGc5ZGnDykTbSipDN5wFAlZiTET9r6FltN3JLkB9nqOwW2+CTl8/EkTAFDIIRLgS3RbUjraGiuSYOK8UcTppgoe5MMqplRTsNv/wGeOLwTlVA1h+xNEKR00ZLPvN8GA69n2FVDgYpJCkDhFsRus5mKxi6jYzJrijyZXsb7iFlVhP7FyThwLFt624GzTQMSKh1pzrMBKToh0igWa5+ufo5UV4QwOpTyxshuPzG3s3LVsSjGFv7t3/bfwWVw21DlyNR+Mtpk2tdTOk8V5MYx0iF3PUoKl7NfOaEPcdQhV3QCZ2+B1mFdYL98Y2b5J8GKbL42Lp0m0rg+/3PDpMp1VyTpC5l4MmuDGhwNrK9HVHUOnf8yVclO84oInNU41Fs96UzdMh45mSw6tZOPXMdHfprFqLL25hFvoK85lVfA5C2taXK6A6TMcoFyrAemfbwfBXv0jjHbVU18UdzRu/7QuATLDFfY5zFUIpamHBX0ax/KLyQmVABltjvKMroKz6xCiMhTJ3b78bno6Uv8ZNHY/A43tm/evZlwtbRaFxFWtBku93GOnu/5IWMgx2rwaWF/mdmdrp8RpccyA6DQz2z8/lMRBpMHHU2ta56ugX/sfTIvAqoK88COVgaDv6Cf5NBtMxtNwRyfhO7H3339aMJu7OPtor6XUmEpSLCfSLf1G2t1LzA4d6ZxXNsOGUu/fMRXjwQkHo7VtYtOwgb4EGrUqwvxEtpDH/8PLx4a2nc=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 39

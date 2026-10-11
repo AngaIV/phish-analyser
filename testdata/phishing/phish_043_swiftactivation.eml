@@ -1,0 +1,71 @@
+Return-Path: cpanel-security.admin@swiftactivation.net
+Delivered-To: jose@monkey.org
+X-FDA: 80876761308.30.38556AC
+Received: from swiftactivation.net (unknown [95.164.45.227])
+	by imf18.b.hostedemail.com (Postfix) with ESMTP id E3CEE120004
+	for <jose@monkey.org>; Wed,  7 Jun 2023 18:18:12 +0000 (UTC)
+Authentication-Results: imf18.b.hostedemail.com;
+	dkim=pass header.d=swiftactivation.net header.s=default header.b=AV2YkMS8;
+	spf=pass (imf18.b.hostedemail.com: domain of
+ cpanel-security.admin@swiftactivation.net designates 95.164.45.227 as
+ permitted sender) smtp.mailfrom=cpanel-security.admin@swiftactivation.net;
+	dmarc=pass (policy=none) header.from=swiftactivation.net
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1686161893;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references:dkim-signature; bh=hHBz//bFCd409t9VRbA0O5oRFV4KQq2BJLWdYue0KQI=;
+	b=BdJlpm8vBRwuVAyIbD+NjZQOd0HKxtlY0tBiYCuLzqeAZtAZgTMdbBqTpINV58eZha8kR+
+	d91F5VCzD5s/mnwSleIU4X7FRil10rVRJ9ZxREQQq1ASyKx2KASj56HrE9vTlxtZW0t9bi
+	j62fNTqYKp60YK57+JYGHkWiMpxOScA=
+ARC-Authentication-Results: i=1;
+	imf18.b.hostedemail.com;
+	dkim=pass header.d=swiftactivation.net header.s=default header.b=AV2YkMS8;
+	spf=pass (imf18.b.hostedemail.com: domain of
+ cpanel-security.admin@swiftactivation.net designates 95.164.45.227 as
+ permitted sender) smtp.mailfrom=cpanel-security.admin@swiftactivation.net;
+	dmarc=pass (policy=none) header.from=swiftactivation.net
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1686161893; a=rsa-sha256;
+	cv=none;
+	b=ZXqK9W0L0wvWm9D6/ZDrkbdRTqxZhIm03Se3F6YOeMh7iiVN9fl1HJUI7MMnQ2xRtra4e5
+	0YcPOac+B+7QgkyOqFuZel82TfDefeRZFFK2ePaag5HYIf2sVeV+tXcRkxxVpcXUD4TcVC
+	zOWA0+5TpyPB9sDisd5o5RsPryG9mLg=
+Received: from ip95.ip-147-135-125.us (ip95.ip-147-135-125.us
+ [147.135.125.95])
+	(Authenticated sender: admin@swiftactivation.net)
+	by swiftactivation.net (Postfix) with ESMTPSA id 279E7291E1A
+	for <jose@monkey.org>; Wed,  7 Jun 2023 20:18:10 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=swiftactivation.net;
+	s=default; t=1686161890;
+	bh=pWPafwZCmUD7R7FzJbM2IUoBAjJK+ofLliMH3//4TkM=;
+	h=From:To:Subject:Date:From;
+	b=AV2YkMS8/P6MQuOtu26epIroS+QnSvwDMIL0V+rmvhoIBGvKVJwjQEK+My+kqRZeL
+	 B8slgCoG59M5y8fx/TMSEE3A8iToF/Ybwot68F5ICY0X2xcFqba4PTQ6R6XTfZYRHz
+	 Rr0RwM5pxjfnhyeu11LQwDnuFcpkj2cTCbtoUBbzHUS0ZHuMuceoGKL+zXExXTNjzU
+	 1j8dOoJ+F7eUFFITCRB2AJWUkXwdP9vnSRDFNnOY/h/sN3yXpF6fv18fjFhNLFVKt/
+	 EpRoWY5uGMoAG5PKF7O4MHYi/5vKga5BvBLOK/cVlxdh+Zvb8jM0q9dw7F80RfIKuc
+	 vYhQ0bvW0k0WQ==
+From: cPanel Support <cpanel-security.admin@swiftactivation.net>
+To: jose@monkey.org
+Subject: This email has been null routed due to recent spam reports!!
+Date: 7 Jun 2023 11:18:08 -0700
+Message-ID: <20230607111807.70096A86143F7D78@swiftactivation.net>
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Rspamd-Queue-Id: E3CEE120004
+X-Stat-Signature: hhcdfz9jwxxt9gj7mj5mcpgjeaobrtyb
+X-Rspam-User: 
+X-Spam-Status: No, score=2.80
+X-Rspamd-Server: rspam05
+X-HE-Tag: 1686161892-858611
+X-HE-Meta: 
+ U2FsdGVkX19fXjuNPBU9wnrWc3Z8KjNjUllW3e5LmGZYLIo8panVFpXdtm4KLQJc3G9psrT8XMsQ1IwCLkos5SdfDfgDGC7yU40hCbftGrTv/srAq5J4i+DTyrQryXiRQVay4jTTx7wE1RIOv9dWjgPLsxyisocASVVm9oJ7a/1yHSK5wzVwwMH7enwHjJnYj24PfDbhTefukKzQN1Oz7RNLLqTmcobCv38wvanz4fccRq5t3sDx2IXtEsDiUyPmgiH18+o+dzHgiHZDJlBhVCnbmuHTiM2dbddgS1QwbAgNe4uNWIqHub2eGzGvhZpeqc2VpqI/ATnuXkOYWb4tWdchhmczCldNa0z+D8+Ood6abhI6e6YVUA==
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 152

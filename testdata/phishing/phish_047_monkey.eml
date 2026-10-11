@@ -1,0 +1,56 @@
+Return-Path: no-reply@monkey.org
+Delivered-To: jose@monkey.org
+X-FDA: 80765185452.08.B21EFC5
+Received: from monkey.org (unknown [94.131.107.124])
+	by imf02.b.hostedemail.com (Postfix) with ESMTP id 4AE641A0046
+	for <jose@monkey.org>; Mon,  8 May 2023 00:22:04 +0000 (UTC)
+Authentication-Results: imf02.b.hostedemail.com;
+	dkim=none;
+	spf=softfail (imf02.b.hostedemail.com: 94.131.107.124 is neither permitted
+ nor denied by domain of no-reply@monkey.org)
+ smtp.mailfrom=no-reply@monkey.org;
+	dmarc=none
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1683505324; a=rsa-sha256;
+	cv=none;
+	b=3gS6h9ukcK1DbE1WlThvQoITWiXgCR4kglvojJ/JmH3Va5yX2635h+Pq6eYJSRbvALXp6H
+	SylNtXUvTkqIr7mwBkx3pEiSo+CIctAT/i+EZMx4Yr4gKBQWD/SqiO3UcZUeA5xwWgRzBa
+	g3RcU3V8/p0orNbWCU4xbGAEV8ORI1Q=
+ARC-Authentication-Results: i=1;
+	imf02.b.hostedemail.com;
+	dkim=none;
+	spf=softfail (imf02.b.hostedemail.com: 94.131.107.124 is neither permitted
+ nor denied by domain of no-reply@monkey.org)
+ smtp.mailfrom=no-reply@monkey.org;
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1683505324;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references; bh=CXSnFnsUEBH2zhcpqU/7CtZCyKmdJHwGdjfCoPYlCho=;
+	b=OSfvD4n+5b7GU0cz8sZdFXppMWyLjKC/mWHR1Ohk4MyEWJITf6IEYl0WMpWFhis45pYxkg
+	17vfHzDoUCGgUJreKpFFUFgc7gB9HDh7L2PG7AR/gJkDElLgNtqKFz8jvsudvs0q/0af6f
+	Ql/gGlU3CGSHMVokE+lD5mCWOxmBC+w=
+From: monkey.org Administrator<no-reply@monkey.org>
+To: jose@monkey.org
+Subject: Deactivation jose@monkey.org
+Date: 08 May 2023 00:22:02 -0700
+Message-ID: <20230508002202.F9D490ABBA6A35DA@monkey.org>
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Rspamd-Server: rspam07
+X-Rspamd-Queue-Id: 4AE641A0046
+X-Rspam-User: 
+X-Spam-Status: Yes, score=12.20
+X-Stat-Signature: 59pfn46iw8fmwykp4iez6gjk5a7wfcj4
+X-HE-Tag: 1683505324-416063
+X-HE-Meta: 
+ U2FsdGVkX19SPpeQ5pmIOk6r6VUXpUGq/dMz6jYNWdeNujCUtX9/4BPjVecSFRhcgATZrCiX2eFMx1Zgu3AOyJ2/rYiVRZnn4JaRbQZIaFZ96d8gHXbwBinCGbXry8eUURxb9f1iNRn6a/mabZkU8rLt4hnuQFYW0KiBzs0Uczr7PgcuStKok83lPW758IplaKGF31y4qw7Cc8Xh+XDBAgQCvS1fZEFcSiw2nBaHNkw=
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 95

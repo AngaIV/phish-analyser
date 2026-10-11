@@ -1,0 +1,56 @@
+Return-Path: noreply@monkey.org
+Delivered-To: jose@monkey.org
+X-FDA: 81177190920.22.4871139
+Received: from mail0.ulgener.com (unknown [185.38.142.226])
+	by imf09.b.hostedemail.com (Postfix) with ESMTP id 22FA418000E
+	for <jose@monkey.org>; Tue, 29 Aug 2023 13:16:18 +0000 (UTC)
+Authentication-Results: imf09.b.hostedemail.com;
+	dkim=none;
+	spf=softfail (imf09.b.hostedemail.com: 185.38.142.226 is neither permitted
+ nor denied by domain of noreply@monkey.org) smtp.mailfrom=noreply@monkey.org;
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1693314979;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references; bh=1R/ERESOoIanfpKMtfA74/uIn5GOu1MUTBwpKYdL42Q=;
+	b=uIA8tpvJ+k+tjzX4wN2MoDsqA175oIbiLEqrt3JrjRA8Tjo2sltAorZidwgUqK3FV806yJ
+	hkxkLEY1znGfxbiUW6H+CaUgM9Qg8S1q8Zceuw+ynaigNZjTsx9NmvwTmYZutn6jvXKXBT
+	DZX0A1EY5EAZjasTXxC7YQezS17uryo=
+ARC-Authentication-Results: i=1;
+	imf09.b.hostedemail.com;
+	dkim=none;
+	spf=softfail (imf09.b.hostedemail.com: 185.38.142.226 is neither permitted
+ nor denied by domain of noreply@monkey.org) smtp.mailfrom=noreply@monkey.org;
+	dmarc=none
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1693314979; a=rsa-sha256;
+	cv=none;
+	b=Ns6IhwR33vwYQg/nfVDLD3UjOJtuOc4SC1ek+ifNq1F5ZTrl4c0GRBXgHcYwGIjxBjEV24
+	hEgNIWNfkPDwluRE/QsrkNO+vB1t9mthcQmpFTRAdCqGdETw/G3Co+TggMt+YI8Gtixsz8
+	yjPw+Wue1hrEdkoNnt8N8DuHkxPAAhw=
+Received: from [79.110.48.177] (mail0.ulgener.com [IPv6:::1])
+	by mail0.ulgener.com (Postfix) with ESMTP id D3FF31D6771
+	for <jose@monkey.org>; Tue, 29 Aug 2023 13:08:45 +0000 (UTC)
+From: Mail Admin <noreply@monkey.org>
+To: jose@monkey.org
+Subject: You have [8] pending incoming messages
+Date: 29 Aug 2023 15:08:45 +0200
+Message-ID: <20230829150845.A6488A7A3D3B4C70@monkey.org>
+MIME-Version: 1.0
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+X-Rspamd-Server: rspam09
+X-Rspamd-Queue-Id: 22FA418000E
+X-Stat-Signature: urpc8isgx8hx3aifa7i9fn74kg6dkdri
+X-Rspam-User: 
+X-Spam-Status: Yes, score=12.50
+X-HE-Tag: 1693314978-800256
+X-HE-Meta: 
+ U2FsdGVkX1/NqYxVwCaTHsD71kW/5S9JrEIwnuXUqC5+OSihz1FMYoNFyPgCfY5u1EGSg17/650TSC7pkydpRzmES1CCh9Va2O9K18IVLph5RcnhxrV6Z1tm9i+8/e8a5DSSINVcAPhTKBhuHn1+dtfU6/Lha1QZ1L2e+3HB37mzl41s6LPN8P1JzKws/FAyXxwUs08L6SCHRG8+S1jwEBaxQvHQC2KM3jZkWPTc158=
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 267

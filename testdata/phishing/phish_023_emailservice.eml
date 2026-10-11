@@ -1,0 +1,60 @@
+Return-Path: lastedupdate@emailservice.org
+Delivered-To: jose@monkey.org
+X-FDA: 81282340356.16.EF8A896
+Received: from c15t3e5q.mwprem.net (c15t3e5q.mwprem.net [122.17.147.100])
+	by imf04.b.hostedemail.com (Postfix) with ESMTP id 420FB16000A
+	for <jose@monkey.org>; Wed, 27 Sep 2023 12:42:15 +0000 (UTC)
+Authentication-Results: imf04.b.hostedemail.com;
+	dkim=none;
+	dmarc=none;
+	spf=none (imf04.b.hostedemail.com: domain of lastedupdate@emailservice.org
+ has no SPF policy when checking 122.17.147.100)
+ smtp.mailfrom=lastedupdate@emailservice.org
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1695818536;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references; bh=EU6nOUlIGeAJgwNRSKLMaagR+MPfjfeU63orgyxaNgE=;
+	b=3pnOZ4wPLGEtFH7/eQWcUnF/h3cZEH92H4l17he02BsWWWY7+MfsOO/nVc5C4feKbW9ydj
+	sZZqaax20Xs1NGxRFjh0q1HRKtIU5vBYaeiLaXwOeDl6q2zR26nzWPX+2heaOYbZa+AQFL
+	YRiE4GGl0/VaCcLp7lKBsrKNrv0bU+o=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1695818536; a=rsa-sha256;
+	cv=none;
+	b=7gQJnvNXXvlsqKSEx7tlXHY6QOFZUd4GzX5iH1wW0pEe1EdJxY/Wg5DtpfFiYg/h+xnZuJ
+	QHmSOoBthpReJdvcvHrgazsnQND1zThL2ezrj+yhiWKsC2sonr+3rBBnx4rKbu8jelY6uc
+	L6L/lSAZLDgEBb352nR7eATv3nNj/Is=
+ARC-Authentication-Results: i=1;
+	imf04.b.hostedemail.com;
+	dkim=none;
+	dmarc=none;
+	spf=none (imf04.b.hostedemail.com: domain of lastedupdate@emailservice.org
+ has no SPF policy when checking 122.17.147.100)
+ smtp.mailfrom=lastedupdate@emailservice.org
+Received: from [156.96.45.146] (unknown [156.96.45.146])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by c15t3e5q.mwprem.net (Postfix) with ESMTPSA id CF683422061A
+	for <jose@monkey.org>; Wed, 27 Sep 2023 21:42:13 +0900 (JST)
+From: "monkey.org"<lastedupdate@emailservice.org>
+To: jose@monkey.org
+Subject: jose Retrieve Pending Messages
+Date: 27 Sep 2023 05:42:07 -0700
+Message-ID: <20230927054206.64077B7260C544B9@emailservice.org>
+MIME-Version: 1.0
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+X-Rspamd-Server: rspam02
+X-Rspam-User: 
+X-Rspamd-Queue-Id: 420FB16000A
+X-Spam-Status: No, score=3.20
+X-Stat-Signature: 7e1kbhhxjrtbsgzqxw7qzhip5kwq1k8c
+X-HE-Tag: 1695818535-849042
+X-HE-Meta: 
+ U2FsdGVkX186SIV6Kv9ZJyv84Vp2lh5TcUScdXGGG7/21/8o5Sb6Plk+mCDd3rY8YiyjdqK5xIuwoKWeMGA2EBt6h2ze9rxbSWes3nahy5MAJ1xoQxsWnaKD7gwcvjDLWMZCFjaWFM9soxlEnSdJUOfAmxebtG/Ia078oV9YvqxsmnzFnQRUAJIgTm3yBNE0VcNS1K10B11MDBihNOIzIZV8sT6h1ESHUA5WF70ziIWO2mmjPn+Ug3erFQGvWAkalOYY1YZVimnRZ3k9PBEaDA7o8JzoSfPmCSjCsU49dwcGJecA/KaxFw==
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 291

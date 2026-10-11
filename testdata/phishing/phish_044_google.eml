@@ -1,0 +1,98 @@
+Return-Path: 
+ 3VXxnZRcKBB47LCP8-MB4L8M-7G-HIL8JFSAIIAF8.6IGDIM8GIHE8S.ILA@doclist.bounces.google.com
+Delivered-To: jose@monkey.org
+X-FDA: 81511757754.11.440EB47
+Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
+ [209.85.210.198])
+	by imf11.b.hostedemail.com (Postfix) with ESMTP id BE10580013
+	for <jose@monkey.org>; Wed, 29 Nov 2023 18:00:54 +0000 (UTC)
+Authentication-Results: imf11.b.hostedemail.com;
+	dkim=pass header.d=google.com header.s=20230601 header.b=OKToI7An;
+	spf=pass (imf11.b.hostedemail.com: domain of
+ 3VXxnZRcKBB47LCP8-MB4L8M-7G-HIL8JFSAIIAF8.6IGDIM8GIHE8S.ILA@doclist.bounces.google.com
+ designates 209.85.210.198 as permitted sender)
+ smtp.mailfrom=3VXxnZRcKBB47LCP8-MB4L8M-7G-HIL8JFSAIIAF8.6IGDIM8GIHE8S.ILA@doclist.bounces.google.com;
+	dmarc=pass (policy=reject) header.from=google.com
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1701280854;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:content-transfer-encoding:in-reply-to:
+	 references:references:dkim-signature;
+	bh=ccy3Mh1HoPoNDi8lsZKMnfwaT43Thkqy3O0BfCKhlyg=;
+	b=4Gyl/9kEhE2Dc791bQL1DZCF514836Wj8J/VBtueAP0Wk6fmR0WR8U4HwPAjzCmAlkB9LJ
+	3yjEDkrmtSygckGhsFDaQ4/3aRi2XkVEa+pcj3Qg8peu3BtbFxsQvTrTbUMQC3Tjtj3B5U
+	BvS3kO0Vx0W5+PPvCCnZQXLigK1bNLA=
+ARC-Authentication-Results: i=1;
+	imf11.b.hostedemail.com;
+	dkim=pass header.d=google.com header.s=20230601 header.b=OKToI7An;
+	spf=pass (imf11.b.hostedemail.com: domain of
+ 3VXxnZRcKBB47LCP8-MB4L8M-7G-HIL8JFSAIIAF8.6IGDIM8GIHE8S.ILA@doclist.bounces.google.com
+ designates 209.85.210.198 as permitted sender)
+ smtp.mailfrom=3VXxnZRcKBB47LCP8-MB4L8M-7G-HIL8JFSAIIAF8.6IGDIM8GIHE8S.ILA@doclist.bounces.google.com;
+	dmarc=pass (policy=reject) header.from=google.com
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1701280854; a=rsa-sha256;
+	cv=none;
+	b=a73tRs0NObMGcjeI6o3oxc+2OaxCUZk1OX+v7JBrcz4YaFhES+ZjpO/Kf1qiCh8Q8S+W4C
+	iBXUU6m7E/jk9ODcXPS12YHsZVOKwO5Uz0W175emdpD9NKMMB3TCfJo2RI1xSXCSzu8tgg
+	v0HCeAq8CaeUixgUBtqeYCiD1SsMB7s=
+Received: by mail-pf1-f198.google.com with SMTP id
+ d2e1a72fcca58-6cc0763b3c6so10587b3a.3
+        for <jose@monkey.org>; Wed, 29 Nov 2023 10:00:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1701280854; x=1701885654; darn=monkey.org;
+        h=cc:to:from:subject:date:message-id:references:reply-to:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ccy3Mh1HoPoNDi8lsZKMnfwaT43Thkqy3O0BfCKhlyg=;
+        b=OKToI7AnhCEMzdv18c3bBDu6wsmxSguvtzda7Usb2sg0hlcuxCKcy/nISTRnmAXEd6
+         xd9YdecjoDOsZDkiJqQxUD01CSJOVBbPEHGh/iSES8A7xp0Aw7gg6PYzDiFlqhdxGJso
+         inotEUc9CfE9TTKYjAIFf34Zv9mtTW6xtv1vqDueJRy38HMy6/bDK3seSk9/hbM6HMkb
+         FNnU4MhpwFYKC2dhZy+BMRijtdMo5YwYQlCFJj4aijZaRNtBTYTWK/Hi7FTGbZNbRPFh
+         K6WTrNXVd5nNbajxc1TaPyj8C/ozCm8krs+UmjYn63dNyz5B0N4nn5VPo111T+/UTyzi
+         fFPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701280854; x=1701885654;
+        h=cc:to:from:subject:date:message-id:references:reply-to:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ccy3Mh1HoPoNDi8lsZKMnfwaT43Thkqy3O0BfCKhlyg=;
+        b=nUd44/zhSCgv9bON0+cW02sibZ63ojKxkY17RGV24e8WKL80rYpZjX3ICYUzTXBPqM
+         VPRsl8f9R3AyuVPKlDkj0mKab+HmWXKjEmFICECy4DFmfamP69JpT44pS3gsa9qla1O2
+         WFcf6LqGNc3fmR7WR3pSd1Bn6fc/Pk7ItJcaU2IDClwSqMU0+bZKcHCIsD8wpTyBuM5V
+         jcmuIcrs5r9LooZMS0wTGcOEdM/eUeUTfAJQTczXz739b6uICOr2afUcK0rInrT+TvF5
+         yT8TFGgPnQGv1laPxaz+f86HrJI5bYN+boOJPnjdF0O9kso2Y9YvrBUmTMD2tjE1KhDn
+         Qcag==
+X-Gm-Message-State: AOJu0Yw+jHRTp3qZqCl3Je4MvGGGP9F7aIt5XbeoZztWb0TlLdqZKzbV
+	c2J0jIr/YeENVyhdzLgfEenN09WBH5Tsi1Bui3rVvkpMh/I=
+X-Google-Smtp-Source: 
+ AGHT+IEiyOP7FE6xWffG0yPJPSYBtG7YOaeMxg1lt1guIxCOFqa9lclWnG+Up0YvK4pV7N3C6+Oo3H62uB4=
+MIME-Version: 1.0
+X-Received: by 2002:a05:6a00:3911:b0:6cb:cc2b:5ca with SMTP id
+ fh17-20020a056a00391100b006cbcc2b05camr5141394pfb.2.1701280853888; Wed, 29
+ Nov 2023 10:00:53 -0800 (PST)
+Reply-To: =?UTF-8?B?Q2jQsHNlINCS0LBuayBSZWdhaW4tQWNjZS4uLg==?=
+ <ticaltade1998@validate001.accessmaindecision.eu>
+X-No-Auto-Attachment: 1
+References: <2113acf6-8829-4de1-b0ff-0410577fe7fd@docs-share.google.com>
+Message-ID: <autogen-java-fc786c8b-7af9-46a4-a2cd-e9cba6cac026@google.com>
+Date: Wed, 29 Nov 2023 18:00:53 +0000
+Subject: Item shared with you: "We Have Banned Yours Access Online ID Due to
+ Unauthorized Entry.pdf"
+From: 
+ =?UTF-8?B?Q2jQsHNlINCS0LBuayBSZWdhaW4tQWNjZS4uLiAodmlhIEdvb2dsZSBEcml2ZSk=?=
+ <drive-shares-dm-noreply@google.com>
+To: jose@monkey.org
+Cc: adriang1217@icloud.com, noneill@mhtl.com, jim@lsmgaming.com
+Content-Type: multipart/alternative; boundary="000000000000f5947c060b4e505a"
+X-Rspamd-Server: rspam08
+X-Rspam-User: 
+X-Rspamd-Queue-Id: BE10580013
+X-Spam-Status: Yes, score=9.15
+X-Stat-Signature: 1e7jak3pczehjjx1rs9fzwy1nqbt5nsk
+X-HE-Tag: 1701280854-137348
+X-HE-Meta: 
+ U2FsdGVkX18dXkKQFBpEZqixU3IFJodqWcqqZZbusiWDjzKE+/xQwGWRJQPqALInphjQErFbjj4XHuNE5lpO8bmcZoKojpcd+c6pj3z/Y+osl6qjpyRG/fu8dFpmQutLScEcCzn1SqHumW/8jPuLJTWWWJrQixAm+Fg3spXYl0EbEp1T4NXdSEwZYWwmAwLo6AVrczEcBdEvy3kR6sQmZyTdqYxg1r0M6zYeVgrBDz8gGvrxU7fX0EL695+7szvWRyF0rxc8jraQ2LNK9/iOUo4bkfrRDfszjTAhwXQEWDo=
+Status: O
+X-Status: 
+X-Keywords: 
+X-UID: 390

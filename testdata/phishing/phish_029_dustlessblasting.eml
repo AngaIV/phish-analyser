@@ -1,0 +1,62 @@
+Return-Path: team@dustlessblasting.com
+Delivered-To: jose@monkey.org
+X-FDA: 81302562726.28.09B3369
+Received: from rstearns.sunsweet.pserver.space
+ (rstearns.sunsweet.pserver.space [80.85.154.57])
+	by imf30.b.hostedemail.com (Postfix) with ESMTP id 9552E180002
+	for <jose@monkey.org>; Tue,  3 Oct 2023 02:27:01 +0000 (UTC)
+Authentication-Results: imf30.b.hostedemail.com;
+	dkim=none;
+	spf=fail (imf30.b.hostedemail.com: domain of team@dustlessblasting.com does
+ not designate 80.85.154.57 as permitted sender)
+ smtp.mailfrom=team@dustlessblasting.com;
+	dmarc=none
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hostedemail.com;
+	s=arc-20220608; t=1696300022;
+	h=from:from:sender:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:in-reply-to:
+	 references; bh=RPTqyhACHcqVt+hSm75v09rBPP4QkzEN55TmQgsXDfM=;
+	b=E4M9ckv9Dbnlcw26zozKtf6UPKwBI1IpD+Lz/OaXJnBHqcQJM342leSWjvaFOm8ThDPgTm
+	9zTSjvsMV+be2hfjY6Dd3ovwv4IIuCDP/4u/bhhN4k3ulrX2kdOUF0GFjECuxq+s1tgdvI
+	2JkM/GhEtR2yQk/QFPKPyX0xKtjK1pc=
+ARC-Seal: i=1; s=arc-20220608; d=hostedemail.com; t=1696300022; a=rsa-sha256;
+	cv=none;
+	b=M08uAQW030y2OIBOg0MGn8u+ac7pdC/GtBPID4b3W4jv/Mai+a7c1bvIOUskSAkL0UR9lF
+	rr4I9lHXdnYrkSFrTre4yfRdeiVrLXaVPvl0sA8YN81dCHpeQUIqqK8aO3wgW7CDGjDy0H
+	vL5OS1k8j8Y/dFIAUZCz9250u/fVDVA=
+ARC-Authentication-Results: i=1;
+	imf30.b.hostedemail.com;
+	dkim=none;
+	spf=fail (imf30.b.hostedemail.com: domain of team@dustlessblasting.com does
+ not designate 80.85.154.57 as permitted sender)
+ smtp.mailfrom=team@dustlessblasting.com;
+	dmarc=none
+Received: from dustlessblasting.com (localhost [IPv6:::1])
+	by rstearns.sunsweet.pserver.space (Postfix) with ESMTP id 5EA5D7259C9
+	for <jose@monkey.org>; Tue,  3 Oct 2023 07:21:56 +0500 (+05)
+Reply-To: wxyc88.sina@gmail.com
+From: "monkey.org" <team@dustlessblasting.com>
+To: jose@monkey.org
+Subject: 
+ =?UTF-8?B?KDEyKSDlgrPlhaXpg7Xku7bnhKHms5XlgrPpgIHliLDmlLbku7bnrrHmlofku7blpL4u?=
+Date: 03 Oct 2023 04:21:55 +0200
+Message-ID: <20231003042155.2CD6266DD4572339@dustlessblasting.com>
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Rspamd-Server: rspam03
+X-Rspamd-Queue-Id: 9552E180002
+X-Stat-Signature: sih7ewizw5uoxz4wp6f6bci1ugc57yo6
+X-Rspam-User: 
+X-Spam-Status: Yes, score=16.72
+X-HE-Tag: 1696300021-749893
+X-HE-Meta: 
+ U2FsdGVkX1+7Z+9QdAuygoToRW8N8kNKFkRQ91P+sMaBwJL4GWyepHPEol74oa1uSYaKO1/raP5+FEOuwW539hYfw03cfO2XdiJXtCcC1neYEFguACjAKodeljT+YeVl53+qck2gIcLlDXDJVqV0tdC67SW1CQCe0ylmaRSwe4XRB/DfjLh37aEl5zbB/dSNv80bloSePp1H+eiLYMWN9APXWJQwcIC94W9Ayu4UJGY=
+Status: RO
+X-Status: 
+X-Keywords: 
+X-UID: 299
