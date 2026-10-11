@@ -105,3 +105,75 @@ deferred by decision (D-008), not by overrun. Phase 2 is on schedule but its exi
 is heavier — 8–10 rules each with a measured precision figure, and an overall
 false-positive rate under threshold — so the cut, if needed, is **rule count**: ship
 6 well-measured rules rather than 10 unmeasured ones.
+
+---
+
+## Phase 2 close — rules, scoring and the holdout run
+
+### 2. What I finished
+
+- **Four detection rules**, each spec'd, unit-tested and measured: `auth-results`,
+  `identity-mismatch` (v1.1 after the list/bulk fix), `display-name-spoof`,
+  `lookalike-domain` (v1.1 after the weight change).
+- **Scoring module** — bubble number (count of flagged findings) and colour from the
+  weighted score (green / amber / red / grey). Fail-safe behaviour pinned by regression
+  test. 66 tests passing.
+- **`evaluate.py`** reporting per-rule precision and recall plus the combined exit gate.
+- **Holdout run — completed once**, 15 phishing / 15 legitimate, after all tuning.
+
+### 3. What broke or surprised me
+
+- **The fail-safe had a hole, and the first measurement hid it inside a bigger number.**
+  False green measured 11/35. That figure conflated two unrelated problems: **4 samples
+  showed green *despite* an explicit `Unknown` finding** (a real bug — the scorer's
+  weight-1 branch bypassed the unknown check), and **7 were honest misses** with no
+  header evidence at all. Separating them mattered: documenting 11/35 as one number would
+  have buried a genuine integrity breach inside an unavoidable ceiling. After the fix:
+  7/35 = 20% residual, fail-safe breaches **0**.
+- **My own recommendation was wrong, twice, until it was simulated.** U1 stood at 43%.
+  From aggregate counts I advised raising `identity-mismatch`'s Return-Path weight. A
+  Python simulation against actual per-sample findings showed that reaches only 46% —
+  still short — *and* costs the corpus's only legitimate false positive. Raising
+  `lookalike-domain` instead reached **51% with P3 unchanged at 0%**. Aggregate arithmetic
+  produced a plausible answer but not a correct one. Logged as D-012.
+- **Two more rules died on the probe, which is the real story of Phase 2.** Rule 7
+  (`structural-oddities`): all six remaining unflagged phishing samples are *well-formed* —
+  only `singleHop` fires, catching 2 of 6 for 1 false positive. Rule 6 (`received-chain`):
+  "From-domain absent from `Received` and auth headers" fires on **13/35 legitimate**
+  samples and **2/35 phishing** — an anti-detector. Both rejected before a line of code
+  was written (D-013). That is now the fourth and fifth time probing killed a
+  plausible-looking idea cheaply.
+- **The holdout came in below the dev set.** Dev measured 51%; holdout measured **40%**
+  against a 50% floor. My earlier estimate of a "55–65% ceiling" was **too optimistic**
+  and has been corrected in `docs/success.md`. The gap is the ordinary cost of measuring
+  on untouched data — and with 15 samples, one sample is 6.7%, so 40% and 50% are not
+  reliably distinguishable. The number is reported as a miss, not tuned away.
+
+### 5. Risks that changed
+
+- **RSK-01 (detection ceiling) — materialised and closed.** Coverage is measured at
+  **40–51%**; the contingency is now active: the tool is repositioned as a precision-first
+  warning aid, not a general detector. **This needs an I&TS conversation.**
+- **RSK-02 (false green) — materialised.** 20% dev / 33% holdout residual, but the
+  fail-safe itself holds at **0% on both splits**. The binding outcome is a UI constraint:
+  green must read "no issues found", never a tick.
+- **Reduced:** the risk that the tool is noisy. **Zero legitimate samples were flagged on
+  both the dev split and the holdout** — 0/35 and 0/15. The precision promise is the one
+  part of the value proposition that fully holds.
+
+### 6. Plan for next
+
+1. **Rule 8 — `authserv-trust`** (security fix for the forged `Authentication-Results`
+   gap; not a detection play, so unaffected by D-013).
+2. **Phase 3 — the UI.** Green-state wording per D-011; the bubble overlay decision (D-002).
+3. **Restate P2** (10-rule target) with the stakeholder — see D-014.
+
+### 7. Am I inside the phase time-box?
+
+Phase 2 is complete and inside the box, but **not on the original terms.** The exit gate
+called for 8–10 rules; 4 are built and 3 were probed and rejected on evidence. The journal
+predicted "the cut, if needed, is **rule count**: ship 6 well-measured rules rather than 10
+unmeasured ones." **The cut was deeper than predicted and for a better reason** — the
+rejected rules were not merely unmeasured, they were measured and found harmful or empty.
+Two of the three criteria are met (P3, I1's fail-safe); U1 is missed at 40% and left
+unadjusted.

@@ -11,29 +11,38 @@ Order follows the plan: easiest and highest value first. Each rule runs the same
 six-step routine (spec → failing tests → implement → measure on dev → investigate
 false positives → record precision).
 
-- [x] **Rule 1 — `auth-results`.** Measured precision 1.00, recall 0.17.
+- [x] **Rule 1 — `auth-results`.** Measured precision 1.00, recall 0.17 dev / 0.40 holdout.
 - [x] **Rule 2 — `identity-mismatch`.** Measured precision 0.80 after the list/bulk fix (v1.1).
-- [x] **Rule 3 — `display-name-spoof`.** Measured precision 1.00, recall 0.29 — highest yield so far.
-- [ ] **Rule 5 — `lookalike-domain` (in progress).** Scoped to brand-plus-lure-word labels,
-      cheap TLDs and IP-derived labels. Edit distance, homoglyphs and bare hyphen heuristics
-      were **rejected on evidence** — see D-010.
-- [ ] **Rule 7 — `structural-oddities` (probe next).** Missing required headers, duplicated
-      headers, unusual `X-Mailer`, malformed fields. The remaining misses are mostly
-      header-poor, sloppy phish, which is what this rule targets. **Probe before building.**
-- [ ] **Rule 6 — `received-chain`.** Hop count, timestamp order, private and reserved IPs.
+- [x] **Rule 3 — `display-name-spoof`.** Measured precision 1.00, recall 0.29 dev / 0.20 holdout.
+- [x] **Rule 5 — `lookalike-domain`.** Precision 1.00 dev, recall 0.09 dev / **0.00 holdout**.
+      Weight raised 1 → 2 in v1.1 to clear U1 — see D-012. Edit distance, homoglyphs and bare
+      hyphen heuristics were **rejected on evidence** — see D-010.
+- [x] **Rule 7 — `structural-oddities` (REJECTED).** Probed: all six remaining unflagged
+      phishing samples are well-formed. Only `singleHop` fires (2/6 greens, 1 legitimate);
+      every other structural signal catches nothing. **Do not build** — see D-013.
+- [x] **Rule 6 — `received-chain` (REJECTED).** Probed: "From-domain absent from `Received`
+      and auth headers" fires on **13/35 legitimate** samples and only **2/35 phishing** —
+      an anti-detector. **Do not build** — see D-013.
 - [ ] **Rule 8 — `authserv-trust`.** Only trust `Authentication-Results` written by our own
-      receiving server. Closes the forged-header gap in rule 1.
-- [ ] **Rule 4 — `message-id-alignment` (deferred).** Deferred behind an ESP allow-list.
+      receiving server. Closes the forged-header gap in rule 1. **Still worth doing** — a
+      security fix, not a detection play, so exempt from D-013.
+- [x] **Rule 4 — `message-id-alignment` (DEFERRED).** Deferred behind an ESP allow-list.
       `Message-ID` is stamped by the sending platform, so a mismatch is normal for nearly
       all legitimate bulk mail — see D-009.
-- [ ] **Scoring module.** Bubble number = count of flagged findings; bubble colour from the
-      weighted score (green none, amber low/medium, red high). Move weights and brand lists
-      to configuration (D-005).
-- [ ] **Holdout run.** Once, at the end of Phase 2, recorded and never tuned against.
+- [x] **Scoring module.** Done — `Scorer`, `Verdict`, `BubbleColour`, fail-safe pinned by
+      regression test. Weights and brand lists moved to `Configuration` (D-005).
+- [x] **Holdout run.** Run once on 15 phishing / 15 legitimate. U1 40%, P3 0%, I1 fail-safe
+      0/15. Not tuned against — see D-014 and `docs/results.md`.
+- [ ] **Restate project criterion P2** (author sign-off needed). It requires "at least 10
+      rules"; 4 are built and rules 4, 6, 7 are rejected on evidence. Recommend restating
+      to "every rule measured and justified" rather than padding the count — see D-014.
 
-**Rule order is now driven by measurement, not by the plan's numbering.** The plan's own
-order put `auth-results` first and lookalikes fifth; the dev-set numbers show the cheap
+**Rule order was driven by measurement, not by the plan's numbering.** The plan's own order
+put `auth-results` first and lookalikes fifth; the dev-set numbers show the cheap
 display-name check outperforming the elaborate one by 5×.
+
+**Phase 2 detection work is complete.** Four rules built and measured; three rejected with
+probe evidence. Header-only detection is capped at ~40–51%.
 
 ## Next — Phase 1 leftovers
 
