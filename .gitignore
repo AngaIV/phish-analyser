@@ -51,4 +51,5 @@ installer/out/
 # never committed to main. Anchored to the repo root so it cannot hide a real `out/`
 # directory inside a project.
 /progress.json
+/progress.svg
 /out/

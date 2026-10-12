@@ -23,6 +23,20 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 SUCCESS_DOC = REPO / "docs" / "success.md"
 OUTPUT = REPO / "progress.json"
+SVG_OUTPUT = REPO / "progress.svg"
+
+# Palette. The green matches the desktop bubble's safe colour so the bar and the app
+# read as the same product.
+BAR_GREEN = "#0EA47A"
+BAR_TRACK = "#E6E8EB"
+BAR_TEXT = "#57606A"
+
+# Geometry. Wide and short, so it reads as a bar rather than a badge.
+BAR_WIDTH = 760
+BAR_HEIGHT = 30
+BAR_RADIUS = 15
+TEXT_GUTTER = 64
+SVG_HEIGHT = 36
 
 # Weight of each phase towards the overall bar. Later phases are worth more because they
 # contain more work -- an unweighted count would make the early planning phases look far
@@ -124,6 +138,34 @@ def find_readme_phases() -> list[tuple[int, str, float]]:
     return phases
 
 
+def render_svg(percent: int, phases: list[tuple[int, str, float]]) -> str:
+    """Draw the progress bar as a self-contained SVG.
+
+    A filled rectangle rather than a badge, because a percentage is easier to read at a
+    glance when you can see how much of the bar is left. Drawn with plain rectangles so
+    GitHub renders it identically everywhere: no fonts beyond the system stack, no
+    scripts, no external references.
+    """
+    track_width = BAR_WIDTH - TEXT_GUTTER
+    filled = round(track_width * percent / 100)
+
+    # Keep a minimum visible nub once any work is done, so a low percentage is not
+    # mistaken for an empty bar.
+    if percent > 0:
+        filled = max(filled, BAR_RADIUS * 2)
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{BAR_WIDTH}" height="{SVG_HEIGHT}" viewBox="0 0 {BAR_WIDTH} {SVG_HEIGHT}" role="img" aria-label="Project progress: {percent} percent">
+  <title>Project progress: {percent} percent</title>
+  <rect x="0" y="3" width="{track_width}" height="{BAR_HEIGHT}" rx="{BAR_RADIUS}" fill="{BAR_TRACK}"/>
+  <clipPath id="fill">
+    <rect x="0" y="3" width="{track_width}" height="{BAR_HEIGHT}" rx="{BAR_RADIUS}"/>
+  </clipPath>
+  <rect x="0" y="3" width="{filled}" height="{BAR_HEIGHT}" fill="{BAR_GREEN}" clip-path="url(#fill)"/>
+  <text x="{BAR_WIDTH - 6}" y="{SVG_HEIGHT // 2 + 1}" text-anchor="end" dominant-baseline="middle" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="{BAR_TEXT}">{percent}%</text>
+</svg>
+"""
+
+
 def main() -> int:
     phases = read_phases() or find_readme_phases()
     if not phases:
@@ -149,6 +191,7 @@ def main() -> int:
     }
 
     OUTPUT.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    SVG_OUTPUT.write_text(render_svg(percent, phases), encoding="utf-8")
 
     summary = (
         f"{percent}% complete | {done}/{len(phases)} phases done"
@@ -156,6 +199,7 @@ def main() -> int:
     )
     print(f"progress: {summary}")
     print(f"wrote {OUTPUT}")
+    print(f"wrote {SVG_OUTPUT}")
 
     # Surface the result to the workflow so the commit message and any later step can use it.
     github_output = os.environ.get("GITHUB_OUTPUT")
