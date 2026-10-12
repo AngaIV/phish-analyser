@@ -1,20 +1,21 @@
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
+using PhishAnalyser.Desktop.Analysis;
 using PhishAnalyser.Desktop.Models;
 
 namespace PhishAnalyser.Desktop;
 
 public partial class App : Application
 {
-    private readonly List<BubbleWindow> _windows = new();
+    private BubbleWindow? _bubble;
 
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
 
-        // Temporary: `--render-states <dir>` writes one PNG per bubble state and exits.
+        // `--render-states <dir>` writes one PNG per bubble state and exits. Verification tool.
         if (e.Args.Length >= 2 && e.Args[0] == "--render-states")
         {
             StateRenderer.RenderAll(e.Args[1]);
@@ -24,8 +25,45 @@ public partial class App : Application
 
         StartConsoleCancelHandler();
 
-        // Step A harness: ONE bubble, stepped through the five states with the number keys.
-        // Replaced by the Outlook host in Step B.
+        _bubble = new BubbleWindow { Left = 120, Top = 120 };
+        _bubble.Show();
+
+        // `--headers <file>` analyses a saved header block and renders the real verdict.
+        // This is the seam the mail-client surfaces feed: whatever reads the headers, the
+        // engine call and the bubble are the same from here on.
+        if (e.Args.Length >= 2 && e.Args[0] == "--headers")
+        {
+            ShowHeadersFile(e.Args[1]);
+            return;
+        }
+
+        // Development harness: step the five states with 1..5, Esc to quit.
+        RunStateHarness(_bubble);
+    }
+
+    private void ShowHeadersFile(string path)
+    {
+        string? block = null;
+        try
+        {
+            if (File.Exists(path))
+                block = File.ReadAllText(path);
+        }
+        catch (Exception)
+        {
+            block = null;                     // unreadable file is a failed read, not a pass
+        }
+
+        _bubble!.Render(HeaderAnalyser.Analyse(block));
+        _bubble.KeyDown += (_, key) =>
+        {
+            if (key.Key == Key.Escape)
+                Shutdown();
+        };
+    }
+
+    private void RunStateHarness(BubbleWindow window)
+    {
         var states = new[]
         {
             BubbleViewFactory.Analysing(),
@@ -35,35 +73,24 @@ public partial class App : Application
             new BubbleView(BubbleState.Unknown, 1, "Could not fully check", ""),
         };
 
-        var window = new BubbleWindow
-        {
-            Left = 120,
-            Top = 120,
-        };
-        window.Show();
-        _windows.Add(window);
-
-        var index = 1;                       // start on the green state
+        var index = 1;
         window.Render(states[index]);
 
-        // Step with 1..5 so any state can be held and inspected. Esc or Ctrl+Q quits.
         window.KeyDown += (_, key) =>
         {
             if (key.Key == Key.Escape)
-            {
                 Shutdown();
-            }
             else if (key.Key is >= Key.D1 and <= Key.D5)
-            {
-                index = key.Key - Key.D1;
-                window.Render(states[index]);
-            }
+                window.Render(states[key.Key - Key.D1]);
         };
 
-        // Auto-cycle as well, so the transitions are visible; any key press stops it
-        // so a state can be held still.
         var cycle = true;
-        var timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
+        window.KeyDown += (_, _) => cycle = false;
+
+        var timer = new System.Windows.Threading.DispatcherTimer
+        {
+            Interval = TimeSpan.FromSeconds(2),
+        };
         timer.Tick += (_, _) =>
         {
             if (!cycle)
@@ -72,7 +99,6 @@ public partial class App : Application
             window.Render(states[index]);
         };
         timer.Start();
-        window.KeyDown += (_, _) => cycle = false;
     }
 
     /// <summary>
