@@ -51,7 +51,7 @@ misses, are in [`docs/results.md`](docs/results.md).
 The ranges cover both of my test sets. Zero false flags on 50 emails is encouraging, but a small
 sample, so I don't claim it never happens.
 
-Today, it misses about half of phishing. Checking SPF, DKIM and DMARC alone catches roughly
+Currently, it misses about half of phishing. Checking SPF, DKIM and DMARC alone catches roughly
 one in six, because a lot of phishing is sent from the attacker's own properly registered
 domain and leaves nothing odd in the headers. I'm working through the misses one at a time, looking for other signals.
 
