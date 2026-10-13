@@ -14,7 +14,7 @@
 ## What it does
 
 Phishing emails lie about who sent them, and the evidence is in the headers you never
-see. Phish Analyser reads those headers and shows a bubble next to the email with a count
+see. Phish Analyser reads those headers and shows a bubble next to the email you are reading with a count
 of what looks off. Clicking the bubble will open a pane showing more details on each thing
 it found. It runs entirely on your own machine and makes no network calls.
 
