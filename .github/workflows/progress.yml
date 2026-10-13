@@ -1,0 +1,44 @@
+name: Progress
+
+# Keeps the README progress bar honest by recalculating it from the repository itself.
+# Runs when the roadmap or the phase notes change, and can be triggered by hand.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/success.md'
+      - 'docs/backlog.md'
+      - '.github/workflows/progress.yml'
+  schedule:
+    # Weekly, so the bar follows the project even through quiet periods.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  progress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Calculate progress from the phase notes
+        id: calc
+        run: python3 .github/scripts/progress.py
+
+      - name: Publish the badge payload
+        run: |
+          mkdir -p out
+          cp progress.json out/progress.json
+          cp progress.svg out/progress.svg
+
+      - name: Push to the progress branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: progress
+          force_orphan: true
+          commit_message: 'chore(progress): ${{ steps.calc.outputs.message }}'

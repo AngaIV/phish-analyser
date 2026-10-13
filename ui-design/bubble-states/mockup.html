@@ -61,6 +61,7 @@
 
   .safe   .arc { stroke: var(--safe); }
   .safe   .glyph { color: var(--safe); font-size: 17px; }
+  .safe   .glyph.check { font-size: 15px; font-weight: 600; color: var(--muted); }
   .warn   .arc { stroke: var(--warn); }
   .warn   .glyph { color: var(--warn); }
   .danger .arc { stroke: var(--danger); }
@@ -197,11 +198,11 @@
   <h2>Bubble states</h2>
   <div class="row">
     <div class="cell">
-      <div class="bubble safe" tabindex="0" role="img" aria-label="No suspicious signals">
+      <div class="bubble safe" tabindex="0" role="img" aria-label="No issues found">
         <svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="0"/></svg>
-        <span class="glyph">&#10003;</span>
+        <span class="glyph check">0</span>
       </div>
-      <div class="label">Safe &#183; no flags</div>
+      <div class="label">No issues found</div>
     </div>
 
     <div class="cell">
@@ -247,7 +248,8 @@
 
   <ul class="notes">
     <li><strong>Fail-safe:</strong> the dashed grey ring is never green — when headers are missing the tool says so rather than showing an all-clear.</li>
-    <li><strong>Accessibility:</strong> the number is never the only signal — colour is paired with a tick, a dash, or the ring fill.</li>
+    <li><strong>No tick on the safe state (D-011).</strong> An earlier revision used a tick and described it as a deliberate accessibility choice. It was removed: a tick asserts the message is <em>safe</em>, and the measured false-green rate is 17% on the dev split and 33% on the holdout. The safe state shows <strong>0</strong> — a count — and is labelled <strong>"No issues found"</strong>, never "Safe". The wording matters as much as the glyph: it describes what the engine did, not what the message is.</li>
+    <li><strong>Accessibility:</strong> the number is never the only signal — colour is paired with the ring fill, a dash for unknown, or the sweep animation for analysing.</li>
     <li>Snoozed / disabled: the bubble fades out rather than showing a muted state over the message.</li>
   </ul>
 
@@ -322,8 +324,8 @@ Reply-To: bob@phish-site.ru</div>
   <h2>Dark surface</h2>
   <div class="dark">
     <div class="cell">
-      <div class="bubble safe"><svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="0"/></svg><span class="glyph">&#10003;</span></div>
-      <div class="label">Safe</div>
+      <div class="bubble safe"><svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="0"/></svg><span class="glyph check">0</span></div>
+      <div class="label">No issues</div>
     </div>
     <div class="cell">
       <div class="bubble warn"><svg class="ring" viewBox="0 0 46 46"><circle class="track" cx="23" cy="23" r="20"/><circle class="arc" cx="23" cy="23" r="20" stroke-dasharray="125.7" stroke-dashoffset="56"/></svg><span class="glyph">3</span></div>

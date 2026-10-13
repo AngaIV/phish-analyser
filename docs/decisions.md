@@ -403,3 +403,128 @@ positives"*, not a precise figure.
 coverage**. It will flag roughly half of header-anomalous phishing and essentially no
 legitimate mail. The UI must therefore never imply that an unflagged message is safe —
 which is exactly the constraint D-011 already imposed on the green state.
+
+---
+
+## D-015 — VSTO add-in dropped; the tray app attaches to classic Outlook by COM
+
+> **SUPERSEDED BY D-017 — DO NOT IMPLEMENT.** Classic Outlook is not supported and this
+> COM approach has been removed from the project. Kept for the record: the toolchain
+> reasoning below still holds, but the conclusion does not. The header source is Office.js.
+
+**Decided:** Phase 3's MVP does **not** build a VSTO add-in. The tray app attaches to a
+running classic Outlook instance via **COM late binding**, reads the selected item's
+transport headers, and runs the engine in-process. The named pipe and the two-process
+split are dropped. VSTO becomes the documented **fallback**, not the starting point.
+
+**Why:** The toolchain is not present on the development machine, and installing it is a
+large tax for one add-in:
+
+| Requirement | Status |
+|---|---|
+| Visual Studio with the Office/SharePoint workload | **Absent** — BuildTools 2019 only, no IDE |
+| VSTO runtime | **Not installed** |
+| Admin rights to register the add-in | Deployment complexity, not a blocker |
+
+Classic Outlook **is** installed (16.0.20430.20146), and WPF `net10.0-windows` builds and
+runs on this machine (verified with a throwaway project).
+
+**What this buys:**
+
+- Deletes plan tasks 1, 2 and 5 (hello-world add-in, header read, pipe protocol) and the
+  entire tray-app/add-in split.
+- Deletes two documented failure modes: *"add-in does not load or is disabled by Outlook
+  after a slow start"* and *"header property unavailable for some items"* across a pipe.
+- No new NuGet package. COM late binding needs no reference assembly, so **MimeKit stays
+  the only dependency**.
+- Nothing to uninstall beyond the app itself, so the exit gate item *"uninstalling cleanly
+  removes the add-in and auto-start entry"* reduces to the auto-start entry.
+
+**Accepted cost, stated plainly:** Microsoft does **not** officially support driving
+Outlook from an external process. This approach works and is widely used, but it is
+unsupported surface — a policy or a future update could break it. That is the reason the
+plan's own fallback exists: if COM attachment proves fragile, the detail panel ships as an
+Outlook task pane add-in and the bubble is kept for the web and extension surfaces.
+
+**Consequence:** the engine and rules are unaffected. This changes only how headers reach
+the engine and how the overlay is drawn.
+
+---
+
+## D-016 — Phase 3 starts with U1 unmet; the phase is not blocked by it
+
+**Decided:** Phase 3 proceeds even though Phase 2's exit gate is **not fully passed** —
+U1 measured **40% on the holdout** against a 50% floor (D-014).
+
+**Why:** Phase 3's entry criterion is written as *"Phase 2 exit gate passed."* Read
+strictly it is not, and pretending otherwise would be exactly the kind of quiet
+target-shifting this project has avoided. But the gate exists to ensure the UI is built on
+a measured engine, and that is true: the engine is implemented, tested (66 tests), and
+measured on both splits. **The unmet criterion is coverage, and coverage does not affect
+any Phase 3 task** — every Phase 3 deliverable works identically at 40% or 90%.
+
+**What would genuinely block Phase 3** is an *unstable or unmeasured* engine, or an engine
+whose output contract is still moving. Neither applies.
+
+**Consequence:** the U1 shortfall is carried forward openly as a known defect of the
+product, not silently dropped. It is recorded in `docs/results.md`, `RSK-01`, and here.
+The repositioning in D-014 — precision-first warning aid, roughly half coverage — is what
+Phase 3's UI must communicate honestly, which is why D-011's green-state wording is
+binding on this phase rather than advisory.
+
+**Revisit if:** real-traffic testing (recommended after Phase 3) shows coverage is
+materially different from 40%, in either direction.
+
+---
+
+## D-017 — D-015 was wrong: classic Outlook is dropped, Office.js is the only header source
+
+**Decided:** Classic Outlook is **not supported**. VSTO and COM attachments are removed
+from the project. The header-acquisition path is **Office.js `getAllInternetHeadersAsync()`
+in an Outlook add-in**, per **D-001**. The `OutlookConnector` COM code is deleted.
+
+**Why D-015 was wrong.** D-015 dropped the VSTO add-in in favour of attaching to classic
+Outlook over COM. The toolchain reasoning was sound — no Visual Studio Office workload, no
+VSTO runtime — but the conclusion **contradicted D-001, which had already chosen web-first
+Office.js**, and it was not flagged as a reversal. D-015 quietly narrowed the product to one
+legacy client while the approval decision said the opposite.
+
+**The environment then disproved it outright:**
+
+| Fact | Consequence |
+|---|---|
+| The author runs **New Outlook** (`olk.exe`) | New Outlook exposes **no COM API** |
+| `Outlook.Application` ProgID resolves to **classic only** | `GetActiveObject` correctly returns `MK_E_UNAVAILABLE` |
+| Classic Outlook has **no mail profile configured** | The COM path was unusable even as a fallback |
+
+The grey bubble that prompted this investigation was the code behaving **correctly** — it
+reported that no classic Outlook existed to read from. No bug was present.
+
+**Verification that Office.js is viable here** (the check D-015 skipped):
+
+- Office add-in sideloading is **not restricted by policy** (no `WebView` policy key).
+- WebView2 runtime **154.0.4258.62** present — New Outlook depends on it.
+- A valid, trusted `localhost` development certificate exists.
+- Ports 8765–8767 free for the add-in-to-app bridge.
+- `HKLM\...\WEF\SolutionPackages` shows other add-ins already load on this machine.
+
+**What was kept.** `HeaderAnalyser` and the bubble are surface-agnostic: they take a header
+block from any source. That work is therefore not lost — the read path changed, the engine
+and the UI did not. `SafeMessageLoader.LoadFromHeaderBlock` (added during D-015) is **more**
+necessary now, since an add-in hands over headers in memory and they must never be written
+to disk.
+
+**Consequence — the bridge design changes.** JavaScript cannot use named pipes, so the
+plan's pipe transport is replaced by a **loopback HTTP listener on 127.0.0.1**, owned by the
+tray app, locked to a per-run token so no other local process can post headers to it. The
+state harness and the `--headers <file>` flag remain the way to exercise the UI without a
+mail client.
+
+**Unresolved and honest:** the HTTP listener bind was tested in an **elevated** shell, so it
+does **not** prove a standard user can bind without a `urlacl` reservation. This must be
+tested non-elevated before the bridge is relied upon. If it fails, the fallback is a raw
+`TcpListener`, which needs no reservation.
+
+**Lesson:** a decision that reverses an earlier one must say so explicitly. D-015 read as an
+implementation detail when it was in fact an architecture change, and the contradiction sat
+unnoticed until the environment exposed it.
