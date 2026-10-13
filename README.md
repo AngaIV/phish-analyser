@@ -55,9 +55,7 @@ Today, it misses about half of phishing. Checking SPF, DKIM and DMARC alone catc
 one in six, because a lot of phishing is sent from the attacker's own properly registered
 domain and leaves nothing odd in the headers. I'm working through the misses one at a time, looking for other signals.
 
-A new rule only goes in if measurements show it catches phishing without flagging safe mail.
-I tested five ideas before building them and rejected all five. One would have flagged 13
-legitimate emails to catch 2 phishing ones. The reasoning is in
+A new rule only goes in if measurements show it catches phishing without flagging safe mail. The reasoning is in
 [`docs/decisions.md`](docs/decisions.md).
 
 ## Built with
