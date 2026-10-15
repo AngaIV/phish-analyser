@@ -50,10 +50,18 @@ scorer fix:
 | Phishing amber or red (U1) | 18/35 = **51%** | ≥50% | **Met** |
 | False green, no `Unknown` (I1) | 6/35 = **17%** | 0% | **Not met — restated, see `success.md`** |
 | False green despite `Unknown` | **0/35** | 0% | Met after scorer fix |
-| Legitimate amber/red (P3 FP) | **0/35 = 0%** | under 5% | **Met** |
+| Legitimate amber/red (P3 FP) | **0/35 = 0%** | under 5% | **Withdrawn — see D-018** |
 | Legitimate flagged by ≥1 rule | 1/35 = 3% | — | `ham_007` only, stays green |
 
-**P3 and U1 both pass. I1's residual 17% is the open item.**
+**U1 passes. I1's residual 17% is the open item. P3 is withdrawn.**
+
+**The P3 figure is not evidence.** Every legitimate sample returned `Unknown` rather than
+being evaluated, because none of them carries an `Authentication-Results` header: the
+SpamAssassin archives are dated 2003 and DKIM was standardised in 2004. The rules never ran
+on clean mail, so "0 false positives" records an absence of testing rather than an absence
+of false positives. See D-018. The 3% flag-level figure on `ham_007` is likewise produced
+without the `auth-results` rule contributing. **Real mail does carry the header**, since the
+receiving server always stamps it, so this is a benchmark gap rather than a runtime defect.
 
 **U1 was cleared by a weight change, not a new rule.** `lookalike-domain`'s cheap-TLD and
 IP-derived signals carried weight 1, so messages with only those signals scored 1 and

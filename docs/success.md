@@ -18,7 +18,7 @@ Last updated: 2026-10-11.
 |---|---|---|---|---|
 | P1 | Corpus parses without crashing | 100%, including malformed files | [plan] | **Met** — 100/100 samples, 33 tests, no exception escapes the loader |
 | P2 | Rules with spec, tests and measured precision | at least 10 | [plan] | 2 of 10 |
-| P3 | False-positive rate on legitimate mail | **under 5%** (fewer than 1 in 20) | [plan] | Not yet measurable — see §4 |
+| P3 | False-positive rate on legitimate mail | **under 5%** (fewer than 1 in 20) | [plan] | **Unmeasurable — see D-018.** No legitimate sample carries `Authentication-Results`, so the rules never run on clean mail |
 | P4 | Analysis time per message | under ~200 ms | [plan] | Not yet measured |
 | P5 | Bubble appears after opening an email | within ~1 s | [plan] | Not applicable until Phase 3 |
 | P6 | Email content leaves the device by default | never | [plan] | Holds by construction — the engine parses locally and makes no network calls |
@@ -147,6 +147,13 @@ from "under 8%" requires well over 100 legitimate samples.
   corpus does not have.
 - Any claim that P3 is *met* requires the corpus to grow. Until then, P3 is reported as
   "consistent with target" at best.
+- **A metric is only valid if the rules actually ran on the samples it counts (D-018).**
+  Sample count and precision are irrelevant if the rules skipped the very samples being
+  measured. Every headline number must state how many samples reached a verdict of `Pass`
+  or `Flagged`, as distinct from `Unknown`. Zero false positives drawn from a set where
+  nothing was evaluated is not a good result, it is an absent one. This is the third
+  occurrence of the same failure in this project and the rule now applies to every metric,
+  not only P3.
 - The existing split stays as-is for rule development. Growing the legitimate set is a
   **separate, pre-holdout task** — enlarging the holdout is preferable to enlarging the
   dev split, since it strengthens the final honest measurement without inviting more
@@ -177,7 +184,15 @@ Current state against U1:
 
 **Measured update after rule 5 (weights v1.1):** combined coverage across rules 1–5 is
 **20 of 35 phishing samples (57%)**, with **18/35 = 51% scoring amber or red** — U1's floor
-is **met**. P3 is **met** at 0/35 legitimate samples amber or red.
+is **met** on the dev split.
+
+**P3 is withdrawn, not met — see D-018.** The 0/35 legitimate figure was produced by rules
+that never ran. No legitimate sample in the corpus carries an `Authentication-Results`
+header, so `auth-results` returns `Unknown` three times on every clean email and D-004's
+fail-safe turns the bubble grey before any false positive could be recorded. The
+SpamAssassin archives are dated 2003 and DKIM was standardised in 2004, so the header could
+not exist in them: 0 across all 5,551 archived messages. **P3 is `unknown` until a modern
+legitimate corpus is sourced.**
 
 **But the evidence also suggests 50% is close to the achievable ceiling.** Several of the
 remaining misses are ordinary-looking domains — `hw.ac.uk` (a real university),
@@ -207,7 +222,9 @@ are recorded in `docs/results.md`. The items below are kept with their outcome.
 1. **Confirm or change P3's 5%.** It is the plan's example, not a measured requirement.
    A university I&TS deployment might justify a stricter bar, since a noisy tool is
    removed from a fleet rather than uninstalled by one user.
-   **Outcome: met with room to spare.** 0/15 legitimate holdout samples flagged; dev 0/35.
+   **Outcome: withdrawn — the result was vacuous.** The holdout showed 0/15 and dev 0/35,
+   but no legitimate sample in either split carries `Authentication-Results`, so the rules
+   were skipped rather than satisfied. See D-018. The 5% bar itself is still unconfirmed.
 2. **Confirm U1's 50% floor**, or accept a lower detection rate in exchange for the
    strongest possible precision guarantee.
    **Outcome: the floor is NOT met on the holdout (6/15 = 40%), and is left unadjusted.**

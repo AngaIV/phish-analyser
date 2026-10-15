@@ -528,3 +528,67 @@ tested non-elevated before the bridge is relied upon. If it fails, the fallback 
 **Lesson:** a decision that reverses an earlier one must say so explicitly. D-015 read as an
 implementation detail when it was in fact an architecture change, and the contradiction sat
 unnoticed until the environment exposed it.
+
+---
+
+## D-018 — P3 is unmeasurable with this corpus: legitimate mail has no `Authentication-Results`
+
+**Decided:** The claim *"0 of 50 legitimate emails flagged"* is **withdrawn**. P3 (false-positive
+rate under 5%) is restated as **unmeasurable**, not met. Legitimate samples that carry an
+`Authentication-Results` header must be sourced before P3 can be assessed at all. The
+README and `docs/results.md` are corrected accordingly.
+
+**How it was found.** The bubble was reported as "probably not working correctly" because
+no amber or red state had ever been observed on a real sample. Rendering every sample in the
+corpus and reading back the visual tree showed all four states render correctly, but exposed
+the distribution:
+
+| Email type | amber/red | unknown | green |
+|---|---|---|---|
+| Phishing (50) | 24 | 15 | 11 |
+| Legitimate (50) | **0** | **49** | **0** |
+
+Every legitimate sample returned grey. Investigating why produced the cause directly.
+
+**The cause is a corpus asymmetry, not a code fault.**
+
+| | Has `Authentication-Results` |
+|---|---|
+| Phishing samples (Nazario, 2023+) | **47 of 50** |
+| Legitimate samples (SpamAssassin `easy_ham`, 2003) | **0 of 50** |
+| All four SpamAssassin 2003 archives, 5,551 messages | **0** |
+
+`auth-results` reads that header via `Authentication-Results`, a header the **receiving**
+mail server stamps after checking SPF, DKIM and DMARC. On the legitimate samples it returns
+three `Unknown` findings, and D-004's fail-safe correctly turns the bubble grey.
+
+**The header could not have been present.** DKIM was standardised in **2004**; the
+SpamAssassin archives are dated **2003**. Verified by extraction and direct inspection:
+`Authentication-Results` count `0`, `DKIM-Signature` count `0`, across all 5,551 messages.
+
+**Why this matters more than the raw numbers suggest.** The phishing and legitimate halves
+of the corpus come from **different eras and different sources**. Phishing is modern
+(Nazario 2023+), legitimate is 2003. Any rule that reads a receiver-stamped header is
+therefore exercised on one half and skipped on the other. The 0% false-positive figure was
+produced by rules **not running**, not by rules running carefully. It is a metric that looks
+like a result but measures nothing — the **third** instance of that pattern in this project,
+after the aggregate-weight arithmetic error (D-012) and the holdout coverage restatement
+(D-014).
+
+**What remains valid.** I1 (false green on phishing where all rules ran and passed) is
+unaffected: the 11 green phishing samples are genuine `Pass` results, not skips. The
+header-only coverage ceiling is unaffected. P1, P2 and P6 are unaffected.
+
+**Rejected:** changing `auth-results` so a missing header counts as `Pass`. This is exactly
+the failure D-004 forbids — absent evidence must never be read as all-clear — and it would
+have manufactured a 0% false-positive rate by silencing the check that could have raised a
+false positive.
+
+**Consequence for the product.** Real mail invariably arrives with `Authentication-Results`
+present, because the receiving server always stamps it. The tool should therefore behave
+correctly on live mail; this is a **benchmark validity** problem, not a runtime defect. It
+does mean the false-positive rate cannot currently be defended, and that claim is the one
+most worth being able to defend.
+
+**Follow-up:** source a modern legitimate corpus containing `Authentication-Results`, then
+re-run measurement. Until then, P3 stays `unknown` rather than `met`.

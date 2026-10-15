@@ -157,9 +157,12 @@ false-positive rate under threshold — so the cut, if needed, is **rule count**
 - **RSK-02 (false green) — materialised.** 20% dev / 33% holdout residual, but the
   fail-safe itself holds at **0% on both splits**. The binding outcome is a UI constraint:
   green must read "no issues found", never a tick.
-- **Reduced:** the risk that the tool is noisy. **Zero legitimate samples were flagged on
-  both the dev split and the holdout** — 0/35 and 0/15. The precision promise is the one
-  part of the value proposition that fully holds.
+- **Reduced, but on vacuous evidence — corrected by D-018.** Zero legitimate samples were
+  flagged on both the dev split and the holdout (0/35 and 0/15), but that figure was
+  produced by rules that never ran: no legitimate sample carries `Authentication-Results`,
+  so `auth-results` returned `Unknown` and the fail-safe greyed every clean email. The
+  claim that the precision promise "fully holds" is withdrawn. It may yet hold, but this
+  corpus cannot show it.
 
 ### 6. Plan for next
 

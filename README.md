@@ -54,12 +54,22 @@ results, including the ones that do not flatter the project.
 
 | | Result | Target | |
 |---|---|---|---|
-| Legitimate emails wrongly flagged | **0 out of 50** | under 5% | met |
 | Phishing emails flagged | **40 to 51%** | 50% | close |
 | False all clear on phishing | **17 to 33%** | 0% | not met |
+| Legitimate emails wrongly flagged | not yet measurable | under 5% | unknown |
 
-**The good news:** it does not cry wolf. Across both test sets it flagged **zero**
-legitimate emails. Every warning it raised was on a real phishing message.
+**Why the false-positive rate is unknown, not zero.** One detection rule reads the
+`Authentication-Results` header, which is the verdict a receiving mail server stamps on a
+message when it checks the sender's identity. Every phishing sample in my corpus has that
+header, but none of the legitimate samples do, because they were archived in 2003 and the
+standard behind that header did not exist until 2004. The rule therefore reports "could
+not check" on every clean email, which correctly shows a grey bubble rather than a green
+one. That is the tool behaving safely, but it also means the clean emails were never
+really tested. The honest number is "no data yet", and getting real clean mail with that
+header in it is the next job.
+
+**The good news:** so far it does not cry wolf. Every warning it raised was on a real
+phishing message, and a clean email has never once been marked as dangerous.
 
 **The honest news:** it misses about half of them today.
 
@@ -85,8 +95,8 @@ improving for a long time, alongside the Outlook integration and the packaging.
 | Phase | What | Status |
 |---|---|---|
 | 0 | Planning and repository setup | Done |
-| 1 | Email header parser and test corpus | Done |
-| 2 | Detection rules, scoring, measurement | Done |
+| 1 | Email header parser and test corpus | Part done |
+| 2 | Detection rules, scoring, measurement | Part done |
 | 3 | Outlook app and floating bubble | Part done |
 | 4 | Outlook add-in and web surfaces | Not started |
 | 5 | Threat intelligence (optional) | Not started |
