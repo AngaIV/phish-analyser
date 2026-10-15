@@ -1,6 +1,6 @@
 # Phish Analyser
 
-**A Grammarly-style warning bubble for Outlook that tells you when an email looks like a phishing attempt.**
+**A small floating bubble for Outlook that counts the suspicious things in an email's headers.**
 
 ![CI](https://github.com/AngaIV/phish-analyser/actions/workflows/ci.yml/badge.svg)
 ![.NET](https://img.shields.io/badge/.NET-10-512BD4)
@@ -8,196 +8,86 @@
 ![status](https://img.shields.io/badge/status-in%20progress-orange)
 ![licence](https://img.shields.io/badge/licence-MIT-blue)
 
-![Progress](https://raw.githubusercontent.com/AngaIV/phish-analyser/progress/progress.svg)
-
 ---
+
 
 ## What it does
 
-Phishing emails lie about who they are. The trick is usually in the parts of an email you
-never see: the **headers**, which record where a message actually came from.
+Phishing emails lie about who sent them, and the evidence is in the headers you never
+see. Phish Analyser reads those headers and shows a bubble next to the email you are reading with a count
+of what looks off. Clicking the bubble will open a pane showing more details on each thing
+it found. It runs entirely on your own machine and makes no network calls.
 
-Phish Analyser reads those headers and puts a small floating bubble next to the email
-you are reading. The bubble shows a number, which is how many suspicious things it found.
-
-| Bubble | What it means |
+| Bubble | Meaning |
 |---|---|
-| **0** in green | Nothing unusual found |
-| **3** in amber | Worth a closer look |
-| **7** in red | Looks like phishing |
-| Blank, dashed grey | Could not check it |
+| **0**, green | Nothing unusual found |
+| **3**, amber | Worth a closer look |
+| **7**, red | Looks like phishing |
+| Dashed grey circle | Could not check it |
 
-It runs entirely **on your own computer**. No email is ever sent anywhere. Nothing is
-uploaded, logged or shared. The app makes no network calls at all.
+I work in IT support at a university, where phishing is constant, and most people have no
+easy way to check a message. I wanted to see how far a small, free tool could get.
 
----
+## Status
 
-## Why I built it
+- **Working:** header parser, detection rules, scoring, test corpus, and a desktop bubble
+  with all five states showing real verdicts from the engine.
+- **In progress:** getting headers out of Outlook
+  and anchoring the bubble to the reading pane.
+- **Planned:** the detail pane that opens when you click the bubble, Outlook add-in and web
+  support, optional threat-intelligence lookups, and an installer.
 
-I work in IT support at a university. Staff and students get phishing emails constantly,
-and most of them have no easy way to tell a real message from a fake one.
+## How well it works
 
-Big organisations solve this with expensive email security gateways. I wanted to see how
-far a small, free, standalone tool could get. One that works with the mail client people
-already use, tells them plainly when something looks wrong, and **never cries wolf**,
-because a tool that flags safe emails gets uninstalled within a week.
+I test against 100 real emails: 50 phishing, 50 legitimate. Full numbers, including the
+misses, are in [`docs/results.md`](docs/results.md).
 
-That second part turned out to be the interesting problem, and the whole project is built
-around measuring it honestly.
-
----
-
-## How well does it actually work?
-
-I test it against **100 real emails**, 50 phishing and 50 legitimate, and I published the
-results, including the ones that do not flatter the project.
-
-| | Result | Target | |
-|---|---|---|---|
-| Phishing emails flagged | **40 to 51%** | 50% | close |
-| False all clear on phishing | **17 to 33%** | 0% | not met |
-| Legitimate emails wrongly flagged | not yet measurable | under 5% | unknown |
-
-**Why the false-positive rate is unknown, not zero.** One detection rule reads the
-`Authentication-Results` header, which is the verdict a receiving mail server stamps on a
-message when it checks the sender's identity. Every phishing sample in my corpus has that
-header, but none of the legitimate samples do, because they were archived in 2003 and the
-standard behind that header did not exist until 2004. The rule therefore reports "could
-not check" on every clean email, which correctly shows a grey bubble rather than a green
-one. That is the tool behaving safely, but it also means the clean emails were never
-really tested. The honest number is "no data yet", and getting real clean mail with that
-header in it is the next job.
-
-**The good news:** so far it does not cry wolf. Every warning it raised was on a real
-phishing message, and a clean email has never once been marked as dangerous.
-
-**The honest news:** it misses about half of them today.
-
-That is the finding so far. Phishing that leaves no trace in the headers, because the
-sender used their own real, properly registered domain, is **invisible to this kind of
-analysis** and no rule can catch it. But the samples it does miss are the whole point of
-the next stage: I am working through them one at a time, looking for signals I have not
-used yet, and adding a rule only when the measurements prove it catches phishing without
-flagging safe mail.
-
-I proved the value of that discipline already. I tested five rule changes before building
-them and rejected all five when the numbers did not support them. Two of them would have
-made the tool worse. I would rather ship a tool that is right when it speaks and silent
-when it cannot tell, than one that guesses.
-
-**This project is far from finished.** The detection rules are the part I expect to keep
-improving for a long time, alongside the Outlook integration and the packaging.
-
----
-
-## Progress
-
-| Phase | What | Status |
+| | Result | Target |
 |---|---|---|
-| 0 | Planning and repository setup | Done |
-| 1 | Email header parser and test corpus | Part done |
-| 2 | Detection rules, scoring, measurement | Part done |
-| 3 | Outlook app and floating bubble | Part done |
-| 4 | Outlook add-in and web surfaces | Not started |
-| 5 | Threat intelligence (optional) | Not started |
-| 6 | Packaging and release | Not started |
+| Phishing emails flagged | 40 to 51% | 50% |
+| Phishing given a false all clear | 17 to 33% | 0% |
+| Legitimate emails flagged | not yet measurable | under 5% |
 
-**Phase 3 is part done.** The bubble works. It appears on screen, drags around, shows all
-five states, and displays real verdicts from the detection engine. What is left is getting
-email headers out of Outlook, where version differences make things awkward, and anchoring
-the bubble to the reading pane.
+The ranges cover both of my test sets.
 
-**The detection rules will keep improving.** The current results are a starting point, not
-a finished product. Every rule in the engine has unit tests, a written specification and
-measured precision before it ships, so improvements are provable rather than hopeful. There
-is a long list of ideas still to test.
+The false-positive number is missing on purpose. One rule reads the `Authentication-Results`
+header, which a receiving server stamps on a message after checking SPF, DKIM and DMARC. All
+my phishing samples carry it but none of my legitimate ones do, because those were archived
+in 2003 and the standard behind that header dates from 2004. The rule therefore reports
+"could not check" on every clean email, which correctly shows a grey bubble rather than a
+green one, but it also means the clean emails were never truly tested. Getting legitimate
+mail with that header in it is the next piece of work.
 
-The progress bar at the top updates itself from a GitHub Action, so it cannot drift out of
-date.
+Today, it misses about half of phishing. Checking SPF, DKIM and DMARC alone catches roughly
+one in six, because a lot of phishing is sent from the attacker's own properly registered
+domain and leaves nothing odd in the headers. I'm working through the misses one at a time, looking for other signals.
 
----
+A new rule only goes in if measurements show it catches phishing without flagging safe mail. The reasoning is in
+[`docs/decisions.md`](docs/decisions.md).
 
-## What it is built with
+## Built with
 
-| Layer | Technology |
+- C# and .NET 10, with MimeKit for email parsing
+- WPF for the desktop app
+- xUnit and pytest, run on every commit with GitHub Actions
+- Planned: an Office.js Outlook add-in and TypeScript web surfaces
+
+## Docs
+
+| Document | Contents |
 |---|---|
-| Detection engine | C# / .NET 10, MimeKit for email parsing |
-| Desktop app | WPF (Windows Presentation Foundation) |
-| Email integration | Office.js (Outlook add-in) |
-| Web surfaces | TypeScript |
-| Testing and scripts | xUnit, Python, pytest |
-| Automation | GitHub Actions (three CI jobs) |
-
-**74 automated tests** in the C# engine and 23 in the Python tooling, run on every commit.
-
----
-
-## The hard part
-
-Three things genuinely surprised me.
-
-**1. Good phishing passes every security check.** SPF, DKIM and DMARC are the standard
-ways to prove an email is legitimate. Modern phishing is often sent from real, correctly
-authenticated servers. Checking them catches only about one in six phishing emails.
-
-**2. Being silent is a feature, not a gap.** When the tool cannot check something, it says
-so, with a grey dashed circle rather than a green tick. A confident green tick on a
-phishing email is worse than no tool at all, because it turns a cautious person into a
-trusting one.
-
-**3. Half the value is in what I did not build.** I tested five detection ideas before
-writing them. Two would have made the tool worse. One of them would have flagged 13
-legitimate emails to catch 2 phishing ones. Killing them early saved more time than any
-optimisation. Those decisions are written up in [`docs/decisions.md`](docs/decisions.md).
-
----
-
-## Try it
-
-The desktop app runs today, in demonstration mode:
-
-```bash
-git clone https://github.com/AngaIV/phish-analyser.git
-cd phish-analyser
-dotnet run --project desktop/PhishAnalyser.Desktop
-```
-
-Press **1** to **5** to step through the bubble states. Press **Esc** to quit.
-
-To see a real verdict on a real sample:
-
-```bash
-dotnet run --project desktop/PhishAnalyser.Desktop -- --headers testdata/phishing/phish_001_netflix_renewal_scan.eml
-```
-
-Or run the engine on its own, with no interface:
-
-```bash
-cd engine-dotnet
-dotnet test
-```
-
----
-
-## Where to look next
-
-| Document | What is in it |
-|---|---|
-| [`docs/results.md`](docs/results.md) | The actual measurements, holdout results and misses |
-| [`docs/decisions.md`](docs/decisions.md) | Every design decision, including the ones I got wrong |
+| [`docs/results.md`](docs/results.md) | Measurements, holdout results and misses |
+| [`docs/decisions.md`](docs/decisions.md) | Design decisions, including the ones I got wrong |
 | [`docs/risk-register.md`](docs/risk-register.md) | What could go wrong, and what happened |
 | [`docs/journal.md`](docs/journal.md) | Weekly build log |
 | [`ui-design/`](ui-design/) | Interface mockups |
 
----
-
 ## Notes
 
-- Windows only, for now. The engine is plain .NET and would port easily.
-- Test emails are **headers only**, with no message bodies, taken from the Nazario phishing
-  archive (CC-BY-4.0) and the SpamAssassin ham collections. No real student or staff email
-  is in this repository, and no message body ever leaves the machine.
-- Built as a personal project while working in university IT support. Not affiliated with
-  or deployed by any institution.
+- Windows only for now. The engine is plain .NET and would port easily.
+- Test emails are headers only, taken from the Nazario phishing archive (CC-BY-4.0) and the
+  SpamAssassin ham collections. No real student or staff email is in this repository.
+- A personal project, built alongside my university IT support work. Not affiliated with or
+  deployed by any institution.
 
 MIT licensed.
