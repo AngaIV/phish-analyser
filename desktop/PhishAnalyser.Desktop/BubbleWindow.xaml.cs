@@ -17,6 +17,7 @@ public partial class BubbleWindow : Window
     private static readonly Brush Danger  = Freeze("#E5484D");
     private static readonly Brush Muted   = Freeze("#94A3B8");
     private static readonly Brush Unknown = Freeze("#C3CBD6");
+    private static readonly Brush Partial = Freeze("#527A9E");
 
     private bool _spinning;
 
@@ -41,6 +42,7 @@ public partial class BubbleWindow : Window
 
     /// <summary>Raised when the user clicks the bubble. The host opens the detail panel.</summary>
     public event EventHandler? BubbleClicked;
+    public event EventHandler? DetailsRequested;
 
     /// <summary>Applies a view to the bubble. Safe to call from any thread.</summary>
     public void Render(BubbleView view)
@@ -58,6 +60,8 @@ public partial class BubbleWindow : Window
             BubbleState.Warning   => (Warn,    view.Number.ToString(), ArcFraction(view.Number, 3)),
             BubbleState.Danger    => (Danger,  view.Number.ToString(), ArcFraction(view.Number, 7)),
             BubbleState.Unknown   => (Unknown, "\u2014", 1.0),
+            BubbleState.Partial   => (Partial,
+                view.Number > 0 ? view.Number.ToString() : "?", 1.0),
             BubbleState.Analysing => (Muted,   "",  0.32),
             BubbleState.Hidden    => (Muted,   "",  0.0),
             _                     => (Unknown, "\u2014", 1.0),   // fail safe on an unknown state
@@ -70,7 +74,7 @@ public partial class BubbleWindow : Window
 
         // Dashed ring distinguishes "could not analyse" from "nothing found",
         // even in greyscale.
-        Arc.StrokeDashArray = view.State == BubbleState.Unknown
+        Arc.StrokeDashArray = view.State is BubbleState.Unknown or BubbleState.Partial
             ? new DoubleCollection { 3, 6 }
             : null;
 
@@ -210,6 +214,9 @@ public partial class BubbleWindow : Window
         if (!_dragging)
             BubbleClicked?.Invoke(this, EventArgs.Empty);
     }
+
+    private void OnDetailsClick(object sender, RoutedEventArgs e) =>
+        DetailsRequested?.Invoke(this, EventArgs.Empty);
 
     private void OnExitClick(object sender, RoutedEventArgs e) =>
         Application.Current.Shutdown();

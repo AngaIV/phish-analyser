@@ -10,6 +10,7 @@ namespace PhishAnalyser.Desktop;
 public partial class App : Application
 {
     private BubbleWindow? _bubble;
+    private IReadOnlyList<PhishAnalyser.Engine.Models.Finding> _findings = [];
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -26,6 +27,8 @@ public partial class App : Application
         StartConsoleCancelHandler();
 
         _bubble = new BubbleWindow { Left = 120, Top = 120 };
+        _bubble.BubbleClicked += (_, _) => ShowDetails();
+        _bubble.DetailsRequested += (_, _) => ShowDetails();
         _bubble.Show();
 
         // `--headers <file>` analyses a saved header block and renders the real verdict.
@@ -37,7 +40,7 @@ public partial class App : Application
             return;
         }
 
-        // Development harness: step the five states with 1..5, Esc to quit.
+        // Development harness: step the six states with 1..6, Esc to quit.
         RunStateHarness(_bubble);
     }
 
@@ -54,12 +57,21 @@ public partial class App : Application
             block = null;                     // unreadable file is a failed read, not a pass
         }
 
-        _bubble!.Render(HeaderAnalyser.Analyse(block));
+        var analysis = HeaderAnalyser.Analyse(block);
+        _findings = analysis.Findings;
+        _bubble!.Render(analysis.View);
         _bubble.KeyDown += (_, key) =>
         {
             if (key.Key == Key.Escape)
                 Shutdown();
         };
+    }
+
+    private void ShowDetails()
+    {
+        var detail = new FindingsWindow(_findings) { Owner = _bubble };
+        detail.Show();
+        detail.Activate();
     }
 
     private void RunStateHarness(BubbleWindow window)
@@ -70,7 +82,8 @@ public partial class App : Application
             new BubbleView(BubbleState.NoIssues, 0, "No issues found", ""),
             new BubbleView(BubbleState.Warning, 3, "Worth a closer look", ""),
             new BubbleView(BubbleState.Danger, 7, "Likely phishing", ""),
-            new BubbleView(BubbleState.Unknown, 1, "Could not fully check", ""),
+            new BubbleView(BubbleState.Unknown, 1, "Could not check", ""),
+            new BubbleView(BubbleState.Partial, 0, "Some checks not reported", ""),
         };
 
         var index = 1;
@@ -80,7 +93,7 @@ public partial class App : Application
         {
             if (key.Key == Key.Escape)
                 Shutdown();
-            else if (key.Key is >= Key.D1 and <= Key.D5)
+            else if (key.Key is >= Key.D1 and <= Key.D6)
                 window.Render(states[key.Key - Key.D1]);
         };
 

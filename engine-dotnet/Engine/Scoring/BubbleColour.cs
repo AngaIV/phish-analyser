@@ -1,4 +1,4 @@
-﻿namespace PhishAnalyser.Engine.Scoring;
+namespace PhishAnalyser.Engine.Scoring;
 
 /// <summary>What the user sees. Unknown exists so an unchecked message is never shown green.</summary>
 public enum BubbleColour
@@ -7,4 +7,5 @@ public enum BubbleColour
     Amber,
     Red,
     Unknown,
+    Partial,
 }

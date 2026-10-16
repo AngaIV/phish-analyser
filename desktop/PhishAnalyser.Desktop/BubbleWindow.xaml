@@ -22,7 +22,7 @@
     <!-- Right-click menu: WindowStyle="None" removes every other way to close the app. -->
     <Grid.ContextMenu>
       <ContextMenu>
-        <MenuItem Header="Open detail panel" IsEnabled="False" />
+        <MenuItem Header="Open detail panel" Click="OnDetailsClick" />
         <Separator />
         <MenuItem Header="Exit" Click="OnExitClick" />
       </ContextMenu>

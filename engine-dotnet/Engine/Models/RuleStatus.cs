@@ -1,8 +1,9 @@
-﻿namespace PhishAnalyser.Engine.Models;
+namespace PhishAnalyser.Engine.Models;
 
 public enum RuleStatus
 {
-    Pass, 
-    Flagged, 
-    Unknown
+    Pass,
+    Flagged,
+    Unknown,
+    Inconclusive
 }

@@ -16,6 +16,7 @@ public class AuthResultsCorpusTests
         var rule = new AuthResultsRule();
         var unparseable = new List<string>();
         var missingOrNone = 0;
+        var inconclusive = 0;
 
         foreach (var dir in new[] { "phishing", "legitimate" })
         {
@@ -25,7 +26,11 @@ public class AuthResultsCorpusTests
                 var message = MimeMessage.Load(stream);
                 foreach (var f in rule.Evaluate(message))
                 {
-                    if (f.Status == RuleStatus.Unknown)
+                    if (f.Status == RuleStatus.Inconclusive)
+                    {
+                        inconclusive++;
+                    }
+                    else if (f.Status == RuleStatus.Unknown)
                     {
                         if (f.Explanation.Contains("could not determine"))
                             unparseable.Add($"{Path.GetFileName(file)}: {f.Explanation}");
@@ -38,6 +43,7 @@ public class AuthResultsCorpusTests
 
         Assert.True(unparseable.Count == 0,
             $"Unexpected auth result formats ({unparseable.Count}):{Environment.NewLine}{string.Join(Environment.NewLine, unparseable)}");
-        Console.WriteLine($"Samples with missing/none results (expected Unknown): {missingOrNone}");
+        Console.WriteLine($"Missing or unusable auth results (Unknown): {missingOrNone}");
+        Console.WriteLine($"Mechanisms unreported alongside a usable result (Inconclusive): {inconclusive}");
     }
 }

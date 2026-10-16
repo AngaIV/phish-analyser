@@ -24,9 +24,9 @@ from headers alone.
 | `pass` | Pass | Info | 0 | The server is authorised and/or the signature validates |
 | `fail`, `permerror` | Flagged | Medium | 3 | Definitive authorisation failure |
 | `softfail` | Flagged | Low | 1 | Probably unauthorised; weaker than a hard fail |
-| `temperror` | Unknown | Info | 0 | Transient DNS problem — not evidence either way |
-| `none`, `neutral` | Unknown | Info | 0 | No policy to evaluate, or deliberately no assertion |
-| absent from header | Unknown | Info | 0 | Header missing or the mechanism unmentioned |
+| `temperror` | Unknown | Info | 0 | Transient DNS problem — verification could not complete |
+| `none`, `neutral` | Inconclusive when another mechanism reports a usable result; otherwise Unknown | Info | 0 | No policy to evaluate, or deliberately no assertion |
+| absent from header | Inconclusive when another mechanism reports a usable result; otherwise Unknown | Info | 0 | Mechanism unmentioned in a partially usable header, or no usable auth result at all |
 | any other value | Unknown | Info | 0 | Unrecognised value — never a false pass |
 
 Matching is case-insensitive and boundary-anchored (`\bspf=pass\b`), so `SPF=PASS`
@@ -36,7 +36,12 @@ is detected and a mechanism name embedded in a longer token is not.
 
 - Fail: "The sender's domain failed SPF. The server that sent this message is not authorised to send for this domain."
 - Softfail: "The sending server is probably not authorised for this domain."
-- None/absent: "No result was recorded for this check (missing header, forwarded mail, or 'none')."
+- Inconclusive: "The server did not report this check. Other authentication results are available."
+- Unknown: "No usable authentication result was available, so this message could not be fully checked."
+
+When a `pass`, `fail`, `softfail` or `permerror` is present for any mechanism, absent, `none` and `neutral` results for other mechanisms are `Inconclusive`. If no such usable result exists, those findings remain `Unknown`. `temperror` and unrecognised values always remain `Unknown`.
+
+The scorer renders `Inconclusive` as a distinct Partial state (not green). A genuine `Unknown` remains grey and takes precedence. Flagged findings continue to determine amber/red thresholds.
 
 Every explanation is written for a non-technical reader, per the Phase 2 exit gate.
 
@@ -62,9 +67,9 @@ change rather than a silent drift.
 
 ## Test cases
 
-`Engine.Tests/Rules/AuthResultsRuleTests.cs` — 7 unit tests covering all-pass,
-single failure, `none` mapping to Unknown, absent header, uppercase values,
-folded headers, and the multiple-header case.
+`Engine.Tests/Rules/AuthResultsRuleTests.cs` — unit tests cover all-pass, single
+failure, partial missing mechanisms, auth-none-only and absent-header fail-safe
+behavior, uppercase values, folded headers, and multiple-header precedence.
 
 `Engine.Tests/Corpus/AuthResultsCorpusTests.cs` — runs the rule over the whole
 corpus and fails only if a result format could not be interpreted.

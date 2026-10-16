@@ -22,7 +22,8 @@ public static class StateRenderer
             ("02-noissues", new(BubbleState.NoIssues, 0, "No issues found", "")),
             ("03-warning3", new(BubbleState.Warning, 3, "Worth a closer look", "")),
             ("04-danger7", new(BubbleState.Danger, 7, "Likely phishing", "")),
-            ("05-unknown", new(BubbleState.Unknown, 1, "Could not fully check", "")),
+            ("05-unknown", new(BubbleState.Unknown, 0, "Could not check", "")),
+            ("06-partial", new(BubbleState.Partial, 0, "Some checks not reported", "")),
         };
 
         foreach (var (name, view) in states)

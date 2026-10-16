@@ -2,6 +2,7 @@ using PhishAnalyser.Desktop.Models;
 using PhishAnalyser.Engine.Parsing;
 using PhishAnalyser.Engine.Rules;
 using PhishAnalyser.Engine.Scoring;
+using PhishAnalyser.Engine.Models;
 
 namespace PhishAnalyser.Desktop.Analysis;
 
@@ -10,27 +11,27 @@ namespace PhishAnalyser.Desktop.Analysis;
 /// </summary>
 public static class HeaderAnalyser
 {
-    public static BubbleView Analyse(string? headerBlock)
+    public static (BubbleView View, IReadOnlyList<Finding> Findings) Analyse(string? headerBlock)
     {
         // No headers at all: not analysed. Never "no issues found".
         if (string.IsNullOrWhiteSpace(headerBlock))
-            return Unreadable();
+            return (Unreadable(), []);
 
         var parse = SafeMessageLoader.LoadFromHeaderBlock(headerBlock);
 
         if (!parse.Succeeded)
-            return Unreadable();
+            return (Unreadable(), []);
 
         try
         {
             var findings = RuleSet.EvaluateAll(parse.Message!);
             var verdict = Scorer.Score(findings);
-            return BubbleViewFactory.FromVerdict(verdict);
+            return (BubbleViewFactory.FromVerdict(verdict), findings);
         }
         catch (Exception)
         {
             // A rule must not be able to take the app down. Fail to the grey state.
-            return Unreadable();
+            return (Unreadable(), []);
         }
     }
 

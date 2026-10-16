@@ -26,8 +26,15 @@ public static class BubbleViewFactory
         // The fail-safe. Reached when a rule could not check something.
         BubbleColour.Unknown => new BubbleView(
             BubbleState.Unknown, verdict.Number,
-            "Could not fully check this message",
-            "Some checks could not run, so this message has not been cleared."),
+            "Could not check this message",
+            "The message could not be analysed, so no result is available."),
+
+        // A real result exists, but the mail server did not report every mechanism.
+        // This is neither green nor a parser failure.
+        BubbleColour.Partial => new BubbleView(
+            BubbleState.Partial, verdict.Number,
+            "Some checks not reported",
+            "At least one check returned a result. The sender's mail server did not report all checks."),
 
         // If a colour is ever added to the enum, fail safe rather than showing all-clear.
         _ => new BubbleView(

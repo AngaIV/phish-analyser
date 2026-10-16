@@ -22,11 +22,18 @@ public sealed class AuthResultsRule : IRule
         var headers = message.Headers.Where(h =>
             h.Field.Equals("Authentication-Results", StringComparison.OrdinalIgnoreCase));
 
-        foreach (var mechanism in Mechanisms)
-        {
-            var result = ExtractResult(headers, mechanism.Mechanism);
-            findings.Add(Classify(result, mechanism.Label));
-        }
+        var results = Mechanisms
+            .Select(mechanism => (
+                mechanism.Label,
+                Result: ExtractResult(headers, mechanism.Mechanism)))
+            .ToList();
+
+        // A missing mechanism is only inconclusive when another mechanism actually
+        // reported a usable result. An auth=none header by itself remains Unknown.
+        var hasUsableResult = results.Any(result => IsUsableResult(result.Result));
+
+        foreach (var result in results)
+            findings.Add(Classify(result.Result, result.Label, hasUsableResult));
 
         return findings;
     }
@@ -44,15 +51,21 @@ public sealed class AuthResultsRule : IRule
         return match?.Success == true ? match.Groups[1].Value.ToLowerInvariant() : null;
     }
 
-    private static Finding Classify(string? result, string label)
+    private static bool IsUsableResult(string? result) => result is
+        "pass" or "fail" or "softfail" or "permerror";
+
+    private static Finding Classify(string? result, string label, bool hasUsableResult)
     {
         switch (result)
         {
             case null:
             case "none":
             case "neutral":
-                return new Finding("auth-results", RuleStatus.Unknown, Severity.Info, 0,
-                    $"{label}: no result recorded (missing header, forwarded mail, or 'none').");
+                var status = hasUsableResult ? RuleStatus.Inconclusive : RuleStatus.Unknown;
+                return new Finding("auth-results", status, Severity.Info, 0,
+                    hasUsableResult
+                        ? $"{label}: no conclusive result was reported."
+                        : $"{label}: no result recorded (missing header, forwarded mail, or 'none').");
             case "pass":
                 return new Finding("auth-results", RuleStatus.Pass, Severity.Info, 0,
                     $"{label}: pass.");

@@ -79,6 +79,29 @@ return `Unknown`. That is designed behaviour, not a defect.
 
 ---
 
+## D-004 clarification — Partial authentication results are not a pass or a total unknown
+
+**Decided:** Add `RuleStatus.Inconclusive` for SPF, DKIM or DMARC mechanisms that are
+not reported (`none`, `neutral`, or absent) when the same `Authentication-Results`
+header contains at least one usable mechanism verdict (`pass`, `fail`, `softfail` or
+`permerror`). This is not `Pass`. If no usable mechanism verdict exists, missing/none/
+neutral auth results remain `Unknown`, preserving D-004's fail-safe.
+
+**Bubble behavior:** An `Inconclusive` finding with no higher-severity flags produces a
+distinct Partial bubble state. It is neither green nor the grey state for failed analysis.
+A genuine `Unknown` takes precedence and remains grey. Flagged findings still produce
+amber/red at the existing thresholds. Therefore a message with DKIM pass but missing
+SPF/DMARC is no longer grey, but also is not reported as cleared.
+
+**Why:** Live mail can carry a usable DKIM result while its receiving system omits SPF
+and DMARC. Treating every omitted mechanism as `Unknown` overstates analysis failure;
+treating those omissions as `Pass` would cause severe false-green regressions. Corpus
+testing found that green-on-partial raised phishing false greens from 17% to 40%. The
+separate Partial state communicates available-but-incomplete evidence without granting
+an all-clear.
+
+---
+
 ## D-005 — Rule weights are hardcoded, with configuration deferred
 
 **Decided:** Severity and weight live as literals in each rule for now. Moving them

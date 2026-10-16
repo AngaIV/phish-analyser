@@ -18,6 +18,9 @@ public enum BubbleState
     /// <summary>Analysis could not complete. Must never be shown as NoIssues.</summary>
     Unknown,
 
+    /// <summary>Some checks produced results, but others were not reported.</summary>
+    Partial,
+
     /// <summary>The user snoozed or disabled the bubble for this message.</summary>
     Hidden,
 }

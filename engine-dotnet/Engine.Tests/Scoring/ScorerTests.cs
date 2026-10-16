@@ -117,4 +117,28 @@ public class ScorerTests
 
         Assert.Equal(BubbleColour.Green, verdict.Colour);
     }
+
+    [Fact]
+    public void InconclusiveWithPasses_IsPartialNotGreen()
+    {
+        var verdict = Scorer.Score([
+            F(RuleStatus.Pass, Severity.Info, 0),
+            F(RuleStatus.Inconclusive, Severity.Info, 0),
+            F(RuleStatus.Inconclusive, Severity.Info, 0),
+        ]);
+
+        Assert.Equal(BubbleColour.Partial, verdict.Colour);
+    }
+
+    [Fact]
+    public void UnknownWithInconclusive_RemainsUnknown()
+    {
+        var verdict = Scorer.Score([
+            F(RuleStatus.Pass, Severity.Info, 0),
+            F(RuleStatus.Inconclusive, Severity.Info, 0),
+            F(RuleStatus.Unknown, Severity.Info, 0),
+        ]);
+
+        Assert.Equal(BubbleColour.Unknown, verdict.Colour);
+    }
 }

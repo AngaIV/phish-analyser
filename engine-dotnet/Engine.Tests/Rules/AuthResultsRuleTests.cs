@@ -1,4 +1,4 @@
-﻿using MimeKit;
+using MimeKit;
 using PhishAnalyser.Engine.Models;
 using PhishAnalyser.Engine.Rules;
 using Xunit;
@@ -50,7 +50,7 @@ public class AuthResultsRuleTests
     }
 
     [Fact]
-    public void DkimNone_IsUnknownNotFlagged()
+    public void DkimNoneWithOtherResults_IsInconclusiveNotFlagged()
     {
         var message = MessageWithHeader("Authentication-Results",
             "mx.example.com; spf=pass smtp.mailfrom=example.com; dkim=none; dmarc=pass");
@@ -58,8 +58,19 @@ public class AuthResultsRuleTests
         var results = Rule.Evaluate(message);
 
         var dkim = Assert.Single(results, f => f.Explanation.StartsWith("DKIM"));
-        Assert.Equal(RuleStatus.Unknown, dkim.Status);
+        Assert.Equal(RuleStatus.Inconclusive, dkim.Status);
         Assert.Equal(RuleStatus.Pass, Assert.Single(results, f => f.Explanation.StartsWith("SPF")).Status);
+    }
+
+    [Fact]
+    public void DkimNoneWithoutAnyUsableMechanism_RemainsUnknown()
+    {
+        var message = MessageWithHeader("Authentication-Results",
+            "mx.example.com; dkim=none; spf=neutral; dmarc=none");
+
+        var results = Rule.Evaluate(message);
+
+        Assert.All(results, finding => Assert.Equal(RuleStatus.Unknown, finding.Status));
     }
 
     [Fact]
@@ -69,6 +80,71 @@ public class AuthResultsRuleTests
 
         Assert.All(results, f => Assert.Equal(RuleStatus.Unknown, f.Status));
         Assert.Equal(3, results.Count);
+    }
+
+    [Fact]
+    public void AuthNoneAlone_RemainsUnknownAcrossTheBoard()
+    {
+        var message = MessageWithHeader("Authentication-Results", "apache.org; auth=none");
+
+        var results = Rule.Evaluate(message);
+
+        Assert.All(results, f => Assert.Equal(RuleStatus.Unknown, f.Status));
+    }
+
+    [Fact]
+    public void DkimPassWithoutSpfOrDmarc_MarksMissingMechanismsInconclusive()
+    {
+        var message = MessageWithHeader("Authentication-Results",
+            "spamproc.example.org (amavisd-new);\n\tdkim=pass (2048-bit key) header.d=example.com");
+
+        var results = Rule.Evaluate(message);
+
+        Assert.Equal(RuleStatus.Inconclusive,
+            Assert.Single(results, f => f.Explanation.StartsWith("SPF")).Status);
+        Assert.Equal(RuleStatus.Pass,
+            Assert.Single(results, f => f.Explanation.StartsWith("DKIM")).Status);
+        Assert.Equal(RuleStatus.Inconclusive,
+            Assert.Single(results, f => f.Explanation.StartsWith("DMARC")).Status);
+    }
+
+    [Fact]
+    public void PassesAndInconclusiveMechanisms_ScoreAsPartialNotGreen()
+    {
+        var message = MessageWithHeader("Authentication-Results",
+            "mx.example.com; spf=pass; dkim=pass");
+        var findings = Rule.Evaluate(message);
+
+        var verdict = PhishAnalyser.Engine.Scoring.Scorer.Score(findings);
+
+        Assert.Equal(PhishAnalyser.Engine.Scoring.BubbleColour.Partial, verdict.Colour);
+    }
+
+    [Fact]
+    public void AuthNoneAlone_ScoresAsUnknownNotGreen()
+    {
+        var message = MessageWithHeader("Authentication-Results", "apache.org; auth=none");
+        var findings = Rule.Evaluate(message);
+
+        var verdict = PhishAnalyser.Engine.Scoring.Scorer.Score(findings);
+
+        Assert.Equal(PhishAnalyser.Engine.Scoring.BubbleColour.Unknown, verdict.Colour);
+    }
+
+    [Fact]
+    public void FailAndPassWithOneMissingMechanism_FlagsFailureAndMarksOmissionInconclusive()
+    {
+        var message = MessageWithHeader("Authentication-Results",
+            "mx.example.com; spf=fail; dkim=pass");
+
+        var results = Rule.Evaluate(message);
+
+        Assert.Equal(RuleStatus.Flagged,
+            Assert.Single(results, f => f.Explanation.StartsWith("SPF")).Status);
+        Assert.Equal(RuleStatus.Pass,
+            Assert.Single(results, f => f.Explanation.StartsWith("DKIM")).Status);
+        Assert.Equal(RuleStatus.Inconclusive,
+            Assert.Single(results, f => f.Explanation.StartsWith("DMARC")).Status);
     }
 
     [Fact]

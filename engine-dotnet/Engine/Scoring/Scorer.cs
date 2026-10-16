@@ -24,9 +24,15 @@ public static class Scorer
         if (score >= RedThreshold) return BubbleColour.Red;
         if (score >= AmberThreshold) return BubbleColour.Amber;
 
-        // Nothing alarming: show grey if anything went unchecked, otherwise green.
-        return findings.Any(f => f.Status == RuleStatus.Unknown)
-            ? BubbleColour.Unknown
-            : BubbleColour.Green;
+        // A real parse or rule failure takes precedence and remains grey. Inconclusive
+        // means the check ran but the sender's server did not report that mechanism; show
+        // a distinct partial state rather than treating it as a failure or as all-clear.
+        if (findings.Any(f => f.Status == RuleStatus.Unknown))
+            return BubbleColour.Unknown;
+
+        if (findings.Any(f => f.Status == RuleStatus.Inconclusive))
+            return BubbleColour.Partial;
+
+        return BubbleColour.Green;
     }
 }

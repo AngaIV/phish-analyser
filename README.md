@@ -24,6 +24,7 @@ it found. It runs entirely on your own machine and makes no network calls.
 | **3**, amber | Worth a closer look |
 | **7**, red | Looks like phishing |
 | Dashed grey circle | Could not check it |
+| Dashed blue **?** | Some authentication checks were not reported; this is not an all-clear |
 
 I work in IT support at a university, where phishing is constant, and most people have no
 easy way to check a message. I wanted to see how far a small, free tool could get.
@@ -31,7 +32,7 @@ easy way to check a message. I wanted to see how far a small, free tool could ge
 ## Status
 
 - **Working:** header parser, detection rules, scoring, test corpus, and a desktop bubble
-  with all five states showing real verdicts from the engine.
+  with all six states showing real verdicts from the engine.
 - **In progress:** getting headers out of Outlook
   and anchoring the bubble to the reading pane.
 - **Planned:** the detail pane that opens when you click the bubble, Outlook add-in and web
@@ -54,8 +55,9 @@ The false-positive number is missing on purpose. One rule reads the `Authenticat
 header, which a receiving server stamps on a message after checking SPF, DKIM and DMARC. All
 my phishing samples carry it but none of my legitimate ones do, because those were archived
 in 2003 and the standard behind that header dates from 2004. The rule therefore reports
-"could not check" on every clean email, which correctly shows a grey bubble rather than a
-green one, but it also means the clean emails were never truly tested. Getting legitimate
+"could not check" when no usable authentication result exists, and reports a distinct
+partial state when a result such as `dkim=pass` is present but other mechanisms are omitted.
+Neither condition is an all-clear, and the clean emails were still never truly tested. Getting legitimate
 mail with that header in it is the next piece of work.
 
 Today, it misses about half of phishing. Checking SPF, DKIM and DMARC alone catches roughly

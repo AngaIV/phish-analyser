@@ -1,0 +1,41 @@
+<Window x:Class="PhishAnalyser.Desktop.FindingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Analysis details"
+        Width="440" Height="520"
+        MinWidth="360" MinHeight="300"
+        WindowStartupLocation="CenterOwner"
+        Background="#F7F9FC"
+        FontFamily="Segoe UI">
+  <Grid Margin="20">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <TextBlock x:Name="Headline"
+               FontSize="20" FontWeight="SemiBold"
+               Foreground="#172B4D" Text="Analysis details" />
+    <TextBlock x:Name="Summary"
+               Grid.Row="1" Margin="0,6,0,16"
+               TextWrapping="Wrap" Foreground="#52627A" />
+    <ListBox x:Name="FindingsList" Grid.Row="2"
+             BorderBrush="#DCE3ED" Background="White"
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <StackPanel Margin="6,8" Orientation="Vertical">
+            <TextBlock Text="{Binding Title}" FontWeight="SemiBold" Foreground="#172B4D" />
+            <TextBlock Text="{Binding Description}" Margin="0,3,0,0"
+                       TextWrapping="Wrap" Foreground="#52627A" />
+          </StackPanel>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+    <Button Grid.Row="3" Content="Close" Width="90" Height="32"
+            Margin="0,16,0,0" HorizontalAlignment="Right" IsDefault="True"
+            Click="OnCloseClick" />
+  </Grid>
+</Window>

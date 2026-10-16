@@ -9,7 +9,8 @@ email before a false positive could be recorded.
 A metric computed from samples the rules never evaluated is not a good result, it is an
 absent one. This script exists so that failure cannot recur silently: it reports, per rule
 and per email type, how many samples reached a real verdict (`pass` or `flagged`) as
-opposed to `unknown`.
+opposed to `unknown` (not analysed) or `inconclusive` (mechanism unreported after
+    at least one authentication result was available).
 
 This is a validity check, not a scoring check. It deliberately does not compute precision
 or recall, because those numbers are meaningless when coverage is missing.
@@ -83,7 +84,7 @@ def main() -> int:
     print(f"  phishing samples: {totals['phishing']}, legitimate samples: {totals['legitimate']}")
     print()
 
-    header = f"{'rule':<22} {'type':<11} {'pass':>5} {'flag':>5} {'unk':>5} {'measured':>9}"
+    header = f"{'rule':<22} {'type':<11} {'pass':>5} {'flag':>5} {'unk':>5} {'inc':>5} {'measured':>9}"
     print(header)
     print("-" * len(header))
 
@@ -95,11 +96,12 @@ def main() -> int:
             passed = counts.get("pass", 0)
             flagged = counts.get("flagged", 0)
             unknown = counts.get("unknown", 0)
-            total = passed + flagged + unknown
+            inconclusive = counts.get("inconclusive", 0)
+            total = passed + flagged + unknown + inconclusive
 
             measured = passed + flagged
             share = measured / total if total else 0.0
-            print(f"{rule:<22} {label:<11} {passed:>5} {flagged:>5} {unknown:>5} {share:>8.0%}")
+            print(f"{rule:<22} {label:<11} {passed:>5} {flagged:>5} {unknown:>5} {inconclusive:>5} {share:>8.0%}")
 
             if share < MIN_MEASURED_SHARE:
                 failures.append(
