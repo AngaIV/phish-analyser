@@ -1,16 +1,20 @@
 using System.IO;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using PhishAnalyser.Desktop.Analysis;
 using PhishAnalyser.Desktop.Models;
+using PhishAnalyser.Engine.Models;
 
 namespace PhishAnalyser.Desktop;
 
 public partial class App : Application
 {
     private BubbleWindow? _bubble;
-    private IReadOnlyList<PhishAnalyser.Engine.Models.Finding> _findings = [];
+    private LoopbackHeaderBridge? _bridge;
+    private IReadOnlyList<Finding> _findings = [];
+    private System.Windows.Threading.DispatcherTimer? _stateTimer;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -27,9 +31,23 @@ public partial class App : Application
         StartConsoleCancelHandler();
 
         _bubble = new BubbleWindow { Left = 120, Top = 120 };
+        Exit += (_, _) => _bridge?.Dispose();
         _bubble.BubbleClicked += (_, _) => ShowDetails();
         _bubble.DetailsRequested += (_, _) => ShowDetails();
         _bubble.Show();
+
+        try
+        {
+            _bridge = new LoopbackHeaderBridge(AnalyseBridgeRequestAsync);
+        }
+        catch (HttpListenerException exception)
+        {
+            MessageBox.Show(
+                $"The local header bridge could not start: {exception.Message}",
+                "Phish Analyser bridge unavailable",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
+        }
 
         // `--headers <file>` analyses a saved header block and renders the real verdict.
         // This is the seam the mail-client surfaces feed: whatever reads the headers, the
@@ -67,6 +85,29 @@ public partial class App : Application
         };
     }
 
+    private Task<BridgeAnalysisResponse> AnalyseBridgeRequestAsync(string headerBlock)
+    {
+        var analysis = HeaderAnalyser.Analyse(headerBlock);
+        Dispatcher.Invoke(() =>
+        {
+            _stateTimer?.Stop();
+            _findings = analysis.Findings;
+            _bubble?.Render(analysis.View);
+        });
+
+        var findings = analysis.Findings.Select(f => new BridgeFinding(
+            f.RuleId,
+            f.Status.ToString().ToLowerInvariant(),
+            f.Explanation)).ToList();
+
+        return Task.FromResult(new BridgeAnalysisResponse(
+            analysis.View.State.ToString().ToLowerInvariant(),
+            analysis.View.Number,
+            analysis.View.Headline,
+            analysis.View.Detail,
+            findings));
+    }
+
     private void ShowDetails()
     {
         var detail = new FindingsWindow(_findings) { Owner = _bubble };
@@ -100,18 +141,18 @@ public partial class App : Application
         var cycle = true;
         window.KeyDown += (_, _) => cycle = false;
 
-        var timer = new System.Windows.Threading.DispatcherTimer
+        _stateTimer = new System.Windows.Threading.DispatcherTimer
         {
             Interval = TimeSpan.FromSeconds(2),
         };
-        timer.Tick += (_, _) =>
+        _stateTimer.Tick += (_, _) =>
         {
             if (!cycle)
                 return;
             index = (index + 1) % states.Length;
             window.Render(states[index]);
         };
-        timer.Start();
+        _stateTimer.Start();
     }
 
     /// <summary>
